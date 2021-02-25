@@ -85,9 +85,7 @@ class App extends Component {
             </MDBNavbar>
             {collapseID && overlay}
             <main style={{ marginTop: '4rem' }}>
-              <br />
               <Routes />
-              <br/>
             </main>
             <MDBFooter color='indigo'>
               <p className='footer-copyright mb-0 py-3 text-center'>
