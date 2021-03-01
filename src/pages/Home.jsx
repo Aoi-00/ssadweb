@@ -4,16 +4,28 @@ import { MDBContainer, MDBRow, MDBCol } from "mdbreact"
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { fetchPosts } from '../Redux/Actions/TwitterAction'
+import { fetchLeaderboard } from '../Redux/Actions/GameActions'
+import LeaderBoard from '../components/LeaderBoard'
 
 
 class Home extends Component {
     componentDidMount() {
         this.props.fetchPosts();
+        this.props.fetchLeaderboard();
+        //Testing session
+        console.log(localStorage.getItem("name"))
     }
     render() {
         return (
             <div>
                 <MDBContainer>
+                    <br />
+                    <h2>LeaderBoard</h2>
+                    <hr />
+                    <LeaderBoard leaderboard={this.props.leaderboard} />
+                    <br />
+                    <h2>NTU Twitter Post</h2>
+                    <hr />
                     <MDBRow>
                         {this.props.twitter && this.props.twitter.map(x => {
                             return (
@@ -22,19 +34,21 @@ class Home extends Component {
                                 </MDBCol>
                             )
                         })}
-
                     </MDBRow>
+                    <br />
                 </MDBContainer>
             </div>
         )
     }
 }
 Home.propTypes = {
-    fetchPosts: PropTypes.func.isRequired
+    fetchPosts: PropTypes.func.isRequired,
+    fetchLeaderboard: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
-    twitter: state.twitter.items
+    twitter: state.twitter.items,
+    leaderboard: state.game.records
 });
 
-export default connect(mapStateToProps, { fetchPosts })(Home)
+export default connect(mapStateToProps, { fetchPosts, fetchLeaderboard })(Home)

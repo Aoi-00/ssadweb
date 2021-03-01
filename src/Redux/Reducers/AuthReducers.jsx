@@ -1,5 +1,6 @@
 const initState = {
-    login: []
+    login: [],
+    status: []
 };
 
 const AuthReducers = (state = initState, action) => {
@@ -13,6 +14,11 @@ const AuthReducers = (state = initState, action) => {
             return {
                 ...state,
                 login: action.payload
+            }
+        case 'REGISTER_USER':
+            return{
+                ...state,
+                status: action.payload
             }
         default:
             return state;

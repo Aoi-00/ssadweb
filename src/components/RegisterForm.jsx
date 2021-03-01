@@ -10,16 +10,26 @@ import {
   MDBCard,
   MDBCardBody,
   MDBInput,
-  MDBAnimation
+  MDBAnimation,
+  MDBNavLink
 } from "mdbreact";
 import "./css/index.css";
+import FacebookLogin from 'react-facebook-login'
+import PropTypes from 'prop-types'
+import { registerUser } from '../Redux/Actions/AuthAction'
+import { connect } from 'react-redux'
 
 class RegisterForm extends React.Component {
   state = {
     collapseID: "",
     email: "",
     password: "",
-    cfmpassword: ""
+    cfmpassword: "",
+    usertype: "Student",
+    name: "",
+    fbimage: "",
+    fbid: "",
+    fbdetails: false
   };
 
   toggleCollapse = collapseID => () =>
@@ -27,7 +37,52 @@ class RegisterForm extends React.Component {
       collapseID: prevState.collapseID !== collapseID ? collapseID : ""
     }));
 
+  responseFacebook = (response) => {
+    console.log(response)
+    this.setState({
+      fbid: response.id,
+      fbimage: response.picture.data.url,
+      email: response.email,
+      name: response.name,
+      fbdetails: true
+    })
+  }
+  handleSelectList = (e) => {
+    this.setState({
+      usertype: e.target.value
+    })
+  }
+  Validate = () => {
+    this.Register();
+  }
+  Register = () => {
+    const form = {
+      fbid: this.state.fbid,
+      email: this.state.email,
+      password: this.state.password,
+      name: this.state.name,
+      usertype: this.state.usertype
+    }
+    this.props.registerUser(form);
+  }
+  componentWillReceiveProps(nextProps){
+    var response = nextProps.registerstatus[0].response;
+    if(response == "User Registered"){
+      this.props.Navigate("/")
+    }
+    else{
+      //Do some animation here
+      alert("Register Error")
+    }
+  }
+  handleChange = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value
+    })
+  }
+
   render() {
+    let fbimage = (!this.state.fbdetails) ? <React.Fragment /> : <center> <img width="150" height="150" src={this.state.fbimage} className="img-fluid z-depth-1 rounded-circle" alt="" /></center>
     return (
       <div id="classicformpage">
         <MDBView>
@@ -40,18 +95,17 @@ class RegisterForm extends React.Component {
                   className="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5"
                 >
                   <h1 className="h1-responsive font-weight-bold">
-                    Sign up right now!
+                    Thank you for joining us!
                   </h1>
                   <hr className="hr-light" />
                   <h6 className="mb-4">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Rem repellendus quasi fuga nesciunt dolorum nulla magnam
-                    veniam sapiente, fugiat! Commodi sequi non animi ea dolor
-                    molestiae, quisquam iste, maiores. Nulla.
+                    Already have an account? Click the button below to go back
                   </h6>
-                  <MDBBtn outline color="white">
-                    Learn More
+                  <MDBNavLink to='/'>
+                    <MDBBtn outline color="white">
+                      Login
                   </MDBBtn>
+                  </MDBNavLink>
                 </MDBAnimation>
 
                 <MDBCol md="6" xl="5" className="mb-4">
@@ -62,6 +116,17 @@ class RegisterForm extends React.Component {
                           <MDBIcon icon="user" /> Register:
                         </h3>
                         <hr className="hr-light" />
+                        {fbimage}
+                        <MDBInput
+                          className="white-text"
+                          iconClass="white-text"
+                          label="Enter Full Name"
+                          icon="address-card"
+                          id="name"
+                          type="text"
+                          value={this.state.name}
+                          onChange={this.handleChange}
+                        />
                         <MDBInput
                           className="white-text"
                           iconClass="white-text"
@@ -69,6 +134,7 @@ class RegisterForm extends React.Component {
                           icon="envelope"
                           id="email"
                           type="email"
+                          value={this.state.email}
                           onChange={this.handleChange}
                         />
                         <MDBInput
@@ -83,38 +149,26 @@ class RegisterForm extends React.Component {
                         <MDBInput
                           className="white-text"
                           iconClass="white-text"
-                          label="Enter Password"
+                          label="Confirm Password"
                           icon="lock"
                           type="password"
                           id="cfmpassword"
                           onChange={this.handleChange}
                         />
+                        <select onChange={this.handleSelectList} value={this.state.usertype} id="usertype" className="browser-default custom-select">
+                          <option value={'Student'}>Student</option>
+                          <option value={'Professor'}>Professor</option>
+                        </select>
                         <div className="text-center mt-4 black-text">
-                          <MDBBtn outline color="white">Sign Up</MDBBtn>
-                          <hr className="hr-light" />
-                          <div className="text-center d-flex justify-content-center white-label">
-                            <a href="#!" className="p-2 m-2">
-                              <MDBIcon
-                                fab
-                                icon="twitter"
-                                className="white-text"
-                              />
-                            </a>
-                            <a href="#!" className="p-2 m-2">
-                              <MDBIcon
-                                fab
-                                icon="linkedin"
-                                className="white-text"
-                              />
-                            </a>
-                            <a href="#!" className="p-2 m-2">
-                              <MDBIcon
-                                fab
-                                icon="instagram"
-                                className="white-text"
-                              />
-                            </a>
-                          </div>
+                          <MDBBtn onClick={this.Validate} color="white">Register</MDBBtn>
+                          <FacebookLogin
+                            appId="438326617514737"
+                            autoLoad={true}
+                            fields="name,email,picture"
+                            cssClass="btn btn-outline white"
+                            textButton="Facebook Register"
+                            callback={this.responseFacebook}
+                          />
                         </div>
                       </MDBCardBody>
                     </MDBCard>
@@ -129,4 +183,12 @@ class RegisterForm extends React.Component {
   }
 }
 
-export default RegisterForm;
+RegisterForm.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = state => ({
+  registerstatus: state.auth.status
+});
+
+export default connect(mapStateToProps, { registerUser })(RegisterForm);

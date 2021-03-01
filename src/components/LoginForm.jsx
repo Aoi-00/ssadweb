@@ -23,6 +23,7 @@ class LoginForm extends React.Component {
   state = {
     email: '',
     userpassword: '',
+    fbid: ''
   };
 
   toggleCollapse = collapseID => () =>
@@ -44,6 +45,9 @@ class LoginForm extends React.Component {
     this.props.emailLogin(post);
   }
   responseFacebook = (response) => {
+    this.setState({
+      fbid: response.id
+    })
     this.FbLogin(response.id)
   }
   FbLogin = (id) => {
@@ -53,8 +57,13 @@ class LoginForm extends React.Component {
     this.props.facebookLogin(post);
   }
   componentWillReceiveProps(nextProps) {
-    var validuser = nextProps.loginstatus[0].userExists
-    if (validuser == 1) {
+    var fbid = nextProps.loginstatus[0].fbid
+    var email = nextProps.loginstatus[0].email
+    if (fbid === this.state.fbid || email === this.state.email) {
+      localStorage.setItem("fbid", nextProps.loginstatus[0].fbid)
+      localStorage.setItem("name", nextProps.loginstatus[0].name)
+      localStorage.setItem("email", nextProps.loginstatus[0].email)
+      localStorage.setItem("usertype", nextProps.loginstatus[0].usertype)
       this.props.Navigate("/home")
     }
     else {
@@ -79,14 +88,11 @@ class LoginForm extends React.Component {
                   </h1>
                   <hr className="hr-light" />
                   <h6 className="mb-4">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Rem repellendus quasi fuga nesciunt dolorum nulla magnam
-                    veniam sapiente, fugiat! Commodi sequi non animi ea dolor
-                    molestiae, quisquam iste, maiores. Nulla.
+                    Don't have an account? Register here!
                   </h6>
                   <MDBNavLink to='/register'>
                     <MDBBtn outline color="white">
-                      Learn More
+                      Register
                   </MDBBtn>
                   </MDBNavLink>
                 </MDBAnimation>
@@ -118,11 +124,12 @@ class LoginForm extends React.Component {
                           onChange={this.handleChange}
                         />
                         <div className="text-center mt-4 black-text">
-                          <MDBBtn outline color="white" onClick={this.EmailLogin}>Login</MDBBtn>
+                          <MDBBtn color="white" onClick={this.EmailLogin}>Login</MDBBtn>
                           <FacebookLogin
                             appId="438326617514737"
                             autoLoad={true}
                             fields="name,email,picture"
+                            cssClass="btn btn-outline white"
                             callback={this.responseFacebook}
                           />
 
