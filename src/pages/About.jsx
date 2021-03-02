@@ -8,10 +8,7 @@ class About extends Component {
         })
         return (
             <div>
-                <select onChange = {this.handleSelectList} id="tutgrp" className="browser-default custom-select">
-                    {dropdown} 
-                </select>
-                
+              About Page
             </div>
         )
     }
