@@ -23,7 +23,9 @@ class LoginForm extends React.Component {
   state = {
     email: '',
     userpassword: '',
-    fbid: ''
+    fbid: '',
+    fblogin: false,
+    emaillogin: false
   };
 
   toggleCollapse = collapseID => () =>
@@ -41,12 +43,13 @@ class LoginForm extends React.Component {
       email: this.state.email,
       password: this.state.userpassword
     }
-    this.setState({ status: this.state.status++ })
+    this.setState({ emaillogin: true })
     this.props.emailLogin(post);
   }
   responseFacebook = (response) => {
     this.setState({
-      fbid: response.id
+      fbid: response.id,
+      fblogin: true
     })
     this.FbLogin(response.id)
   }
@@ -57,9 +60,15 @@ class LoginForm extends React.Component {
     this.props.facebookLogin(post);
   }
   componentWillReceiveProps(nextProps) {
-    var fbid = nextProps.loginstatus[0].fbid
     var email = nextProps.loginstatus[0].email
-    if (fbid === this.state.fbid || email === this.state.email) {
+    if(this.state.fblogin){
+      localStorage.setItem("fbid", nextProps.loginstatus[0].fbid)
+      localStorage.setItem("name", nextProps.loginstatus[0].name)
+      localStorage.setItem("email", nextProps.loginstatus[0].email)
+      localStorage.setItem("usertype", nextProps.loginstatus[0].usertype)
+      this.props.Navigate("/home")
+    }
+    else if (this.state.emaillogin) {
       localStorage.setItem("fbid", nextProps.loginstatus[0].fbid)
       localStorage.setItem("name", nextProps.loginstatus[0].name)
       localStorage.setItem("email", nextProps.loginstatus[0].email)
@@ -124,7 +133,7 @@ class LoginForm extends React.Component {
                           onChange={this.handleChange}
                         />
                         <div className="text-center mt-4 black-text">
-                          <MDBBtn color="white" onClick={() => this.EmailLogin}>Login</MDBBtn>
+                          <MDBBtn color="white" onClick={this.EmailLogin}>Login</MDBBtn>
                           <FacebookLogin
                             appId="438326617514737"
                             autoLoad={true}
