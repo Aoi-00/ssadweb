@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom';
 
 import About from '../pages/About';
+import Guide from '../pages/Guide';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
@@ -15,6 +16,7 @@ class Routes extends React.Component {
         <Route path='/home' component={Home} />
         <Route path='/register' component={Register} />
         <Route path='/about' component={About} />
+        <Route path='/guide' component={Guide} />
         <Route
           render={function () {
             return <h1>Not Found</h1>;
