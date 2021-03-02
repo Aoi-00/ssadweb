@@ -60,7 +60,6 @@ class LoginForm extends React.Component {
     this.props.facebookLogin(post);
   }
   componentWillReceiveProps(nextProps) {
-    var email = nextProps.loginstatus[0].email
     if(this.state.fblogin){
       localStorage.setItem("fbid", nextProps.loginstatus[0].fbid)
       localStorage.setItem("name", nextProps.loginstatus[0].name)

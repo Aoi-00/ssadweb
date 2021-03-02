@@ -28,3 +28,22 @@
 	color:rgba(0,0,0,.35);
 	float:right;
 }
+
+.background {
+	width: 100vw;
+	background: url("assets/images.png");
+	height: 100vh;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.mySelect {
+	width:fit-content;
+	padding: 1px 1px;
+	margin: 100px 100px;
+	/* add styling*/
+}
+
+.Questions {
+	background-color: rgb(250, 246, 250);
+}
