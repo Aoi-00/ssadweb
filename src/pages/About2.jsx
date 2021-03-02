@@ -28,18 +28,7 @@ class About2 extends Component {
 
         //using Arrow loop to return multi options
         return (
-            <MDBView>
-                <img class = "background"></img> 
-                <MDBMask pattern={2}> 
-
-                <div  style={divStyle}> 
-                    <SelectPage>  </SelectPage> 
-                    <Search></Search> 
-                </div> 
-                <Table className = 'Questions'></Table> 
-                
-                </MDBMask>
-            </MDBView>
+            <div></div>
             
         )
         

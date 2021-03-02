@@ -1,11 +1,19 @@
 import React, { Component } from 'react'
+import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 
 class RefreshPage extends Component {
     render() {
         return (
-            <div>
-                
-            </div>
+            <MDBContainer>
+                <MDBRow>
+                    <MDBCol lg="2" sm="4">Column</MDBCol>
+                    <MDBCol lg="2" sm="4">Column</MDBCol>
+                    <MDBCol lg="2" sm="4">Column</MDBCol>
+                    <MDBCol lg="2" sm="4">Column</MDBCol>
+                    <MDBCol lg="2" sm="4">Column</MDBCol>
+                    <MDBCol lg="2" sm="4">Column</MDBCol>
+                </MDBRow>
+            </MDBContainer>
         )
     }
 }

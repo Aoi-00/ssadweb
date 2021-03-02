@@ -12,8 +12,6 @@ class Home extends Component {
     componentDidMount() {
         this.props.fetchLeaderboard();
         this.props.fetchPosts();
-        //Testing session
-        console.log(localStorage.getItem("name"))
     }
     render() {
         return (
