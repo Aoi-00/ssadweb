@@ -57,18 +57,18 @@ class LoginForm extends React.Component {
     this.props.facebookLogin(post);
   }
   componentWillReceiveProps(nextProps) {
-    var fbid = nextProps.loginstatus[0].fbid
-    var email = nextProps.loginstatus[0].email
-    if (fbid === this.state.fbid || email === this.state.email) {
-      localStorage.setItem("fbid", nextProps.loginstatus[0].fbid)
-      localStorage.setItem("name", nextProps.loginstatus[0].name)
-      localStorage.setItem("email", nextProps.loginstatus[0].email)
-      localStorage.setItem("usertype", nextProps.loginstatus[0].usertype)
-      this.props.Navigate("/home")
-    }
-    else {
-      alert("Wrong email or password")
-    }
+    // var fbid = nextProps.loginstatus[0].fbid
+    // var email = nextProps.loginstatus[0].email
+    // if (fbid === this.state.fbid || email === this.state.email) {
+    //   localStorage.setItem("fbid", nextProps.loginstatus[0].fbid)
+    //   localStorage.setItem("name", nextProps.loginstatus[0].name)
+    //   localStorage.setItem("email", nextProps.loginstatus[0].email)
+    //   localStorage.setItem("usertype", nextProps.loginstatus[0].usertype)
+    //   this.props.Navigate("/home")
+    // }
+    // else {
+    //   alert("Wrong email or password")
+    // }
   }
 
   render() {
