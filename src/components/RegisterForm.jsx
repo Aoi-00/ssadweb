@@ -29,6 +29,7 @@ class RegisterForm extends React.Component {
     name: "",
     fbimage: "",
     fbid: "",
+    tutgrp: "TS1",
     fbdetails: false
   };
 
@@ -49,7 +50,7 @@ class RegisterForm extends React.Component {
   }
   handleSelectList = (e) => {
     this.setState({
-      usertype: e.target.value
+      tutgrp: e.target.value
     })
   }
   Validate = () => {
@@ -61,7 +62,8 @@ class RegisterForm extends React.Component {
       email: this.state.email,
       password: this.state.password,
       name: this.state.name,
-      usertype: this.state.usertype
+      usertype: "Student",
+      tutgrp: this.state.tutgrp
     }
     this.props.registerUser(form);
   }
@@ -155,9 +157,11 @@ class RegisterForm extends React.Component {
                           id="cfmpassword"
                           onChange={this.handleChange}
                         />
-                        <select onChange={this.handleSelectList} value={this.state.usertype} id="usertype" className="browser-default custom-select">
-                          <option value={'Student'}>Student</option>
-                          <option value={'Professor'}>Professor</option>
+                        <select onChange={this.handleSelectList} value={this.state.tutgrp} id="tutgrp" className="browser-default custom-select">
+                          <option value={'TS1'}>TS1</option>
+                          <option value={'TS2'}>TS2</option>
+                          <option value={'TS3'}>TS3</option>
+                          <option value={'TS4'}>TS4</option>
                         </select>
                         <div className="text-center mt-4 black-text">
                           <MDBBtn onClick={this.Validate} color="white">Register</MDBBtn>

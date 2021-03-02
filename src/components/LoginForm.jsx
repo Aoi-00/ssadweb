@@ -124,7 +124,7 @@ class LoginForm extends React.Component {
                           onChange={this.handleChange}
                         />
                         <div className="text-center mt-4 black-text">
-                          <MDBBtn color="white" onClick={this.EmailLogin}>Login</MDBBtn>
+                          <MDBBtn color="white" onClick={() => this.EmailLogin}>Login</MDBBtn>
                           <FacebookLogin
                             appId="438326617514737"
                             autoLoad={true}

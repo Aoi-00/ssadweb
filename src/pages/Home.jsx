@@ -10,8 +10,8 @@ import LeaderBoard from '../components/LeaderBoard'
 
 class Home extends Component {
     componentDidMount() {
-        this.props.fetchPosts();
         this.props.fetchLeaderboard();
+        this.props.fetchPosts();
         //Testing session
         console.log(localStorage.getItem("name"))
     }
