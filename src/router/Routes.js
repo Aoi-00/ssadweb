@@ -7,7 +7,8 @@ import Guide from '../pages/Guide';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
-import RefreshPage from '../pages/RefreshPage'
+import RefreshPage from '../pages/RefreshPage';
+import Tutorial from '../pages/Tutorial';
 
 
 class Routes extends React.Component {
@@ -21,6 +22,7 @@ class Routes extends React.Component {
         <Route path='/about2' component={About2} />
         <Route path='/guide' component={Guide} />
         <Route path='/refresh' component={RefreshPage} />
+        <Route path='/tutorial' component={Tutorial} />
         <Route
           render={function () {
             return <h1>Not Found</h1>;
