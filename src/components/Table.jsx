@@ -1,82 +1,42 @@
 import React from 'react';
-import { MDBDataTable } from 'mdbreact';
+import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn, MDBInput } from 'mdbreact';
 
-const DatatablePage = () => {
-  const data = {
-    columns: [
-      {
-        label: 'Creator Name',
-        field: 'name',
-        sort: 'asc',
-        width: 150
-      },
-      {
-        label: 'Question',
-        field: 'question',
-        sort: 'asc',
-        width: 270
-      },
-      
-    ],
-    rows: [
-      {
-        name: 'prof A',
-        question: 'Place to Exercise',
-      },
-      {
-        name: 'prof B',
-        question: 'Fire accident prone',
-      },
-      {
-        name: 'prof A',
-        question: 'Quiet',
-      },
-      {
-        name: 'prof C',
-        question: 'nearby polyclinic',
-      },
-      {
-        name: 'prof C',
-        question: 'Safe',
-      },
-      {
-        name: 'prof C',
-        question: 'Convenient',
-      },
-      {
-        name: 'prof C',
-        question: 'Fun sources of entertainment',
-      },
-      {
-        name: 'prof B',
-        question: 'Cheap',
-      },
-      {
-        name: 'prof C',
-        question: 'Have kids',
-      },
-      {
-        name: 'prof C',
-        question: 'Have pets',
-      },
-     
-     
-     
-    ]
-  };
+const Table = () => {
+  var arr = [
+    {
+      name: "Iskandar",
+      age: 25
+    },{
+    name: "Brendan",
+      age: 25
+    }
+  ]
+  let display = arr.map((eachitem, index) => {
+    console.log(eachitem)
+    return (
+      <tr>
+        <td>{index + 1}</td>
+        <td>{eachitem.name}</td>
+        <td><MDBBtn color="info">Info</MDBBtn></td>
+        <td><MDBInput label="Material input" /></td>
+      </tr>
+    )
+  })
   return (
-    <MDBDataTable
-      scrollY
-      maxHeight="80vh"
-      theadColor= 'white'
-      tbodyColor= 'white'
-      striped
-      bordered
-      small
-      data={data}
-      
-    />
+    <MDBTable>
+      <MDBTableHead>
+        <tr>
+          <th>#</th>
+          <th>Tutorial Grp</th>
+          <th>Last</th>
+          <th>Handle</th>
+        </tr>
+      </MDBTableHead>
+      <MDBTableBody>
+        {display}
+      </MDBTableBody>
+    </MDBTable>
   );
 }
 
-export default DatatablePage;
+export default Table;

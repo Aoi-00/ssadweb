@@ -44,3 +44,19 @@ export const registerUser = (postData) => dispatch => {
         })
         );
 }
+
+export const testCall = (postData) => dispatch => {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/test', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'TESTING',
+            payload: data
+        })
+        );
+}
