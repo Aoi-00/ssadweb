@@ -1,43 +1,29 @@
-//import { MDBView } from 'mdbreact'
 import React, { Component } from 'react'
-import { MDBMask, MDBView, MDBContainer } from "mdbreact";
-import SelectPage from '../components/SelectPage'
-import Search from '../components/Search'
-import Table from '../components/Table'
+import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import QuestionList from '../components/QuestionList'
+import AddQuestion from '../components/AddQuestion';
 
-const divStyle = {
-    display: 'flex', 
-    alignItems: 'center'
-  };
-  
 class About extends Component {
-    state = {
-        classes : ["All","TS1", "TS2", "TS3"],
-    }
-    
-    ClassesLoop = () => {
-        return this.state.classes.map(data => {
-            return (<option value={data}> {data} </option>);
-        })
-    }
 
     render() {
-
-        //using Arrow loop to return multi options
         return (
-            <MDBView>
-                <img class = "background"></img>
-                <MDBMask pattern={2}> 
-
-                <div  style={divStyle}>
-                    <SelectPage>  </SelectPage>
-                    <Search></Search>
-                </div>
-                <Table className = 'Questions'></Table>
-                </MDBMask>
-            </MDBView>
-            
+            <MDBContainer>
+                <MDBRow>
+                    <MDBCol size="12">
+                    <br/>
+                    <h2>List of questions</h2>
+                    <hr/>
+                        <QuestionList />
+                    </MDBCol>
+                    <MDBCol size="12">
+                    <h2>Add new question</h2>
+                    <hr/>
+                        <AddQuestion />
+                    </MDBCol>
+                </MDBRow>
+            </MDBContainer>
         )
     }
+
 }
 export default About

@@ -16,7 +16,12 @@ const AuthReducers = (state = initState, action) => {
                 login: action.payload
             }
         case 'REGISTER_USER':
-            return{
+            return {
+                ...state,
+                status: action.payload
+            }
+        case 'TESTING':
+            return {
                 ...state,
                 status: action.payload
             }
