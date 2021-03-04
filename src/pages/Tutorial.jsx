@@ -22,7 +22,6 @@ class Tutorial extends Component {
                         <br />
                         <h3>Add New Tutorial Grouping</h3>
                         <AddTutorial />
-
                     </MDBCol>
                 </MDBRow>
             </MDBContainer>

@@ -4,7 +4,12 @@ import QuestionList from '../components/QuestionList'
 import AddQuestion from '../components/AddQuestion';
 
 class Question extends Component {
-
+    state = {
+        tutid: this.props.match.params.id
+    }
+    componentDidMount(){
+        console.log(this.state)
+    }
     render() {
         return (
             <MDBContainer>
