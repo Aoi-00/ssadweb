@@ -5,9 +5,7 @@ const TutorialTable = ({ tutorial }) => {
   let onDelete = (e) => {
     //console.log(e) Add delete function
   }
-
   let display = tutorial.map((eachTut, index) => {
-    //console.log(eachTut)
     return (
       <tr id={"table" + index}>
         <td>{eachTut.tutname}</td>

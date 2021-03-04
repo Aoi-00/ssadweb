@@ -80,6 +80,7 @@ class LoginForm extends React.Component {
   }
 
   render() {
+
     return (
       <div id="classicformpage">
         <MDBView>

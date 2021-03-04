@@ -12,6 +12,7 @@ class Tutorial extends Component {
     componentDidMount() {
         this.props.showTutorials();
     }
+
     render() {
         return (
             <MDBContainer>
@@ -33,9 +34,11 @@ Tutorial.propTypes = {
     showTutorials: PropTypes.func.isRequired,
 }
 
+//This is from the Reducers
+//state.Rootreducer.TutorialReducers
 const mapStateToProps = state => ({
     tutorialtable: state.tutorial.tutorialgrp,
 });
 
-
+// connection this component to database.
 export default connect(mapStateToProps, { showTutorials })(Tutorial)
