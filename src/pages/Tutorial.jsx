@@ -21,7 +21,7 @@ class Tutorial extends Component {
             <MDBRow>
                 <MDBCol>
                 <h2>Tutorial Grouping</h2>
-                    <TutorialTable TutorialTable = {this.props.tutorialtable}/>
+                    <TutorialTable tutorialtable = {this.props.tutorialtable}/>
                     <td><MDBBtn color="green" >Add</MDBBtn></td>
                     <br/>
                 <h3>Add New Tutorial Grouping</h3>

@@ -10,7 +10,7 @@ const TutorialTable = ({ tutorialtable }) => {
     tutorialtable.map(data => TutorialTable.data.push({ tutGroup: data.tutgrp, Creator: data.createdby }))
   }
   else {
-    var data = useState([
+    var data = [
       {
         tutGroup: "TS1",
         Creator: "Anna"
@@ -23,7 +23,7 @@ const TutorialTable = ({ tutorialtable }) => {
         tutGroup: "TS3",
         Creator: "Jim"
       },
-    ])
+    ]
   }
   useEffect(() => {
     console.log(tutorialtable)
