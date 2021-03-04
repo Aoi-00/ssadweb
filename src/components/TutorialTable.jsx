@@ -3,10 +3,11 @@ import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn, MDBLink } from 'mdbreact'
 
 const TutorialTable = ({ tutorial }) => {
   let onDelete = (e) => {
-    console.log(e)
+    //console.log(e) Add delete function
   }
+
   let display = tutorial.map((eachTut, index) => {
-    console.log(eachTut)
+    //console.log(eachTut)
     return (
       <tr id={"table" + index}>
         <td>{eachTut.tutname}</td>

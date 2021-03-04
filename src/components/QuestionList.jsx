@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { MDBDataTableV5, MDBBtn } from 'mdbreact';
 
-export default function Basic() {
+export default function Basic({question}){
+  // useEffect (()=> {
+  //   console.log(question)
+  // });
+
   const onDelete = (e) => {
     //datatable.filter()
     //console.log({datatable})
@@ -29,19 +33,13 @@ export default function Basic() {
         width: 200,
       },
     ],
-    rows: [
-      {
-        questionnumber: "1",
-        question: 'Tiger Nixon',
-        remove: [<MDBBtn size="sm" color="red" onClick={onDelete}>Remove</MDBBtn>],
-      },
-      {
-        questionnumber: "2",
-        question: 'Brendan',
-        remove: [<MDBBtn size="sm" color="red"onClick={onDelete}>Remove</MDBBtn>],
-      }
-    ],
+    rows: []
   });
+  question.map((data, index) => datatable.rows.push({
+    questionnumber:index+1,
+    question: data.question,
+    remove: [<MDBBtn size="sm" color="red"onClick={onDelete}>Remove</MDBBtn>],
+  }))
   
   return <MDBDataTableV5 hover entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} searchTop pagingTop searchBottom={false} data={datatable} />;
 }
