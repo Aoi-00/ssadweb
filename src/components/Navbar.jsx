@@ -29,7 +29,7 @@ class Navbar extends Component {
 
             <div>
                 <MDBNavbar color='indigo' dark expand='md' fixed='top' scrolling>
-                    <MDBNavbarBrand href='/' className='py-0 font-weight-bold'>
+                    <MDBNavbarBrand href='/home' className='py-0 font-weight-bold'>
                         <Logo style={{ height: '2.5rem', width: '2.5rem' }} />
                         <strong className='align-middle'>SSAD Project</strong>
                     </MDBNavbarBrand>
@@ -41,26 +41,10 @@ class Navbar extends Component {
                             <MDBNavItem>
                                 <MDBNavLink
                                     exact
-                                    to='/'
+                                    to='/home'
                                     onClick={this.closeCollapse('mainNavbarCollapse')}
                                 >
                                     <strong>Home</strong>
-                                </MDBNavLink>
-                            </MDBNavItem>
-                            <MDBNavItem>
-                                <MDBNavLink
-                                    onClick={this.closeCollapse('mainNavbarCollapse')}
-                                    to='/about'
-                                >
-                                    <strong>About</strong>
-                                </MDBNavLink>
-                            </MDBNavItem>
-                            <MDBNavItem>
-                                <MDBNavLink
-                                    onClick={this.closeCollapse('mainNavbarCollapse')}
-                                    to='/guide'
-                                >
-                                    <strong>Guide</strong>
                                 </MDBNavLink>
                             </MDBNavItem>
                             <MDBNavItem>
@@ -74,9 +58,17 @@ class Navbar extends Component {
                             <MDBNavItem>
                                 <MDBNavLink
                                     onClick={this.closeCollapse('mainNavbarCollapse')}
-                                    to='/advanced'
+                                    to='/marking'
                                 >
-                                    <strong>Advanced</strong>
+                                    <strong>Marking</strong>
+                                </MDBNavLink>
+                            </MDBNavItem>
+                            <MDBNavItem>
+                                <MDBNavLink
+                                    onClick={this.closeCollapse('mainNavbarCollapse')}
+                                    to='/logout'
+                                >
+                                    <strong>Logout</strong>
                                 </MDBNavLink>
                             </MDBNavItem>
                         </MDBNavbarNav>

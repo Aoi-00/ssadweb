@@ -23,18 +23,6 @@ class Home extends Component {
                     <hr />
                     <LeaderBoard leaderboard={this.props.leaderboard} />
                     <br />
-                    <h2>NTU Twitter Post</h2>
-                    <hr />
-                    <MDBRow>
-                        {this.props.twitter && this.props.twitter.map(x => {
-                            return (
-                                <MDBCol lg="4">
-                                    <Card post={x} />
-                                </MDBCol>
-                            )
-                        })}
-                    </MDBRow>
-                    <br />
                 </MDBContainer>
             </div>
         )

@@ -1,4 +1,4 @@
-  
+
 import React, { Component } from 'react'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdbreact";
 import TutorialTable from '../components/TutorialTable'
@@ -9,29 +9,23 @@ import { connect } from 'react-redux'
 import { showTutorials } from '../Redux/Actions/TutorialAction'
 
 class Tutorial extends Component {
-
     componentDidMount() {
         this.props.showTutorials();
-        console.log(this.props.tutorialtable)
     }
-
     render() {
         return (
-        <MDBContainer>
-            <MDBRow>
-                <MDBCol>
-                <h2>Tutorial Grouping</h2>
-                    <TutorialTable TutorialTable = {this.props.tutorialtable}/>
-                    <td><MDBBtn color="green" >Add</MDBBtn></td>
-                    <br/>
-                <h3>Add New Tutorial Grouping</h3>
-                    <AddTutorial />
-                    
-                </MDBCol>
-            </MDBRow>
-        </MDBContainer>
-               
-            
+            <MDBContainer>
+                <MDBRow>
+                    <MDBCol>
+                        <h2>Tutorial Grouping</h2>
+                        <TutorialTable tutorial={this.props.tutorialtable} />
+                        <br />
+                        <h3>Add New Tutorial Grouping</h3>
+                        <AddTutorial />
+
+                    </MDBCol>
+                </MDBRow>
+            </MDBContainer>
         )
     }
 }
@@ -45,4 +39,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect (mapStateToProps, {showTutorials})(Tutorial)
+export default connect(mapStateToProps, { showTutorials })(Tutorial)

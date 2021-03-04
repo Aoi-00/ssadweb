@@ -3,7 +3,7 @@ import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import QuestionList from '../components/QuestionList'
 import AddQuestion from '../components/AddQuestion';
 
-class About extends Component {
+class Question extends Component {
 
     render() {
         return (
@@ -26,4 +26,4 @@ class About extends Component {
     }
 
 }
-export default About
+export default Question
