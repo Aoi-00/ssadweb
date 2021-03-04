@@ -10,22 +10,18 @@ import { showQuestion } from '../Redux/Actions/QuestActions'
 
 class Question extends Component {
     state = {
-<<<<<<< HEAD
-        tutid: this.props.match.params.id
-    }
-    componentDidMount(){
-        console.log(this.state)
-    }
-=======
         tutid: this.props.match.params.id,
     };
-
+    getQuestions = () =>{
+        const form = {
+            tutid: this.state.tutid
+        }
+        this.props.showQuestion(form);
+    }
     componentDidMount() {
-        this.props.showQuestion({"tutid":this.state.tutid});
-        console.log(this.props.tutquestion, "tutid: "+ this.state.tutid);
+        this.getQuestions()
     }
 
->>>>>>> f6d7097c0b41d26571c9968e662f8adfecbd83dd
     render() {
         return (
             <MDBContainer>
