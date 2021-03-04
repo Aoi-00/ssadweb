@@ -5,6 +5,9 @@ import LoginForm from '../components/LoginForm'
     Navigate = (val) => {
         this.props.history.push(val)
     }
+    componentDidMount(){
+        console.log(localStorage.getItem("email"))
+    }
     render() {
         return (
             <div>
