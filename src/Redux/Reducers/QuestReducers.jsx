@@ -1,6 +1,5 @@
 const initState = {
-    questions: [],
-    status: []
+    questions: []
 };
 
 const QuestReducers = (state = initState, action) => {
@@ -8,12 +7,12 @@ const QuestReducers = (state = initState, action) => {
         case 'SHOW_QUESTION':
             return {
                 ...state,
-                questions: action.payload
+                questions: [...state.questions, action.payload[0]]
             }
         case 'REMOVE_QUESTION':
             return {
                 ...state,
-                status: action.payload
+                status: state.questions.filter(x => x.questid !== action.payload)
             }
         case 'ADD_QUESTION':
             return {

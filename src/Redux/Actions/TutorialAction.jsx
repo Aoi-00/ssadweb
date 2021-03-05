@@ -24,7 +24,8 @@ export const deleteTutorial = (postData) => dispatch => {
         .then(res => res.json())
         .then(data => dispatch({
             type: 'DELETE_TUTORIAL',
-            payload: data
+            payload: data,
+            tutid: postData.tutid
         })
         );
 }

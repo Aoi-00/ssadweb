@@ -16,18 +16,17 @@ export default function Pagination({ leaderboard }) {
       {
         label: 'Image',
         field: 'picture',
+        sort: 'disabled',
         width: 270,
       },
       {
         label: 'Date submitted',
         field: 'date',
-        sort: 'disabled',
         width: 150,
       },
       {
         label: 'Score',
         field: 'score',
-        sort: 'disabled',
         width: 100,
       },
       {

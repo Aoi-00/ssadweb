@@ -1,6 +1,5 @@
 const initState = {
     tutorialgrp: [],
-    status: []
 };
 
 const TutorialReducers = (state = initState, action) => {
@@ -8,12 +7,12 @@ const TutorialReducers = (state = initState, action) => {
         case 'ADD_TUTORIAL':
             return {
                 ...state,
-                status: action.payload
+                tutorialgrp: [...state.tutorialgrp, action.payload[0]]
             }
         case 'DELETE_TUTORIAL':
             return {
                 ...state,
-                status: action.payload
+                tutorialgrp: state.tutorialgrp.filter(x => x.tutid !== action.tutid)
             }
         case 'FETCH_TUTORIAL':
             return {

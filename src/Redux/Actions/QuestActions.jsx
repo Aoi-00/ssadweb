@@ -24,7 +24,7 @@ export const deleteQuestion = (postData) => dispatch => {
         .then(res => res.json())
         .then(data => dispatch({
             type: 'REMOVE_QUESTION',
-            payload: data
+            payload: postData.questid
         })
         );
 }
