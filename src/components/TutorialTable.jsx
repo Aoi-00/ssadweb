@@ -12,7 +12,6 @@ const TutorialTable = ({ tutorial, navigate, deleteTut }) => {
     <MDBTable striped>
       <MDBTableHead>
         <tr>
-        <th>id</th>
           <th>Tutorial Name</th>
           <th>Tutorial Group</th>
           <th>Created by</th>
@@ -24,7 +23,6 @@ const TutorialTable = ({ tutorial, navigate, deleteTut }) => {
         {tutorial && tutorial.map(x => {
           return (
             <tr key={x.tutid}>
-              <td>{x.tutid}</td>
               <td>{x.tutname}</td>
               <td>{x.tutgrp}</td>
               <td>{x.createdby}</td>

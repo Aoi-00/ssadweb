@@ -7,7 +7,7 @@ const QuestReducers = (state = initState, action) => {
         case 'SHOW_QUESTION':
             return {
                 ...state,
-                questions: [...state.questions, action.payload[0]]
+                questions: [...state.questions, ...action.payload]
             }
         case 'REMOVE_QUESTION':
             return {

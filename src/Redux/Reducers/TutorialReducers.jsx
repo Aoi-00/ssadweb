@@ -7,7 +7,7 @@ const TutorialReducers = (state = initState, action) => {
         case 'ADD_TUTORIAL':
             return {
                 ...state,
-                tutorialgrp: [...state.tutorialgrp, action.payload[0]]
+                tutorialgrp: [...state.tutorialgrp, ...action.payload]
             }
         case 'DELETE_TUTORIAL':
             return {
