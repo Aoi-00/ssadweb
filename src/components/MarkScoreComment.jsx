@@ -7,7 +7,6 @@ return (
   <MDBRow>
     <MDBCol md="6">
       <form>
-        <p className="h5 text-center mb-4">Marking</p>
         <div className="grey-text">
         <MDBInput label="Score" icon="star" group type="email" validate error="wrong"
             success="right" />
@@ -15,7 +14,7 @@ return (
             success="right" />
         </div>
         <div className="text-center">
-          <MDBBtn>Login</MDBBtn>
+          <MDBBtn>Submit</MDBBtn>
         </div>
       </form>
     </MDBCol>
