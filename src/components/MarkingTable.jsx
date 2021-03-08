@@ -1,5 +1,5 @@
 import React from 'react';
-import { MDBDataTableV5, MDBLink, MDBIcon, MDBInput, MDBBtn } from 'mdbreact';
+import { MDBDataTableV5, MDBLink, MDBIcon, MDBInput, MDBBtn  } from 'mdbreact';
 
 export default function Pagination({ markingtable }) {
   const [datatable, setDatatable] = React.useState({
@@ -14,6 +14,11 @@ export default function Pagination({ markingtable }) {
         },
       },
       {
+        label: 'Tutorial Group',
+        field: 'tutgrp',
+        width: 150,
+      },
+      {
         label: 'Image',
         field: 'picture',
         width: 270,
@@ -24,15 +29,10 @@ export default function Pagination({ markingtable }) {
         sort: 'disabled',
         width: 150,
       },
+      
       {
-        label: 'Score',
-        field: 'score',
-        sort: 'disabled',
-        width: 100,
-      },
-      {
-        label: 'Submit',
-        field: 'submit',
+        label: 'View',
+        field: 'view',
         sort: 'disabled',
         width: 100,
       },
@@ -41,10 +41,9 @@ export default function Pagination({ markingtable }) {
   });
 
   markingtable.map(x => datatable.rows.push({
-       name: x.name, picture: [<img src={x.image}
+       name: x.name, tutgrp: x.tutgrp, picture: [<img src={x.image}
          width="270" height="200" alt="" />], 
-         date: x.date, score: [<MDBInput label="score" validate error="wrong"
-         success="right" />], submit:[<MDBBtn color="green" >Submit</MDBBtn>]
+         date: x.date, view:[<MDBBtn color="green" >View Details</MDBBtn>]
         // [<MDBLink to={"/record/" + x.id}><MDBIcon className="red-text" 
         // icon="caret-right" size="3x" className="mr-1" /></MDBLink>]
     }))

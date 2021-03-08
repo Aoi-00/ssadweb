@@ -4,6 +4,7 @@ import MarkingTable from '../components/MarkingTable'
 import {connect } from 'react-redux'
 import Proptypes from 'prop-types'
 import {fetchLeaderboard} from '../Redux/Actions/GameActions'
+import IndividualMark from '../components/IndividualMark'
 
 
 class Marking extends Component {
@@ -18,6 +19,7 @@ class Marking extends Component {
                 <MDBRow>
                     <MDBCol>
                         <MarkingTable markingtable = {this.props.leaderboard}/>
+                        <IndividualMark/>
                     </MDBCol>
                 </MDBRow>
             </MDBContainer>
