@@ -14,7 +14,7 @@ const IndividualMark = () => {
             <MDBInput label="Comment" icon="comment" group type="email" validate error="wrong"
             success="right" />
           </MDBCardText>
-          <MDBBtn href="#">MDBBtn</MDBBtn>
+          <MDBBtn href="#">Submit</MDBBtn>
         </MDBCardBody>
       </MDBCard>
     </MDBCol>
