@@ -40,7 +40,7 @@ export default function Pagination({ markingtable }) {
     rows: [],
   });
 
-  markingtable.map(x => datatable.rows.push({
+markingtable.map(x => datatable.rows.push({
        name: x.name, tutgrp: x.tutgrp, picture: [<img src={x.image}
          width="270" height="200" alt="" />], 
          date: x.date, view:[<MDBBtn color="green" >View Details</MDBBtn>]
