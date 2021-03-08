@@ -9,18 +9,9 @@ class AddQuestion extends Component {
         question: '',
     }
     UserSubmitQuestion = () => {
-        //Method
-        const post = {
-            question: this.state.question,
-        }
-        //Send Data to DB
-        this.props.testCall(post);
-        //console.log(this.state.question)
+        //Fire method from parent component [Question.jsx]
+        this.props.addQuest(this.state.question);
     }
-    componentWillReceiveProps(nextProps){
-        console.log(nextProps.status)
-    }
-
     handleChange = (e) => { // to change state everytime you type -- question: value
         this.setState({
             [e.target.id]: e.target.value
@@ -32,11 +23,11 @@ class AddQuestion extends Component {
             <div>
                 <form>
                     <div className="grey-text">
-                        <MDBInput label="Enter Question" id = 'question' icon="question" group type="email" validate error="wrong"
-                            success="right" onChange= {this.handleChange} />
+                        <MDBInput label="Enter Question" id='question' icon="question" group type="email" validate error="wrong"
+                            success="right" onChange={this.handleChange} />
                     </div>
                     <div className="text-center">
-                        <MDBBtn onClick= {this.UserSubmitQuestion}>Submit</MDBBtn>
+                        <MDBBtn onClick={this.UserSubmitQuestion}>Submit</MDBBtn>
                     </div>
                 </form>
             </div>
@@ -48,4 +39,4 @@ const mapStateToProps = state => ({
     status: state.auth.status
 });
 
-export default connect(mapStateToProps , { testCall })(AddQuestion)
+export default connect(mapStateToProps, { testCall })(AddQuestion)

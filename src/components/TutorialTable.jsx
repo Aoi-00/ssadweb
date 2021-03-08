@@ -1,21 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn, MDBLink } from 'mdbreact';
 
-const TutorialTable = ({ tutorial }) => {
-  let onDelete = (e) => {
-    //console.log(e) Add delete function
+const TutorialTable = ({ tutorial, navigate, deleteTut }) => {
+  let onDelete = (tutid) => {
+    deleteTut(tutid)
   }
-  let display = tutorial.map((eachTut, index) => {
-    return (
-      <tr id={"table" + index}>
-        <td>{eachTut.tutname}</td>
-        <td>{eachTut.tutgrp}</td>
-        <td>{eachTut.createdby}</td>
-        <td><MDBBtn size="sm" color="red" onClick={onDelete}>Remove</MDBBtn></td>
-        <td><MDBLink to={"/question/" + eachTut.tutid}><MDBBtn size="sm" color="blue" onClick={onDelete}>View</MDBBtn></MDBLink></td>
-      </tr>
-    )
-  })
+  let ViewTutorial = (tutid) => {
+    navigate(tutid)
+  }
   return (
     <MDBTable striped>
       <MDBTableHead>
@@ -28,7 +20,17 @@ const TutorialTable = ({ tutorial }) => {
         </tr>
       </MDBTableHead>
       <MDBTableBody>
-        {display}
+        {tutorial && tutorial.map(x => {
+          return (
+            <tr key={x.tutid}>
+              <td>{x.tutname}</td>
+              <td>{x.tutgrp}</td>
+              <td>{x.createdby}</td>
+              <td><MDBBtn size="sm" color="red" onClick={() => onDelete(x.tutid)}>Remove</MDBBtn></td>
+              <td><MDBBtn size="sm" color="blue" onClick={() => ViewTutorial(x.tutid)}> View </MDBBtn></td>
+            </tr>
+          )
+        })}
       </MDBTableBody>
     </MDBTable>
   );

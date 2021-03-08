@@ -6,11 +6,23 @@ import AddTutorial from '../components/AddTutorial'
 
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { showTutorials } from '../Redux/Actions/TutorialAction'
+import { showTutorials, deleteTutorial, addTutorial } from '../Redux/Actions/TutorialAction'
 
 class Tutorial extends Component {
     componentDidMount() {
         this.props.showTutorials();
+    }
+    Navigate = (tutid) => {
+        this.props.history.push('/question/' + tutid)
+    }
+    DelTutorial = (tutid) => {
+        const form = {
+            tutid: tutid
+        }
+        this.props.deleteTutorial(form)
+    }
+    AddTutorial = (form) => {
+        this.props.addTutorial(form);
     }
 
     render() {
@@ -19,10 +31,10 @@ class Tutorial extends Component {
                 <MDBRow>
                     <MDBCol>
                         <h2>Tutorial Grouping</h2>
-                        <TutorialTable tutorial={this.props.tutorialtable} />
+                        <TutorialTable deleteTut={this.DelTutorial} navigate={this.Navigate} tutorial={this.props.tutorialtable} />
                         <br />
                         <h3>Add New Tutorial Grouping</h3>
-                        <AddTutorial />
+                        <AddTutorial addTut={this.AddTutorial} />
                     </MDBCol>
                 </MDBRow>
             </MDBContainer>
@@ -32,6 +44,8 @@ class Tutorial extends Component {
 
 Tutorial.propTypes = {
     showTutorials: PropTypes.func.isRequired,
+    deleteTutorial: PropTypes.func.isRequired,
+    addTutorial: PropTypes.func.isRequired
 }
 
 //This is from the Reducers
@@ -41,4 +55,4 @@ const mapStateToProps = state => ({
 });
 
 // connection this component to database.
-export default connect(mapStateToProps, { showTutorials })(Tutorial)
+export default connect(mapStateToProps, { showTutorials, deleteTutorial, addTutorial })(Tutorial)

@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import QuestionList from '../components/QuestionList'
 import AddQuestion from '../components/AddQuestion';
-
-
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { showQuestion } from '../Redux/Actions/QuestActions'
+import { showQuestion, addQuestion, deleteQuestion } from '../Redux/Actions/QuestActions'
 
 class Question extends Component {
     state = {
@@ -14,12 +12,27 @@ class Question extends Component {
     };
     getQuestions = () =>{
         const form = {
-            tutid: this.state.tutid
+            tutid: this.state.tutid,
+            tutgrp: ''
         }
         this.props.showQuestion(form);
     }
     componentDidMount() {
         this.getQuestions()
+    }
+    getTutGrp = () => {
+        return this.props.tutquestion[0].tutgrp.toString()
+    }
+    AddQuestion = (question) => {
+        //Send Data to DB
+        //Why we do it here, coz here is the main control for the data manipulation
+        //As long we update here, data in different will be updated accordingly
+        const post = {
+            question: question,
+            tutgrp: this.getTutGrp(),
+            tutid: this.state.tutid
+        }
+        this.props.addQuestion(post)
     }
 
     render() {
@@ -30,12 +43,12 @@ class Question extends Component {
                     <br/>
                     <h2>List of questions</h2>
                     <hr/>
-                        <QuestionList question ={this.props.tutquestion} />
+                        <QuestionList question={this.props.tutquestion} />
                     </MDBCol>
                     <MDBCol size="12">
                     <h2>Add new question</h2>
                     <hr/>
-                        <AddQuestion />
+                        <AddQuestion addQuest={this.AddQuestion} />
                     </MDBCol>
                 </MDBRow>
             </MDBContainer>
@@ -46,6 +59,8 @@ class Question extends Component {
 
 Question.propTypes = {
     showQuestion: PropTypes.func.isRequired,
+    addQuestion: PropTypes.func.isRequired,
+    deleteQuestion: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
@@ -53,4 +68,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, {showQuestion})(Question)
+export default connect(mapStateToProps, {showQuestion , addQuestion, deleteQuestion})(Question)
