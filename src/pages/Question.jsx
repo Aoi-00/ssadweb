@@ -10,7 +10,7 @@ class Question extends Component {
     state = {
         tutid: this.props.match.params.id,
     };
-    getQuestions = () =>{
+    getQuestions = () => {
         const form = {
             tutid: this.state.tutid,
             tutgrp: ''
@@ -24,9 +24,6 @@ class Question extends Component {
         return this.props.tutquestion[0].tutgrp.toString()
     }
     AddQuestion = (question) => {
-        //Send Data to DB
-        //Why we do it here, coz here is the main control for the data manipulation
-        //As long we update here, data in different will be updated accordingly
         const post = {
             question: question,
             tutgrp: this.getTutGrp(),
@@ -34,20 +31,25 @@ class Question extends Component {
         }
         this.props.addQuestion(post)
     }
-
+    removeQuestion = (questid) => {
+        const form = {
+            questid : questid
+        }
+        this.props.deleteQuestion(form)
+    }
     render() {
         return (
             <MDBContainer>
                 <MDBRow>
                     <MDBCol size="12">
-                    <br/>
-                    <h2>List of questions</h2>
-                    <hr/>
-                        <QuestionList question={this.props.tutquestion} />
+                        <br />
+                        <h2>List of questions</h2>
+                        <hr />
+                        <QuestionList removeQuestion={this.removeQuestion} questions={this.props.tutquestion} />
                     </MDBCol>
                     <MDBCol size="12">
-                    <h2>Add new question</h2>
-                    <hr/>
+                        <h2>Add new question</h2>
+                        <hr />
                         <AddQuestion addQuest={this.AddQuestion} />
                     </MDBCol>
                 </MDBRow>
@@ -68,4 +70,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, {showQuestion , addQuestion, deleteQuestion})(Question)
+export default connect(mapStateToProps, { showQuestion, addQuestion, deleteQuestion })(Question)

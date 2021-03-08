@@ -7,17 +7,18 @@ const QuestReducers = (state = initState, action) => {
         case 'SHOW_QUESTION':
             return {
                 ...state,
-                questions: [...state.questions, ...action.payload]
+                questions: action.payload
             }
         case 'REMOVE_QUESTION':
+            console.log(action.payload)
             return {
                 ...state,
-                status: state.questions.filter(x => x.questid !== action.payload)
+                questions: state.questions.filter(x => x.questid !== action.payload)
             }
         case 'ADD_QUESTION':
             return {
                 ...state,
-                status: action.payload
+                questions: [...state.questions, ...action.payload]
             }
         default:
             return state;
