@@ -1,43 +1,33 @@
-import React, {useEffect} from 'react';
-import { MDBDataTableV5, MDBBtn } from 'mdbreact';
+import React from 'react'
+import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn } from 'mdbreact';
 
-export default function Basic({question}){
 
-  const onDelete = (e) => {
-    //datatable.filter()
-    //console.log({datatable})
-  };
-  const [datatable, setDatatable] = React.useState({
-    
-    columns: [
-      {
-        label: '#',
-        field: 'questionnumber',
-        width: 270,
-      },
-      {
-        label: 'Question',
-        field: 'question',
-        width: 750,
-        attributes: {
-          'aria-controls': 'DataTable',
-          'aria-label': 'Name',
-        },
-      },
-      {
-        label: 'Remove',
-        field: 'remove',
-        sort: 'disabled',
-        width: 200,
-      },
-    ],
-    rows: []
-  });
-  question.map((data, index) => datatable.rows.push({
-    questionnumber: index+1,
-    question: data.question,
-    remove: [<MDBBtn key={data.questid} size="sm" color="red" onClick={onDelete}>Remove</MDBBtn>],
-  }))
-  
-  return <MDBDataTableV5 hover entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} searchTop pagingTop searchBottom={false} data={datatable} />;
+export default function QuestionList({ questions, removeQuestion }) {
+  let onDelete = (questid) => {
+    removeQuestion(questid)
+  }
+  return (
+    <div>
+      <MDBTable striped>
+        <MDBTableHead>
+          <tr>
+            <th>#</th>
+            <th>Question</th>
+            <th>Remove</th>
+          </tr>
+        </MDBTableHead>
+        <MDBTableBody>
+          {questions && questions.map((x, index) => {
+            return (
+              <tr key={x.questid}>
+                <td>{index + 1}</td>
+                <td>{x.question}</td>
+                <td><MDBBtn size="sm" color="red" onClick={() => onDelete(x.questid)}>Remove</MDBBtn></td>              
+              </tr>
+            )
+          })}
+        </MDBTableBody>
+      </MDBTable>
+    </div>
+  )
 }
