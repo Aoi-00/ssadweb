@@ -38,7 +38,7 @@ export default function Pagination({ leaderboard }) {
     ],
     rows: [],
   });
-
+  console.log(leaderboard)
   leaderboard.map(x => datatable.rows.push({ name: x.name, picture: [<img src={x.image} width="270" height="200" alt="" />], date: x.date, score: x.score, view: [<MDBLink to={"/record/" + x.id}><MDBIcon className="red-text" icon="caret-right" size="3x" className="mr-1" /></MDBLink>] }))
 
 

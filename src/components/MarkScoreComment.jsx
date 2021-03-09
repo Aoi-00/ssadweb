@@ -8,7 +8,7 @@ return (
     <MDBCol md="6">
       <form>
         <div className="grey-text">
-        <MDBInput label="Score" icon="star" group type="email" validate error="wrong"
+        <MDBInput label="Score" className="w-100" icon="star" group type="email" validate error="wrong"
             success="right" />
             <MDBInput label="Comment" icon="comment" group type="email" validate error="wrong"
             success="right" />

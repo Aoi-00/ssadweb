@@ -21,10 +21,11 @@ class Tutorial extends Component {
         }
         this.props.deleteTutorial(form)
     }
-    AddTutorial = (form) => {
+    AddTutorial = (form) => { 
+        //Submit data to my api
         this.props.addTutorial(form);
     }
-
+    
     render() {
         return (
             <MDBContainer>
