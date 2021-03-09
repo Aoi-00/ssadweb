@@ -1,7 +1,8 @@
 const initState = {
     records: [],
     studentlist: [],
-    submission: []
+    submission: [],
+    status: []
 };
 
 const GameReducers = (state = initState, action) => {
@@ -20,6 +21,11 @@ const GameReducers = (state = initState, action) => {
             return {
                 ...state,
                 submission: action.payload
+            }
+        case 'UPDATE_SCORES':
+            return {
+                ...state,
+                status: action.payload
             }
         default:
             return state;

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import { connect } from 'react-redux'
 import Proptypes from 'prop-types'
-import { getStudentSubmission } from '../Redux/Actions/GameActions'
+import { getStudentSubmission, updateScores } from '../Redux/Actions/GameActions'
 import { showQuestion } from '../Redux/Actions/QuestActions'
 import { getStudentInfo } from '../Redux/Actions/AuthAction'
 import StudentInfo from '../components/StudentInfo';
@@ -15,9 +15,11 @@ class Marking extends Component {
     state = {
         submissionid: this.props.match.params.id,
         tutid: localStorage.getItem("selectedtutid"),
-        studid: this.props.match.params.studid
+        studid: this.props.match.params.studid,
+        score: '',
+        comment: ''
     }
-    componentWillMount() {
+    componentDidMount() {
         this.getSubmission();
         this.getTutorialQuestions();
         this.getStudentDetails();
@@ -34,11 +36,25 @@ class Marking extends Component {
         }
         this.props.showQuestion(form)
     }
-    getStudentDetails(){
+    getStudentDetails() {
         const form = {
             id: this.state.studid
         }
         this.props.getStudentInfo(form)
+    }
+    handleChange = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value
+        })
+    }
+    MarkingComplete = () => {
+        const form = {
+            id: this.state.submissionid,
+            score: this.state.score,
+            comment: this.state.comment
+        }
+        this.props.updateScores(form)
+        this.props.history.push("/seltut")
     }
     render() {
         return (
@@ -63,7 +79,7 @@ class Marking extends Component {
                     <MDBCol size="6">
                         <br />
                         <h2>Marking</h2>
-                        <MarkScoreComment record={this.props.record} />
+                        <MarkScoreComment markComplete={this.MarkingComplete} inputChange={this.handleChange} record={this.props.record} />
                     </MDBCol>
                 </MDBRow>
             </MDBContainer>
@@ -74,12 +90,14 @@ class Marking extends Component {
 Marking.Proptypes = {
     getStudentSubmission: Proptypes.func.isRequired,
     showQuestion: Proptypes.func.isRequired,
-    getStudentInfo: Proptypes.func.isRequired
+    getStudentInfo: Proptypes.func.isRequired,
+    updateScores: Proptypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
     record: state.game.submission,
     questionlist: state.quest.questions,
-    student: state.auth.studentinfo
+    student: state.auth.studentinfo,
+    scores: state.game.status
 })
-export default connect(mapStateToProps, { getStudentSubmission, showQuestion, getStudentInfo })(Marking)
+export default connect(mapStateToProps, { getStudentSubmission, showQuestion, getStudentInfo, updateScores })(Marking)

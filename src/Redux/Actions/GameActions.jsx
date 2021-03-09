@@ -23,6 +23,7 @@ export const getStudents = (postData) => dispatch => {
         })
         );
 }
+
 export const getStudentSubmission = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/student/submission', {
         method: 'POST',
@@ -34,6 +35,22 @@ export const getStudentSubmission = (postData) => dispatch => {
         .then(res => res.json())
         .then(data => dispatch({
             type: 'GET_STUDENT_SUBMISSION',
+            payload: data
+        })
+        );
+}
+
+export const updateScores = (postData) => dispatch => {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/marking/update', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'UPDATE_SCORES',
             payload: data
         })
         );

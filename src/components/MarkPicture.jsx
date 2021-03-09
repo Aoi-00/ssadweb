@@ -7,7 +7,7 @@ const MarkPicture = ({ record }) => {
     <div>
       {record.map(x => {
         return (
-          <MDBRow>
+          <MDBRow key={x.id}>
             <MDBCol md="12" className="mb-3">
               <img src={x.image} className="img-fluid z-depth-1" alt="" />
             </MDBCol>

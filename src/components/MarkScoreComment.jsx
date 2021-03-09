@@ -1,20 +1,20 @@
 import React from "react";
 import { MDBInput, MDBBtn } from 'mdbreact';
 
-const MarkScoreComment = ({ record }) => {
+const MarkScoreComment = ({ record, inputChange, markComplete }) => {
   return (
     <div>
       {record.map(x => {
         return (
-          <form>
+          <form key={x.id}>
             <div className="grey-text">
-              <MDBInput label="Score" value={x.score} className="w-100" icon="star" group type="email" validate error="wrong"
+              <MDBInput label="Score" placeholder="Enter Score" id="score" onChange={inputChange} className="w-100" icon="star" group type="email" validate error="wrong"
                 success="right" />
-              <MDBInput label="Comment" value={x.comment} className="w-100" icon="comment" group type="email" validate error="wrong"
+              <MDBInput label="Comment" placeholder="Enter Comments" id="comment" onChange={inputChange} className="w-100" icon="comment" group type="email" validate error="wrong"
                 success="right" />
             </div>
             <div className="text-center">
-              <MDBBtn color="blue">Submit</MDBBtn>
+              <MDBBtn color="blue" onClick={markComplete}>Submit</MDBBtn>
             </div>
           </form>
         )
