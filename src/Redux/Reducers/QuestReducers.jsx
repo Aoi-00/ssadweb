@@ -10,7 +10,6 @@ const QuestReducers = (state = initState, action) => {
                 questions: action.payload
             }
         case 'REMOVE_QUESTION':
-            console.log(action.payload)
             return {
                 ...state,
                 questions: state.questions.filter(x => x.questid !== action.payload)

@@ -1,16 +1,22 @@
 import React from 'react';
 
-import {MDBRow,MDBCol,MDBContainer} from "mdbreact";
+import { MDBRow, MDBCol, MDBContainer } from "mdbreact";
 
-const MarkPicture = () => {
+const MarkPicture = ({ record }) => {
   return (
-  
-    <MDBRow>
-          <MDBCol md="12" className="mb-3">
-          <img src="https://mdbootstrap.com/img/Photos/Slides/img%20(137).jpg" className="img-fluid z-depth-1" alt="" />
-          </MDBCol>
-        </MDBRow>
-   
+    <div>
+      {record.map(x => {
+        return (
+          <MDBRow>
+            <MDBCol md="12" className="mb-3">
+              <img src={x.image} className="img-fluid z-depth-1" alt="" />
+            </MDBCol>
+          </MDBRow>
+        )
+      })
+      }
+    </div>
+
   )
 }
 
