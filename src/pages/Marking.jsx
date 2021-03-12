@@ -23,6 +23,7 @@ class Marking extends Component {
         this.getSubmission();
         this.getTutorialQuestions();
         this.getStudentDetails();
+        console.log(this.props);
     }
     getSubmission() {
         const form = {
