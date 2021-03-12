@@ -8,6 +8,8 @@ import Register from '../pages/Register';
 import Tutorial from '../pages/Tutorial';
 import Logout from '../pages/Logout';
 import Marking from '../pages/Marking';
+import MarkingHome from '../pages/MarkingHome';
+import StudentSelect from '../pages/StudentSelect';
 
 
 class Routes extends React.Component {
@@ -19,7 +21,9 @@ class Routes extends React.Component {
         <Route path='/register' component={Register} />
         <Route path='/question/:id' component={Question} />
         <Route path='/tutorial' component={Tutorial} />
-        <Route path='/marking' component={Marking} />
+        <Route path='/seltut' component={MarkingHome} />
+        <Route path='/student/:tutid' component={StudentSelect} />
+        <Route path='/marking/:id/:studid' component={Marking} />
         <Route path='/logout' component={Logout} />
         <Route
           render={() => <h1>Not Found</h1>}
