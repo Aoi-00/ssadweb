@@ -3,43 +3,48 @@ import { MDBInputGroup, MDBBtn } from 'mdbreact';
 
 export default class Uploadfile extends Component {
 
-    // onSubmit = () => {
-    //     this.setState
+    state = {
+        form: {
+            file: []
+        }
+    }
 
-    // }
+    onChangeHandleFile = (e) => {
+        console.log(e.target.files[0])
+        var file = e.target.files[0];
+        var reader = new FileReader();
 
-    // handleChange = (e) => {
-    //     this.setState({
-    //       tutgrp: e.target.value
-    //     })
-    // }
-
-    // MarkingComplete = () => {
-    //     const form = {
-    //         id: this.state.submissionid,
-    //         score: this.state.score,
-    //         comment: this.state.comment
-    //     }
-    //     this.props.updateScores(form)
-    //     this.props.history.push("/seltut")
-    // }
+        reader.readAsDataURL(file);
+        reader.addEventListener("load", () => {
+                this.setState(state => ({
+                    ...state,
+                    form: {
+                        file: [reader.result]
+                    }
+                }));
+                const url = reader.result;
+                console.log("#####", url);
+            },
+            false
+        );
+    };
 
     render() {
         return (
-            <MDBInputGroup
+            <MDBInputGroup id='file'
                 append={
                     <MDBBtn
                         color="mdb-color"
                         outline
                         className="m-0 px-3 py-2 z-depth-0"
-                        onClick= {this.onSubmit}
+                        onClick={this.onSubmit}
                     >
                         Upload
                     </MDBBtn>
                 }
                 inputs={
                     <div className="custom-file">
-                        <input
+                        <input onChange={this.onChangeHandleFile}
                             type="file"
                             className="custom-file-input"
                             id="inputGroupFile01"

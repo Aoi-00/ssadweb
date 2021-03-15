@@ -64,7 +64,7 @@ class AddTutorial extends Component {
     }
 }
 const mapStateToProps = state => ({
-    status: state.auth.status //state.tut.status?
+    tutGroup: state.tutorial.tutorialgrp 
 });
 
 export default connect(mapStateToProps, { addTutorial })(AddTutorial) //to be changed

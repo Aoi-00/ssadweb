@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { MDBInput, MDBBtn } from 'mdbreact';
 
 import { connect } from 'react-redux'
-import { testCall } from '../Redux/Actions/AuthAction'
+import { addQuestion } from '../Redux/Actions/QuestActions'
 
 class AddQuestion extends Component {
     state = {
@@ -36,7 +36,7 @@ class AddQuestion extends Component {
 }
 
 const mapStateToProps = state => ({
-    status: state.auth.status
+    question: state.quest.questions
 });
 
-export default connect(mapStateToProps, { testCall })(AddQuestion)
+export default connect(mapStateToProps, { addQuestion })(AddQuestion)
