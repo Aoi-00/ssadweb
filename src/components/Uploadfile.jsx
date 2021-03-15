@@ -29,6 +29,10 @@ export default class Uploadfile extends Component {
         );
     };
 
+    onSubmit = (e) => {
+        console.log("changed image:" + this.state.form.file)
+    }
+
     render() {
         return (
             <MDBInputGroup id='file'
