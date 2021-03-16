@@ -1,24 +1,19 @@
 import React, { Component } from 'react'
-import { MDBContainer, MDBRow, MDBCol } from "mdbreact"
-import { connect } from 'react-redux'
+import Footer from '../components/Footer'
+import Navbar from '../components/Navbar'
 import PropTypes from 'prop-types'
 import { fetchPosts } from '../Redux/Actions/TwitterAction'
-import { fetchLeaderboard } from '../Redux/Actions/GameActions'
-import LeaderBoard from '../components/LeaderBoard'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import { connect } from 'react-redux'
+import { MDBContainer, MDBRow } from "mdbreact"
 import TwitterCard from '../components/TwitterCard'
 
-
-
-class Home extends Component {
+class StudentNews extends Component {
     state = {
         usertype: localStorage.getItem("usertype")
     }
     componentDidMount() {
-        if(this.state.usertype == "Student")
-            this.props.history.push("/studentmain")
-        this.props.fetchLeaderboard();
+        if (this.state.usertype == "Professor")
+            this.props.history.push("/home")
         this.props.fetchPosts();
     }
     render() {
@@ -31,30 +26,25 @@ class Home extends Component {
             <div>
                 <Navbar />
                 <MDBContainer>
-                    <br />
-                    <h2>LeaderBoard</h2>
-                    <hr />
-                    <LeaderBoard leaderboard={this.props.leaderboard} />
-                    <br />
+                    <br/>
                     <h2>NTU Twitter News</h2>
                     <hr />
                     <MDBRow>
                         {twitterPosts}
                     </MDBRow>
+                    <br/>
                 </MDBContainer>
                 <Footer />
             </div>
         )
     }
 }
-Home.propTypes = {
+StudentNews.propTypes = {
     fetchPosts: PropTypes.func.isRequired,
-    fetchLeaderboard: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
     twitter: state.twitter.items,
-    leaderboard: state.game.records
 });
 
-export default connect(mapStateToProps, { fetchPosts, fetchLeaderboard })(Home)
+export default connect(mapStateToProps, { fetchPosts })(StudentNews)

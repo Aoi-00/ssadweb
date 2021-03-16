@@ -9,6 +9,7 @@ import { showTutorials } from '../Redux/Actions/TutorialAction'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import FacebookLogin from 'react-facebook-login'
+import ProfProfileCard from '../components/ProfProfileCard'
 
 class ProfessorProfile extends Component {
 
@@ -109,7 +110,7 @@ class ProfessorProfile extends Component {
                                 <h3>Live Preview</h3>
                                 <hr />
                                 {/* The pic will take very long to load */}
-                                <StudentInfo profilepic={this.state.picture} studname={this.state.name} studemail={this.state.email} studtutgrp={this.state.tutgrp} />
+                                <ProfProfileCard profilepic={this.state.picture} studname={this.state.name} studemail={this.state.email} studtutgrp={this.state.tutgrp} />
                             </div>
                         </MDBCol>
                         <MDBCol size="7">

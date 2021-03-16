@@ -19,7 +19,6 @@ const MarkScoreComment = ({ record, inputChange, markComplete }) => {
           </form>
         )
       })
-
       }
     </div>
   );

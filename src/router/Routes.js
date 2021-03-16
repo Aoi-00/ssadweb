@@ -12,8 +12,8 @@ import MarkingHome from '../pages/MarkingHome';
 import StudentSelect from '../pages/StudentSelect';
 import StudentMain from '../pages/StudentMain';
 import StudentProfile from '../pages/StudentProfile';
-import StudentHome from '../pages/StudentHome';
 import ProfessorProfile from '../pages/ProfessorProfile';
+import StudentNews from '../pages/StudentNews';
 
 
 class Routes extends React.Component {
@@ -32,7 +32,7 @@ class Routes extends React.Component {
         <Route path='/studentmain' component={StudentMain} />
         <Route path='/studentprofile' component={StudentProfile} />
         <Route path='/professorprofile' component={ProfessorProfile} />
-        <Route path='/studenthome' component={StudentHome} />
+        <Route path='/studentnews' component={StudentNews} />
         <Route
           render={() => <h1>Not Found</h1>}
         />

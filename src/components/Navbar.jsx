@@ -98,7 +98,7 @@ class Navbar extends Component {
                                 <MDBNavItem>
                                     <MDBNavLink
                                         exact
-                                        to='/studenthome'
+                                        to='/studentmain'
                                         onClick={this.closeCollapse('mainNavbarCollapse')}
                                     >
                                         <strong>Home</strong>
@@ -107,7 +107,7 @@ class Navbar extends Component {
                                 <MDBNavItem>
                                     <MDBNavLink
                                         onClick={this.closeCollapse('mainNavbarCollapse')}
-                                        to='/tutorial'
+                                        to='/studentnews'
                                     >
                                         <strong>News</strong>
                                     </MDBNavLink>

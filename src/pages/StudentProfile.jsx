@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput, MDBInputGroup } from "mdbreact"
 import Uploadfile from '../components/Uploadfile'
-import StudentInfo from '../components/StudentInfo'
 import { connect } from 'react-redux'
 import Proptypes from 'prop-types'
 import { getStudentInfo, updateProfile, facebookAccountLink } from '../Redux/Actions/AuthAction'
@@ -9,6 +8,7 @@ import { showTutorials } from '../Redux/Actions/TutorialAction'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import FacebookLogin from 'react-facebook-login'
+import StudentProfileCard from '../components/StudentProfileCard'
 
 class StudentProfile extends Component {
 
@@ -109,7 +109,7 @@ class StudentProfile extends Component {
                                 <h3>Live Preview</h3>
                                 <hr />
                                 {/* The pic will take very long to load */}
-                                <StudentInfo profilepic={this.state.picture} studname={this.state.name} studemail={this.state.email} studtutgrp={this.state.tutgrp} />
+                                <StudentProfileCard profilepic={this.state.picture} studname={this.state.name} studemail={this.state.email} studtutgrp={this.state.tutgrp} />
                             </div>
                         </MDBCol>
                         <MDBCol size="7">
