@@ -8,9 +8,6 @@ const TutorialTable = ({ tutorial, navigate, deleteTut }) => {
   let ViewTutorial = (tutid) => {
     navigate(tutid)
   }
-  let Notify = () => {
-    
-  }
   return (
     <MDBTable striped>
       <MDBTableHead>
@@ -20,7 +17,6 @@ const TutorialTable = ({ tutorial, navigate, deleteTut }) => {
           <th>Created by</th>
           <th>Remove</th>
           <th>View</th>
-          {/* <th>Notifications</th> */}
         </tr>
       </MDBTableHead>
       <MDBTableBody>
@@ -32,7 +28,6 @@ const TutorialTable = ({ tutorial, navigate, deleteTut }) => {
               <td>{x.createdby}</td>
               <td><MDBBtn size="sm" color="red" onClick={() => onDelete(x.tutid)}>Remove</MDBBtn></td>
               <td><MDBBtn size="sm" color="blue" onClick={() => ViewTutorial(x.tutid)}> View </MDBBtn></td>
-              {/* <td><MDBBtn size="sm" color="green" onClick={() => Notify()}> Notify Students </MDBBtn></td> */}
             </tr>
           )
         })}
