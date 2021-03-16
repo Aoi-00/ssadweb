@@ -1,17 +1,21 @@
 import React, { Component } from 'react'
+import Footer from '../components/Footer'
+import GuestNavbar from '../components/GuestNavBar'
 import LoginForm from '../components/LoginForm'
 
- class Login extends Component {
+class Login extends Component {
     Navigate = (val) => {
         this.props.history.push(val)
     }
-    componentDidMount(){
+    componentDidMount() {
         console.log(localStorage.getItem("email"))
     }
     render() {
         return (
             <div>
-                <LoginForm Navigate={this.Navigate}/>
+                <GuestNavbar />
+                <LoginForm Navigate={this.Navigate} />
+                <Footer />
             </div>
         )
     }

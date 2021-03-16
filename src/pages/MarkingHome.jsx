@@ -3,6 +3,8 @@ import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn, MDBContainer, MDBRow, MDB
 import { showTutorials } from '../Redux/Actions/TutorialAction'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 class MarkingHome extends Component {
     componentDidMount() {
@@ -26,7 +28,8 @@ class MarkingHome extends Component {
             )
         })
         return (
-            <div>
+            <React.Fragment>
+                <Navbar />
                 <MDBContainer>
                     <br />
                     <MDBRow>
@@ -49,7 +52,8 @@ class MarkingHome extends Component {
                         </MDBCol>
                     </MDBRow>
                 </MDBContainer>
-            </div>
+                <Footer />
+            </React.Fragment>
         )
     }
 }

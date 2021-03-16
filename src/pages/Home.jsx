@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import Card from '../components/Card'
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact"
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { fetchPosts } from '../Redux/Actions/TwitterAction'
 import { fetchLeaderboard } from '../Redux/Actions/GameActions'
 import LeaderBoard from '../components/LeaderBoard'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 
 class Home extends Component {
@@ -17,6 +18,7 @@ class Home extends Component {
     render() {
         return (
             <div>
+                <Navbar />
                 <MDBContainer>
                     <br />
                     <h2>LeaderBoard</h2>
@@ -24,6 +26,7 @@ class Home extends Component {
                     <LeaderBoard leaderboard={this.props.leaderboard} />
                     <br />
                 </MDBContainer>
+                <Footer />
             </div>
         )
     }

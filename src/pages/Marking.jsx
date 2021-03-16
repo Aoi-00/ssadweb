@@ -9,6 +9,8 @@ import StudentInfo from '../components/StudentInfo';
 import MarkDropDown from '../components/MarkDropDown';
 import MarkScoreComment from '../components/MarkScoreComment';
 import MarkPicture from '../components/MarkPicture'
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 
 class Marking extends Component {
@@ -58,31 +60,35 @@ class Marking extends Component {
     }
     render() {
         return (
-            <MDBContainer>
-                <br />
-                <MDBRow>
-                    <MDBCol size="6">
-                        <h2>Student Details</h2>
-                        <hr />
-                        <StudentInfo student={this.props.student} />
-                    </MDBCol>
-                    <MDBCol size="6">
-                        <h2>Students Answer</h2>
-                        <hr />
-                        <MarkPicture record={this.props.record} />
-                    </MDBCol>
-                    <MDBCol size="6">
-                        <br></br>
-                        <h2>Question List</h2>
-                        <MarkDropDown questions={this.props.questionlist} />
-                    </MDBCol>
-                    <MDBCol size="6">
-                        <br />
-                        <h2>Marking</h2>
-                        <MarkScoreComment markComplete={this.MarkingComplete} inputChange={this.handleChange} record={this.props.record} />
-                    </MDBCol>
-                </MDBRow>
-            </MDBContainer>
+            <React.Fragment>
+                <Navbar />
+                <MDBContainer>
+                    <br />
+                    <MDBRow>
+                        <MDBCol size="6">
+                            <h2>Student Details</h2>
+                            <hr />
+                            <StudentInfo student={this.props.student} />
+                        </MDBCol>
+                        <MDBCol size="6">
+                            <h2>Students Answer</h2>
+                            <hr />
+                            <MarkPicture record={this.props.record} />
+                        </MDBCol>
+                        <MDBCol size="6">
+                            <br></br>
+                            <h2>Question List</h2>
+                            <MarkDropDown questions={this.props.questionlist} />
+                        </MDBCol>
+                        <MDBCol size="6">
+                            <br />
+                            <h2>Marking</h2>
+                            <MarkScoreComment markComplete={this.MarkingComplete} inputChange={this.handleChange} record={this.props.record} />
+                        </MDBCol>
+                    </MDBRow>
+                </MDBContainer>
+                <Footer />
+            </React.Fragment>
         )
     }
 }

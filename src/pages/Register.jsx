@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Footer from '../components/Footer'
+import GuestNavbar from '../components/GuestNavBar'
 import RegisterForm from '../components/RegisterForm'
 
 class Register extends Component {
@@ -8,7 +10,9 @@ class Register extends Component {
     render() {
         return (
             <div>
-                <RegisterForm Navigate={this.Navigate}/>
+                <GuestNavbar />
+                <RegisterForm Navigate={this.Navigate} />
+                <Footer />
             </div>
         )
     }

@@ -7,6 +7,8 @@ import AddTutorial from '../components/AddTutorial'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { showTutorials, deleteTutorial, addTutorial } from '../Redux/Actions/TutorialAction'
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 class Tutorial extends Component {
     componentDidMount() {
@@ -21,24 +23,28 @@ class Tutorial extends Component {
         }
         this.props.deleteTutorial(form)
     }
-    AddTutorial = (form) => { 
+    AddTutorial = (form) => {
         //Submit data to my api
         this.props.addTutorial(form);
     }
-    
+
     render() {
         return (
-            <MDBContainer>
-                <MDBRow>
-                    <MDBCol>
-                        <h2>Tutorial Grouping</h2>
-                        <TutorialTable deleteTut={this.DelTutorial} navigate={this.Navigate} tutorial={this.props.tutorialtable} />
-                        <br />
-                        <h3>Add New Tutorial Grouping</h3>
-                        <AddTutorial addTut={this.AddTutorial} />
-                    </MDBCol>
-                </MDBRow>
-            </MDBContainer>
+            <React.Fragment>
+                <Navbar />
+                <MDBContainer>
+                    <MDBRow>
+                        <MDBCol>
+                            <h2>Tutorial Grouping</h2>
+                            <TutorialTable deleteTut={this.DelTutorial} navigate={this.Navigate} tutorial={this.props.tutorialtable} />
+                            <br />
+                            <h3>Add New Tutorial Grouping</h3>
+                            <AddTutorial addTut={this.AddTutorial} />
+                        </MDBCol>
+                    </MDBRow>
+                </MDBContainer>
+                <Footer />
+            </React.Fragment>
         )
     }
 }

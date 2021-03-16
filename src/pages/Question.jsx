@@ -5,6 +5,8 @@ import AddQuestion from '../components/AddQuestion';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { showQuestion, addQuestion, deleteQuestion } from '../Redux/Actions/QuestActions'
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 class Question extends Component {
     state = {
@@ -33,27 +35,31 @@ class Question extends Component {
     }
     removeQuestion = (questid) => {
         const form = {
-            questid : questid
+            questid: questid
         }
         this.props.deleteQuestion(form)
     }
     render() {
         return (
-            <MDBContainer>
-                <MDBRow>
-                    <MDBCol size="12">
-                        <br />
-                        <h2>List of questions</h2>
-                        <hr />
-                        <QuestionList removeQuestion={this.removeQuestion} questions={this.props.tutquestion} />
-                    </MDBCol>
-                    <MDBCol size="12">
-                        <h2>Add new question</h2>
-                        <hr />
-                        <AddQuestion addQuest={this.AddQuestion} />
-                    </MDBCol>
-                </MDBRow>
-            </MDBContainer>
+            <React.Fragment>
+                <Navbar />
+                <MDBContainer>
+                    <MDBRow>
+                        <MDBCol size="12">
+                            <br />
+                            <h2>List of questions</h2>
+                            <hr />
+                            <QuestionList removeQuestion={this.removeQuestion} questions={this.props.tutquestion} />
+                        </MDBCol>
+                        <MDBCol size="12">
+                            <h2>Add new question</h2>
+                            <hr />
+                            <AddQuestion addQuest={this.AddQuestion} />
+                        </MDBCol>
+                    </MDBRow>
+                </MDBContainer>
+                <Footer />
+            </React.Fragment>
         )
     }
 

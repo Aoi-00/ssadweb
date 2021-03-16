@@ -20,14 +20,12 @@ class App extends Component {
     return (
       <Provider store={Store}>
         <Router>
-          <Navbar />
           <div className='flyout'>
             {collapseID && overlay}
             <main style={{ marginTop: '4rem' }}>
               <Routes />
             </main>  
           </div>
-          <Footer />
         </Router>
       </Provider>
     );

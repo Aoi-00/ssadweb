@@ -3,6 +3,8 @@ import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn, MDBContainer, MDBRow, MDB
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getStudents } from '../Redux/Actions/GameActions'
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 class StudentSelect extends Component {
     state = {
@@ -33,7 +35,8 @@ class StudentSelect extends Component {
             );
         })
         return (
-            <div>
+            <React.Fragment>
+                <Navbar />
                 <MDBContainer>
                     <br />
                     <MDBRow>
@@ -56,8 +59,8 @@ class StudentSelect extends Component {
                         </MDBCol>
                     </MDBRow>
                 </MDBContainer>
-
-            </div>
+            <Footer />
+            </React.Fragment>
         )
     }
 }
