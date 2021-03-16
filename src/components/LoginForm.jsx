@@ -141,7 +141,7 @@ class LoginForm extends React.Component {
                         <div className="text-center mt-4 black-text">
                           <MDBBtn color="white" onClick={this.EmailLogin}>Login</MDBBtn>
                           <FacebookLogin
-                            appId="438326617514737"
+                            appId="787349391890029"
                             fields="name,email,picture"
                             cssClass="btn btn-outline white"
                             callback={this.responseFacebook}

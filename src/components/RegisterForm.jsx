@@ -166,8 +166,7 @@ class RegisterForm extends React.Component {
                         <div className="text-center mt-4 black-text">
                           <MDBBtn onClick={this.Validate} color="white">Register</MDBBtn>
                           <FacebookLogin
-                            appId="438326617514737"
-                            autoLoad={true}
+                            appId="787349391890029"
                             fields="name,email,picture"
                             cssClass="btn btn-outline white"
                             textButton="Facebook Register"
