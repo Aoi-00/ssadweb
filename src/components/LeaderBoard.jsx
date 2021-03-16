@@ -14,12 +14,6 @@ export default function Pagination({ leaderboard }) {
         },
       },
       {
-        label: 'Image',
-        field: 'picture',
-        sort: 'disabled',
-        width: 270,
-      },
-      {
         label: 'Date submitted',
         field: 'date',
         width: 150,
@@ -39,7 +33,7 @@ export default function Pagination({ leaderboard }) {
     rows: [],
   });
   //console.log(leaderboard)
-  leaderboard.map(x => datatable.rows.push({ name: x.name, picture: [<img src={x.image} width="270" height="200" alt="" />], date: x.date, score: x.score, view: [<MDBLink to={"/record/" + x.id}><MDBIcon className="red-text" icon="caret-right" size="3x" className="mr-1" /></MDBLink>] }))
+  leaderboard.map(x => datatable.rows.push({ name: x.name, date: x.date, score: x.score, view: [<MDBLink to={"/record/" + x.id}><MDBIcon className="red-text" icon="caret-right" size="3x" className="mr-1" /></MDBLink>] }))
 
 
   return <MDBDataTableV5 hover entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={datatable} fullPagination />;

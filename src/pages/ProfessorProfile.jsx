@@ -4,13 +4,13 @@ import Uploadfile from '../components/Uploadfile'
 import StudentInfo from '../components/StudentInfo'
 import { connect } from 'react-redux'
 import Proptypes from 'prop-types'
-import { getStudentInfo, updateProfile, facebookAccountLink } from '../Redux/Actions/AuthAction'
+import { getProfInfo, updateProfile, facebookAccountLink } from '../Redux/Actions/AuthAction'
 import { showTutorials } from '../Redux/Actions/TutorialAction'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import FacebookLogin from 'react-facebook-login'
 
-class StudentProfile extends Component {
+class ProfessorProfile extends Component {
 
     state = {
         tutgrp: localStorage.getItem("tutgrp"),
@@ -34,7 +34,7 @@ class StudentProfile extends Component {
         const form = {
             id: this.state.studid
         }
-        this.props.getStudentInfo(form)
+        this.props.getProfInfo(form)
     }
 
     onChoose = (e) => {
@@ -149,16 +149,16 @@ class StudentProfile extends Component {
         )
     }
 }
-StudentProfile.Proptypes = {
-    getStudentInfo: Proptypes.func.isRequired,
+ProfessorProfile.Proptypes = {
+    getProfInfo: Proptypes.func.isRequired,
     showTutorials: Proptypes.func.isRequired,
     facebookAccountLink: Proptypes.func.isRequired,
     updateProfile: Proptypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
-    student: state.auth.studentinfo,
+    student: state.auth.profinfo,
     allTutorials: state.tutorial.tutorialgrp,
 
 })
-export default connect(mapStateToProps, { getStudentInfo, showTutorials, updateProfile, facebookAccountLink })(StudentProfile)
+export default connect(mapStateToProps, { getProfInfo, showTutorials, updateProfile, facebookAccountLink })(ProfessorProfile)

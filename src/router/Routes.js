@@ -12,6 +12,8 @@ import MarkingHome from '../pages/MarkingHome';
 import StudentSelect from '../pages/StudentSelect';
 import StudentMain from '../pages/StudentMain';
 import StudentProfile from '../pages/StudentProfile';
+import StudentHome from '../pages/StudentHome';
+import ProfessorProfile from '../pages/ProfessorProfile';
 
 
 class Routes extends React.Component {
@@ -28,7 +30,9 @@ class Routes extends React.Component {
         <Route path='/marking/:id/:studid' component={Marking} />
         <Route path='/logout' component={Logout} />
         <Route path='/studentmain' component={StudentMain} />
-        <Route path='/studentprofile/:id/:studid' component={StudentProfile} />
+        <Route path='/studentprofile' component={StudentProfile} />
+        <Route path='/professorprofile' component={ProfessorProfile} />
+        <Route path='/studenthome' component={StudentHome} />
         <Route
           render={() => <h1>Not Found</h1>}
         />

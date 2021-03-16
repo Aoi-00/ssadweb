@@ -1,7 +1,8 @@
 const initState = {
     login: [],
     status: [],
-    studentinfo: []
+    studentinfo: [],
+    profinfo:[]
 };
 
 const AuthReducers = (state = initState, action) => {
@@ -30,6 +31,19 @@ const AuthReducers = (state = initState, action) => {
             return {
                 ...state,
                 studentinfo: action.payload
+            }
+        case 'GET_PROF_DETAILS':
+            return {
+                ...state,
+                profinfo: action.payload
+            }
+        case 'UPDATE_PROFILE':
+            return {
+                ...state,
+            }
+        case 'FACEBOOK_ACCOUNT_LINK':
+            return {
+                ...state,
             }
         default:
             return state;

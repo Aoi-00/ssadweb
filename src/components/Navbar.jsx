@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink } from 'mdbreact';
+import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBIcon, MDBDropdownItem } from 'mdbreact';
 import { ReactComponent as Logo } from '../assets/logo.svg';
 
 class Navbar extends Component {
     state = {
-        collapseID: ''
+        collapseID: '',
+        username: localStorage.getItem("name"),
+        usertype: localStorage.getItem("usertype")
     };
     toggleCollapse = collapseID => () =>
         this.setState(prevState => ({
@@ -25,57 +27,108 @@ class Navbar extends Component {
                 onClick={this.toggleCollapse('mainNavbarCollapse')}
             />
         );
-        return (
-
-            <div>
-                <MDBNavbar color='indigo' dark expand='md' fixed='top' scrolling>
-                    <MDBNavbarBrand href='/home' className='py-0 font-weight-bold'>
-                        <Logo style={{ height: '2.5rem', width: '2.5rem' }} />
-                        <strong className='align-middle'>SSAD Project</strong>
-                    </MDBNavbarBrand>
-                    <MDBNavbarToggler
-                        onClick={this.toggleCollapse('mainNavbarCollapse')}
-                    />
-                    <MDBCollapse id='mainNavbarCollapse' isOpen={collapseID} navbar>
-                        <MDBNavbarNav right>
-                            <MDBNavItem>
-                                <MDBNavLink
-                                    exact
-                                    to='/home'
-                                    onClick={this.closeCollapse('mainNavbarCollapse')}
-                                >
-                                    <strong>Home</strong>
-                                </MDBNavLink>
-                            </MDBNavItem>
-                            <MDBNavItem>
-                                <MDBNavLink
-                                    onClick={this.closeCollapse('mainNavbarCollapse')}
-                                    to='/tutorial'
-                                >
-                                    <strong>Tutorial</strong>
-                                </MDBNavLink>
-                            </MDBNavItem>
-                            <MDBNavItem>
-                                <MDBNavLink
-                                    onClick={this.closeCollapse('mainNavbarCollapse')}
-                                    to='/seltut'
-                                >
-                                    <strong>Marking</strong>
-                                </MDBNavLink>
-                            </MDBNavItem>
-                            <MDBNavItem>
-                                <MDBNavLink
-                                    onClick={this.closeCollapse('mainNavbarCollapse')}
-                                    to='/logout'
-                                >
-                                    <strong>Logout</strong>
-                                </MDBNavLink>
-                            </MDBNavItem>
-                        </MDBNavbarNav>
-                    </MDBCollapse>
-                </MDBNavbar>
-            </div>
-        )
+        if (this.state.usertype == "Professor") {
+            return (
+                <div>
+                    <MDBNavbar color='indigo' dark expand='md' fixed='top' scrolling>
+                        <MDBNavbarBrand href='/home' className='py-0 font-weight-bold'>
+                            <Logo style={{ height: '2.5rem', width: '2.5rem' }} />
+                            <strong className='align-middle'>SSAD Project</strong>
+                        </MDBNavbarBrand>
+                        <MDBNavbarToggler
+                            onClick={this.toggleCollapse('mainNavbarCollapse')}
+                        />
+                        <MDBCollapse id='mainNavbarCollapse' isOpen={collapseID} navbar>
+                            <MDBNavbarNav right>
+                                <MDBNavItem>
+                                    <MDBNavLink
+                                        exact
+                                        to='/home'
+                                        onClick={this.closeCollapse('mainNavbarCollapse')}
+                                    >
+                                        <strong>Home</strong>
+                                    </MDBNavLink>
+                                </MDBNavItem>
+                                <MDBNavItem>
+                                    <MDBNavLink
+                                        onClick={this.closeCollapse('mainNavbarCollapse')}
+                                        to='/tutorial'
+                                    >
+                                        <strong>Tutorial</strong>
+                                    </MDBNavLink>
+                                </MDBNavItem>
+                                <MDBNavItem>
+                                    <MDBNavLink
+                                        onClick={this.closeCollapse('mainNavbarCollapse')}
+                                        to='/seltut'
+                                    >
+                                        <strong>Marking</strong>
+                                    </MDBNavLink>
+                                </MDBNavItem>
+                                <MDBNavItem>
+                                    <MDBDropdown>
+                                        <MDBDropdownToggle nav caret>
+                                            <MDBIcon icon="user" /> {this.state.username}
+                                        </MDBDropdownToggle>
+                                        <MDBDropdownMenu className="dropdown-default">
+                                            <MDBDropdownItem href="/professorprofile">Profile</MDBDropdownItem>
+                                            <MDBDropdownItem href='/logout'>Logout</MDBDropdownItem>
+                                        </MDBDropdownMenu>
+                                    </MDBDropdown>
+                                </MDBNavItem>
+                            </MDBNavbarNav>
+                        </MDBCollapse>
+                    </MDBNavbar>
+                </div>
+            )
+        }
+        else {
+            return (
+                <div>
+                    <MDBNavbar color='indigo' dark expand='md' fixed='top' scrolling>
+                        <MDBNavbarBrand href='/home' className='py-0 font-weight-bold'>
+                            <Logo style={{ height: '2.5rem', width: '2.5rem' }} />
+                            <strong className='align-middle'>SSAD Project</strong>
+                        </MDBNavbarBrand>
+                        <MDBNavbarToggler
+                            onClick={this.toggleCollapse('mainNavbarCollapse')}
+                        />
+                        <MDBCollapse id='mainNavbarCollapse' isOpen={collapseID} navbar>
+                            <MDBNavbarNav right>
+                                <MDBNavItem>
+                                    <MDBNavLink
+                                        exact
+                                        to='/studenthome'
+                                        onClick={this.closeCollapse('mainNavbarCollapse')}
+                                    >
+                                        <strong>Home</strong>
+                                    </MDBNavLink>
+                                </MDBNavItem>
+                                <MDBNavItem>
+                                    <MDBNavLink
+                                        onClick={this.closeCollapse('mainNavbarCollapse')}
+                                        to='/tutorial'
+                                    >
+                                        <strong>News</strong>
+                                    </MDBNavLink>
+                                </MDBNavItem>
+                                <MDBNavItem>
+                                    <MDBDropdown>
+                                        <MDBDropdownToggle nav caret>
+                                            <MDBIcon icon="user" /> {this.state.username}
+                                        </MDBDropdownToggle>
+                                        <MDBDropdownMenu className="dropdown-default">
+                                            <MDBDropdownItem href="/studentprofile">Profile</MDBDropdownItem>
+                                            <MDBDropdownItem href='/logout'>Logout</MDBDropdownItem>
+                                        </MDBDropdownMenu>
+                                    </MDBDropdown>
+                                </MDBNavItem>
+                            </MDBNavbarNav>
+                        </MDBCollapse>
+                    </MDBNavbar>
+                </div>
+            )
+        }
     }
 }
 export default Navbar

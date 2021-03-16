@@ -61,17 +61,23 @@ class LoginForm extends React.Component {
   }
   componentWillReceiveProps(nextProps) {
     if(this.state.fblogin){
+      localStorage.setItem("studid", nextProps.loginstatus[0].id)
       localStorage.setItem("fbid", nextProps.loginstatus[0].fbid)
       localStorage.setItem("name", nextProps.loginstatus[0].name)
       localStorage.setItem("email", nextProps.loginstatus[0].email)
       localStorage.setItem("usertype", nextProps.loginstatus[0].usertype)
+      localStorage.setItem("tutgrp", nextProps.loginstatus[0].tutgrp)
+      localStorage.setItem("picture", nextProps.loginstatus[0].picture)
       this.props.Navigate("/home")
     }
     else if (this.state.emaillogin) {
+      localStorage.setItem("studid", nextProps.loginstatus[0].id)
       localStorage.setItem("fbid", nextProps.loginstatus[0].fbid)
       localStorage.setItem("name", nextProps.loginstatus[0].name)
       localStorage.setItem("email", nextProps.loginstatus[0].email)
       localStorage.setItem("usertype", nextProps.loginstatus[0].usertype)
+      localStorage.setItem("tutgrp", nextProps.loginstatus[0].tutgrp)
+      localStorage.setItem("picture", nextProps.loginstatus[0].picture)
       this.props.Navigate("/home")
     }
     else {
@@ -136,7 +142,6 @@ class LoginForm extends React.Component {
                           <MDBBtn color="white" onClick={this.EmailLogin}>Login</MDBBtn>
                           <FacebookLogin
                             appId="438326617514737"
-                            autoLoad={true}
                             fields="name,email,picture"
                             cssClass="btn btn-outline white"
                             callback={this.responseFacebook}

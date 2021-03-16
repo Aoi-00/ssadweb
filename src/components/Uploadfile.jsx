@@ -23,29 +23,18 @@ export default class Uploadfile extends Component {
                     }
                 }));
                 const url = reader.result;
-                console.log("#####", url);
+                //console.log("#####", url);
+                //Call Parent Component Method
+                this.props.picUpload(url)
             },
             false
         );
     };
 
-    onSubmit = (e) => {
-        console.log("changed image:" + this.state.form.file)
-    }
 
     render() {
         return (
             <MDBInputGroup id='file'
-                append={
-                    <MDBBtn
-                        color="mdb-color"
-                        outline
-                        className="m-0 px-3 py-2 z-depth-0"
-                        onClick={this.onSubmit}
-                    >
-                        Upload
-                    </MDBBtn>
-                }
                 inputs={
                     <div className="custom-file">
                         <input onChange={this.onChangeHandleFile}

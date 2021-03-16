@@ -7,15 +7,26 @@ import { fetchLeaderboard } from '../Redux/Actions/GameActions'
 import LeaderBoard from '../components/LeaderBoard'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import TwitterCard from '../components/TwitterCard'
+
 
 
 class Home extends Component {
+    state = {
+        usertype: localStorage.getItem("usertype")
+    }
     componentDidMount() {
+        if(this.state.usertype == "Student")
+            this.props.history.push("/studenthome")
         this.props.fetchLeaderboard();
         this.props.fetchPosts();
-        console.log(localStorage.getItem("email"))
     }
     render() {
+        let twitterPosts = this.props.twitter.map(x => {
+            return (
+                <TwitterCard key={x.id_str} post={x} />
+            )
+        })
         return (
             <div>
                 <Navbar />
@@ -25,6 +36,11 @@ class Home extends Component {
                     <hr />
                     <LeaderBoard leaderboard={this.props.leaderboard} />
                     <br />
+                    <h2>NTU Twitter News</h2>
+                    <hr />
+                    <MDBRow>
+                        {twitterPosts}
+                    </MDBRow>
                 </MDBContainer>
                 <Footer />
             </div>
