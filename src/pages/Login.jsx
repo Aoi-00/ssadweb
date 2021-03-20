@@ -3,6 +3,8 @@ import Footer from '../components/Footer'
 import GuestNavbar from '../components/GuestNavBar'
 import LoginForm from '../components/LoginForm'
 
+
+
 class Login extends Component {
     Navigate = (val) => {
         this.props.history.push(val)
@@ -15,6 +17,7 @@ class Login extends Component {
             <div>
                 <GuestNavbar />
                 <LoginForm Navigate={this.Navigate} />
+                
                 <Footer />
             </div>
         )
