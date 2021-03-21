@@ -23,7 +23,7 @@ class Question extends Component {
         this.getQuestions()
     }
     getTutGrp = () => {
-        return this.props.tutquestion[0].tutgrp.toString()
+        return localStorage.getItem("tutgrp")
     }
     AddQuestion = (question) => {
         const post = {

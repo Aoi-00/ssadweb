@@ -19,6 +19,11 @@ const TutorialReducers = (state = initState, action) => {
                 ...state,
                 tutorialgrp: action.payload
             }
+        case 'FETCH_USER_TUTORIAL':
+            return {
+                ...state,
+                tutorialgrp: action.payload
+            }
         default:
             return state;
     }

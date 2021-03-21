@@ -38,3 +38,18 @@ export const showTutorials = () => dispatch => {
         })
         );
 }
+export const showUserTutorial = (postData) => dispatch => {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/user/tutlist', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'FETCH_USER_TUTORIAL',
+            payload: data,
+        })
+        );
+}

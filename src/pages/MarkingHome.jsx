@@ -1,14 +1,24 @@
 import React, { Component } from 'react'
 import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn, MDBContainer, MDBRow, MDBCol } from 'mdbreact';
-import { showTutorials } from '../Redux/Actions/TutorialAction'
+import { showTutorials, showUserTutorial } from '../Redux/Actions/TutorialAction'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 class MarkingHome extends Component {
+    state = {
+        tutgrp: localStorage.getItem("tutgrp")
+    }
     componentDidMount() {
-        this.props.showTutorials();
+        //this.props.showAllTutorials();
+        this.GetTutorials()
+    }
+    GetTutorials = () => {
+        const form = {
+            tutgrp: this.state.tutgrp
+        }
+        this.props.showUserTutorial(form);
     }
     ViewTutorial = (tutid) => {
         var tutgrp = this.props.tutorialtable.filter(x => x.tutid == tutid).map(z => z.tutgrp)
@@ -59,6 +69,7 @@ class MarkingHome extends Component {
 }
 MarkingHome.propTypes = {
     showTutorials: PropTypes.func.isRequired,
+    showUserTutorial: PropTypes.func.isRequired
 }
 
 //This is from the Reducers
@@ -67,4 +78,4 @@ const mapStateToProps = state => ({
     tutorialtable: state.tutorial.tutorialgrp,
 });
 
-export default connect(mapStateToProps, { showTutorials })(MarkingHome)
+export default connect(mapStateToProps, { showTutorials, showUserTutorial })(MarkingHome)

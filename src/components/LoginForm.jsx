@@ -25,8 +25,12 @@ class LoginForm extends React.Component {
     userpassword: '',
     fbid: '',
     fblogin: false,
-    emaillogin: false
+    emaillogin: false,
+    loading: false
   };
+
+ 
+
 
   toggleCollapse = collapseID => () =>
     this.setState(prevState => ({
@@ -40,9 +44,14 @@ class LoginForm extends React.Component {
   }
   EmailLogin = () => {
     const post = {
+      
       email: this.state.email,
       password: this.state.userpassword
+      
     }
+    
+    this.setState({ loading: true });
+    
     this.setState({ emaillogin: true })
     this.props.emailLogin(post);
   }
@@ -86,7 +95,7 @@ class LoginForm extends React.Component {
   }
 
   render() {
-
+    const {loading} = this.state;
     return (
       <div id="classicformpage">
         <MDBView>
@@ -139,7 +148,10 @@ class LoginForm extends React.Component {
                           onChange={this.handleChange}
                         />
                         <div className="text-center mt-4 black-text">
-                          <MDBBtn color="white" onClick={this.EmailLogin}>Login</MDBBtn>
+                          <MDBBtn color="white" onClick={this.EmailLogin} disabled={loading} >
+                          {loading && <span>Logging in</span>}
+                          {!loading && <span>login</span>}
+                          </MDBBtn>
                           <FacebookLogin
                             appId="787349391890029"
                             fields="name,email,picture"

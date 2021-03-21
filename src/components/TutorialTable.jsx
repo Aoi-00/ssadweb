@@ -4,18 +4,17 @@ import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn, MDBLink } from 'mdbreact'
 
 
 const TutorialTable = ({ tutorial, navigate, deleteTut }) => {
-  //state = {
-    //loading : false
-//}
+  
   function onDelete(tutid) {
     deleteTut(tutid);
   }
   let ViewTutorial = (tutid) => {
     navigate(tutid)
-   // this.setState({loading : true});
+    
   }
-  
+
   return (
+    
     <MDBTable striped>
       <MDBTableHead>
         <tr>
@@ -33,13 +32,13 @@ const TutorialTable = ({ tutorial, navigate, deleteTut }) => {
               <td>{x.tutname}</td>
               <td>{x.tutgrp}</td>
               <td>{x.createdby}</td>
-              
+
               <td><MDBBtn size="sm" color="red" onClick={() => onDelete(x.tutid)}>Remove</MDBBtn></td>
-              <td><MDBBtn size="sm" color="blue" onClick={() => ViewTutorial(x.tutid)}> View </MDBBtn>
-              {/* {this.state.loading && <span class="sr-only">Loading...</span>}  */}
-            
-              
-              
+              <td><MDBBtn size="sm" color="blue" onClick={() => ViewTutorial(x.tutid)} > View </MDBBtn>
+               
+
+
+
               </td>
             </tr>
           )
