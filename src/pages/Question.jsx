@@ -40,6 +40,9 @@ class Question extends Component {
         }
         this.props.deleteQuestion(form)
     }
+    OnBack = () => {
+        this.props.history.push('/assignment')
+    }
     //navigate to previosu page
     // this.props.history.push("/home")
     render() {
@@ -57,7 +60,7 @@ class Question extends Component {
                         <MDBCol size="12">
                             <h2>Add new question</h2>
                             <hr />
-                            <AddQuestion addQuest={this.AddQuestion} />
+                            <AddQuestion addQuest={this.AddQuestion} onBack={this.OnBack} />
                         </MDBCol>
                     </MDBRow>
                 </MDBContainer>

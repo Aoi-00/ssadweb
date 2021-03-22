@@ -38,6 +38,10 @@ class Assignment extends Component {
         this.props.addTutorial(form);
     }
 
+    OnBack = () => {
+        this.props.history.push('/home')
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -48,11 +52,11 @@ class Assignment extends Component {
                         <MDBCol>
                             <h2>Assignment List</h2>
                             <hr/>
-                            <TutorialTable deleteTut={this.DelTutorial} navigate={this.Navigate} tutorial={this.props.tutorialtable} />
+                            <TutorialTable deleteTut={this.DelTutorial}  navigate={this.Navigate} tutorial={this.props.tutorialtable} />
                             <br />
                             <h3>Assignment Creation</h3>
                             <hr/>
-                            <AddTutorial addTut={this.AddTutorial} />
+                            <AddTutorial addTut={this.AddTutorial} onBack = {this.OnBack} />
                         </MDBCol>
                     </MDBRow>
                 </MDBContainer>

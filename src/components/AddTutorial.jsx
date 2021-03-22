@@ -28,7 +28,13 @@ class AddTutorial extends Component {
         })
         this.props.addTut(post);
     }
+    
+//    onBack =() =>{
+//         this.props.history.push('/home')
+//         // This.props.navigate()
+        
 
+//     }
     handleChange = (e) => { //to handle change in inputs
         this.setState({
             [e.target.id]: e.target.value,
@@ -80,6 +86,9 @@ class AddTutorial extends Component {
                         <MDBBtn onClick={this.onSubmit} disabled={loading} >
                             {loading && <span>Submitting</span>}
                             {!loading && <span>Submit</span>}</MDBBtn>
+
+                            <MDBBtn color="green" onClick={this.props.onBack}> Back
+                       </MDBBtn>
                     </div>
                 </form>
             </div>

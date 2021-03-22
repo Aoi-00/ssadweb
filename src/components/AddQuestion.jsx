@@ -7,11 +7,17 @@ import { addQuestion } from '../Redux/Actions/QuestActions'
 class AddQuestion extends Component {
     state = {
         question: '',
-        solution: ''
+        solution: '',
+        loading: false
     }
     UserSubmitQuestion = () => {
         //Fire method from parent component [Question.jsx]
         console.log(this.state)
+        this.setState({
+            loading: !this.state.loading,
+            question: "",
+            solution: ""
+        })
         this.props.addQuest(this.state.question, this.state.solution);
     }
     handleChange = (e) => { // to change state everytime you type -- question: value
@@ -20,7 +26,15 @@ class AddQuestion extends Component {
         })
     }
 
+    componentDidUpdate(prevProps){
+        if (prevProps.question !== this.props.question){
+            this.setState({loading : false
+            })
+        }
+    }
+
     render() {
+        const {loading } = this.state;
         return (
             <div>
                 <form>
@@ -33,8 +47,15 @@ class AddQuestion extends Component {
                             success="right" onChange={this.handleChange} />
                     </div>
                     <div className="text-center">
-                        <MDBBtn color="blue" onClick={this.UserSubmitQuestion}>Submit</MDBBtn>
-                    </div>
+                        <MDBBtn color="blue" onClick={this.UserSubmitQuestion} disabled={loading}>
+                        {loading && <span>Submitting</span>}
+                            {!loading && <span>Submit</span>}</MDBBtn>
+                            
+                        <MDBBtn color="green" onClick = {this.props.onBack} > Back
+                       </MDBBtn>
+                    
+                    </div >
+                    
                     <br/>
                 </form>
             </div>
