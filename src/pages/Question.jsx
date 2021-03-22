@@ -10,7 +10,7 @@ import Footer from '../components/Footer';
 
 class Question extends Component {
     state = {
-        tutid: this.props.match.params.id,
+        tutid: this.props.match.params.tutid,
     };
     getQuestions = () => {
         const form = {
@@ -39,6 +39,8 @@ class Question extends Component {
         }
         this.props.deleteQuestion(form)
     }
+    //navigate to previosu page
+    // this.props.history.push("/home")
     render() {
         return (
             <React.Fragment>
