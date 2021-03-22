@@ -172,7 +172,7 @@ class RegisterForm extends React.Component {
                           {!loading && <span>Register</span>}
                           </MDBBtn>
                           <FacebookLogin
-                            appId="787349391890029"
+                            appId="892789337958489"
                             fields="name,email,picture"
                             cssClass="btn btn-outline white"
                             textButton="Facebook Register"

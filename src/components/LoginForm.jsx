@@ -151,7 +151,7 @@ class LoginForm extends React.Component {
                             {!loading && <span>login</span>}
                           </MDBBtn>
                           <FacebookLogin
-                            appId="787349391890029"
+                            appId="892789337958489"
                             fields="name,email,picture"
                             cssClass="btn btn-outline white"
                             callback={this.responseFacebook}

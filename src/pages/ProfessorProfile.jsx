@@ -93,7 +93,7 @@ class ProfessorProfile extends Component {
     }
 
     render() {
-        let facebookBtn = (this.state.fbDisplay) ? <FacebookLogin appId="787349391890029"
+        let facebookBtn = (this.state.fbDisplay) ? <FacebookLogin appId="892789337958489"
             textButton="Link with Facebook"
             fields="name,email,picture"
             cssClass="btn btn-sm blue white-text"
