@@ -2,7 +2,7 @@ const initState = {
     login: [],
     status: [],
     studentinfo: [],
-    profinfo:[]
+    profinfo: []
 };
 
 const AuthReducers = (state = initState, action) => {
@@ -42,6 +42,10 @@ const AuthReducers = (state = initState, action) => {
                 ...state,
             }
         case 'FACEBOOK_ACCOUNT_LINK':
+            return {
+                ...state,
+            }
+        case 'EMAIL_CHECK':
             return {
                 ...state,
             }

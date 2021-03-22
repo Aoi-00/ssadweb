@@ -125,3 +125,19 @@ export const facebookAccountLink = (postData) => dispatch => {
         })
         );
 }
+
+export const emailChecking = (postData) => dispatch => {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/email/check', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'EMAIL_CHECK',
+            payload: data
+        })
+        );
+}
