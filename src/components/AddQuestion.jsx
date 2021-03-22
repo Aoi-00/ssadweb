@@ -7,10 +7,12 @@ import { addQuestion } from '../Redux/Actions/QuestActions'
 class AddQuestion extends Component {
     state = {
         question: '',
+        solution: ''
     }
     UserSubmitQuestion = () => {
         //Fire method from parent component [Question.jsx]
-        this.props.addQuest(this.state.question);
+        console.log(this.state)
+        this.props.addQuest(this.state.question, this.state.solution);
     }
     handleChange = (e) => { // to change state everytime you type -- question: value
         this.setState({
@@ -26,9 +28,14 @@ class AddQuestion extends Component {
                         <MDBInput label="Enter Question" id='question' icon="question" group type="email" validate error="wrong"
                             success="right" onChange={this.handleChange} />
                     </div>
-                    <div className="text-center">
-                        <MDBBtn onClick={this.UserSubmitQuestion}>Submit</MDBBtn>
+                    <div className="grey-text">
+                        <MDBInput label="Enter Solution" id='solution' icon="check" group type="email" validate error="wrong"
+                            success="right" onChange={this.handleChange} />
                     </div>
+                    <div className="text-center">
+                        <MDBBtn color="blue" onClick={this.UserSubmitQuestion}>Submit</MDBBtn>
+                    </div>
+                    <br/>
                 </form>
             </div>
         )

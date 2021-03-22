@@ -18,7 +18,7 @@ const TutorialTable = ({ tutorial, navigate, deleteTut }) => {
     <MDBTable striped>
       <MDBTableHead>
         <tr>
-          <th>Tutorial Name</th>
+          <th>Assignment Name</th>
           <th>Tutorial Group</th>
           <th>Created by</th>
           <th>Remove</th>
@@ -32,13 +32,8 @@ const TutorialTable = ({ tutorial, navigate, deleteTut }) => {
               <td>{x.tutname}</td>
               <td>{x.tutgrp}</td>
               <td>{x.createdby}</td>
-
               <td><MDBBtn size="sm" color="red" onClick={() => onDelete(x.tutid)}>Remove</MDBBtn></td>
               <td><MDBBtn size="sm" color="blue" onClick={() => ViewTutorial(x.tutid)} > View </MDBBtn>
-               
-
-
-
               </td>
             </tr>
           )
