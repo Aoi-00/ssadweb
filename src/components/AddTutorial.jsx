@@ -10,7 +10,8 @@ class AddTutorial extends Component {
         tutName: '',
         createdby: localStorage.getItem("name"),
         difficulty: 'Easy',
-        coins: 50
+        coins: 50,
+        loading : false
     }
     onSubmit = () => {
         const post = {
@@ -18,9 +19,15 @@ class AddTutorial extends Component {
             tutgrp: this.state.tutGroup,
             createdby: this.state.createdby,
             difficulty: this.state.difficulty,
-            coins: this.state.coins
+            coins: this.state.coins,
+            
         }
+        this.setState ({
+            loading: !this.state.loading,  
+            tutName : ""     
+        })
         this.props.addTut(post);
+       
     }
     handleChange = (e) => { //to handle change in inputs
         this.setState({
@@ -37,9 +44,14 @@ class AddTutorial extends Component {
     }
     handleTutList = (e) => {
         this.setState({ tutGroup: e.target.value })
+        
     }
+   
+    
+
 
     render() {
+        const { loading } = this.state;
         return (
             <div>
                 <form>
@@ -64,7 +76,9 @@ class AddTutorial extends Component {
                     <label htmlFor="coins">Number of coins: {this.state.coins}</label>
                     <input type="range" id="coins" onChange={this.getValue} min="0" max="100" className="custom-range" />
                     <div className="text-center">
-                        <MDBBtn onClick={this.onSubmit}>Submit</MDBBtn>
+                        <MDBBtn onClick={this.onSubmit} disabled = {loading} >
+                        {loading && <span>Submitting</span>}
+                            {!loading && <span>Submit</span>}</MDBBtn>
                     </div>
                 </form>
             </div>
