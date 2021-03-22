@@ -11,7 +11,7 @@ class AddTutorial extends Component {
         createdby: localStorage.getItem("name"),
         difficulty: 'Easy',
         coins: 50,
-        loading : false
+        loading: false
     }
     onSubmit = () => {
         const post = {
@@ -20,15 +20,15 @@ class AddTutorial extends Component {
             createdby: this.state.createdby,
             difficulty: this.state.difficulty,
             coins: this.state.coins,
-            
+
         }
-        this.setState ({
-            loading: !this.state.loading,  
-            tutName : ""     
+        this.setState({
+            loading: !this.state.loading,
+            tutName: ""
         })
         this.props.addTut(post);
-       
     }
+
     handleChange = (e) => { //to handle change in inputs
         this.setState({
             [e.target.id]: e.target.value,
@@ -44,11 +44,12 @@ class AddTutorial extends Component {
     }
     handleTutList = (e) => {
         this.setState({ tutGroup: e.target.value })
-        
     }
-   
-    
-
+    componentDidUpdate(prevProps) {
+        if (prevProps.tutGroup !== this.props.tutGroup) {
+            this.setState({ loading: false })
+        }
+    }
 
     render() {
         const { loading } = this.state;
@@ -56,7 +57,7 @@ class AddTutorial extends Component {
             <div>
                 <form>
                     <div className="black-text">
-                        <MDBInput label="Enter Assignment Name" id='tutName' onChange={this.handleChange} icon="user-plus" group type="text" validate error="wrong"
+                        <MDBInput value={this.state.tutName} label="Enter Assignment Name" id='tutName' onChange={this.handleChange} icon="user-plus" group type="text" validate error="wrong"
                             success="right" />
                         <label htmlFor="difficulty">Select Tutorial Group</label>
                         <select onChange={this.handleTutList} value={this.state.tutGroup} id="tutGroup" className="browser-default custom-select">
@@ -76,8 +77,8 @@ class AddTutorial extends Component {
                     <label htmlFor="coins">Number of coins: {this.state.coins}</label>
                     <input type="range" id="coins" onChange={this.getValue} min="0" max="100" className="custom-range" />
                     <div className="text-center">
-                        <MDBBtn onClick={this.onSubmit} disabled = {loading} >
-                        {loading && <span>Submitting</span>}
+                        <MDBBtn onClick={this.onSubmit} disabled={loading} >
+                            {loading && <span>Submitting</span>}
                             {!loading && <span>Submit</span>}</MDBBtn>
                     </div>
                 </form>

@@ -1,5 +1,6 @@
 const initState = {
     tutorialgrp: [],
+    status: false
 };
 
 const TutorialReducers = (state = initState, action) => {
@@ -7,7 +8,7 @@ const TutorialReducers = (state = initState, action) => {
         case 'ADD_TUTORIAL':
             return {
                 ...state,
-                tutorialgrp: [...state.tutorialgrp, ...action.payload]
+                tutorialgrp: [...state.tutorialgrp, ...action.payload],
             }
         case 'DELETE_TUTORIAL':
             return {
