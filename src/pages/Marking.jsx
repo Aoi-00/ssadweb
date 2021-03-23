@@ -22,10 +22,9 @@ class Marking extends Component {
         comment: ''
     }
     componentDidMount() {
+        this.getStudentDetails();
         this.getSubmission();
         this.getTutorialQuestions();
-        this.getStudentDetails();
-        console.log(this.props);
     }
     getSubmission() {
         const form = {
@@ -78,7 +77,7 @@ class Marking extends Component {
                         </MDBCol>
                         <MDBCol size="6">
                             <br></br>
-                            <h2>Question List</h2>
+                            <h2>Answer Key</h2>
                             <MarkDropDown questions={this.props.questionlist} />
                         </MDBCol>
                         <MDBCol size="6">

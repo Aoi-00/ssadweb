@@ -10,7 +10,7 @@ import Footer from '../components/Footer';
 
 class Question extends Component {
     state = {
-        tutid: this.props.match.params.id,
+        tutid: this.props.match.params.tutid,
     };
     getQuestions = () => {
         const form = {
@@ -23,13 +23,14 @@ class Question extends Component {
         this.getQuestions()
     }
     getTutGrp = () => {
-        return this.props.tutquestion[0].tutgrp.toString()
+        return localStorage.getItem("tutgrp")
     }
-    AddQuestion = (question) => {
+    AddQuestion = (question, solution) => {
         const post = {
             question: question,
             tutgrp: this.getTutGrp(),
-            tutid: this.state.tutid
+            tutid: this.state.tutid,
+            solution: solution
         }
         this.props.addQuestion(post)
     }
@@ -39,6 +40,11 @@ class Question extends Component {
         }
         this.props.deleteQuestion(form)
     }
+    OnBack = () => {
+        this.props.history.push('/assignment')
+    }
+    //navigate to previosu page
+    // this.props.history.push("/home")
     render() {
         return (
             <React.Fragment>
@@ -54,7 +60,7 @@ class Question extends Component {
                         <MDBCol size="12">
                             <h2>Add new question</h2>
                             <hr />
-                            <AddQuestion addQuest={this.AddQuestion} />
+                            <AddQuestion addQuest={this.AddQuestion} onBack={this.OnBack} />
                         </MDBCol>
                     </MDBRow>
                 </MDBContainer>

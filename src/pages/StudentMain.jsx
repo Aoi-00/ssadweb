@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { fetchPosts } from '../Redux/Actions/TwitterAction'
 import { fetchLeaderboard } from '../Redux/Actions/GameActions'
 import LeaderBoard from '../components/LeaderBoard'
+import StudentSubmit from '../components/StudentSubmit'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
@@ -25,7 +26,11 @@ class StudentMain extends Component {
                     <h2>LeaderBoard</h2>
                     <hr />
                     <LeaderBoard leaderboard={this.props.leaderboard} />
+                   
                     <br />
+
+                    <h2>Personal Submission</h2>
+                    <StudentSubmit leaderboard={this.props.leaderboard} />
                 </MDBContainer>
                 <Footer />
             </div>

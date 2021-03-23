@@ -30,7 +30,8 @@ class RegisterForm extends React.Component {
     fbimage: "",
     fbid: "",
     tutgrp: "TS1",
-    fbdetails: false
+    fbdetails: false,
+    loading: false
   };
 
   toggleCollapse = collapseID => () =>
@@ -65,6 +66,7 @@ class RegisterForm extends React.Component {
       usertype: "Student",
       tutgrp: this.state.tutgrp
     }
+    this.setState ({loading : true});
     this.props.registerUser(form);
   }
   componentWillReceiveProps(nextProps){
@@ -84,6 +86,7 @@ class RegisterForm extends React.Component {
   }
 
   render() {
+    const {loading} = this.state;
     let fbimage = (!this.state.fbdetails) ? <React.Fragment /> : <center> <img width="150" height="150" src={this.state.fbimage} className="img-fluid z-depth-1 rounded-circle" alt="" /></center>
     return (
       <div id="classicformpage">
@@ -164,9 +167,12 @@ class RegisterForm extends React.Component {
                           <option value={'TS4'}>TS4</option>
                         </select>
                         <div className="text-center mt-4 black-text">
-                          <MDBBtn onClick={this.Validate} color="white">Register</MDBBtn>
+                          <MDBBtn onClick={this.Validate} color="white"disabled={loading} >
+                          {loading && <span>Registering</span>}
+                          {!loading && <span>Register</span>}
+                          </MDBBtn>
                           <FacebookLogin
-                            appId="787349391890029"
+                            appId="892789337958489"
                             fields="name,email,picture"
                             cssClass="btn btn-outline white"
                             textButton="Facebook Register"

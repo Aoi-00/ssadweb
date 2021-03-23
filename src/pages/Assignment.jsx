@@ -10,7 +10,7 @@ import { showTutorials, deleteTutorial, addTutorial, showUserTutorial } from '..
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-class Tutorial extends Component {
+class Assignment extends Component {
     state = {
         tutgrp: localStorage.getItem("tutgrp")
     }
@@ -38,18 +38,25 @@ class Tutorial extends Component {
         this.props.addTutorial(form);
     }
 
+    OnBack = () => {
+        this.props.history.push('/home')
+    }
+
     render() {
         return (
             <React.Fragment>
                 <Navbar />
                 <MDBContainer>
+                <br/>
                     <MDBRow>
                         <MDBCol>
-                            <h2>Tutorial Grouping</h2>
-                            <TutorialTable deleteTut={this.DelTutorial} navigate={this.Navigate} tutorial={this.props.tutorialtable} />
+                            <h2>Assignment List</h2>
+                            <hr/>
+                            <TutorialTable deleteTut={this.DelTutorial}  navigate={this.Navigate} tutorial={this.props.tutorialtable} />
                             <br />
-                            <h3>Add New Tutorial Grouping</h3>
-                            <AddTutorial addTut={this.AddTutorial} />
+                            <h3>Assignment Creation</h3>
+                            <hr/>
+                            <AddTutorial addTut={this.AddTutorial} onBack = {this.OnBack} />
                         </MDBCol>
                     </MDBRow>
                 </MDBContainer>
@@ -59,7 +66,7 @@ class Tutorial extends Component {
     }
 }
 
-Tutorial.propTypes = {
+Assignment.propTypes = {
     showTutorials: PropTypes.func.isRequired,
     deleteTutorial: PropTypes.func.isRequired,
     addTutorial: PropTypes.func.isRequired,
@@ -73,4 +80,4 @@ const mapStateToProps = state => ({
 });
 
 // connection this component to database.
-export default connect(mapStateToProps, { showUserTutorial, showTutorials, deleteTutorial, addTutorial })(Tutorial)
+export default connect(mapStateToProps, { showUserTutorial, showTutorials, deleteTutorial, addTutorial })(Assignment)
