@@ -20,6 +20,9 @@ class MarkingHome extends Component {
         }
         this.props.showUserTutorial(form);
     }
+
+    GoBack = () => {this.props.history.push('/home')}
+
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
@@ -64,6 +67,8 @@ class MarkingHome extends Component {
                             </MDBTable>
                         </MDBCol>
                     </MDBRow>
+                    <MDBBtn color="green" onClick = {this.GoBack} > Back
+                       </MDBBtn>
                 </MDBContainer>
                 <Footer />
             </React.Fragment>

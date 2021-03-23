@@ -23,6 +23,7 @@ class StudentSelect extends Component {
     ViewDetails = (submissionid, studid) => {
         this.props.history.push('/marking/' + submissionid + "/" + studid)
     }
+    GoBack = () => {this.props.history.push('/seltut')}
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
@@ -61,6 +62,8 @@ class StudentSelect extends Component {
                             </MDBTable>
                         </MDBCol>
                     </MDBRow>
+                    <MDBBtn color="green" onClick = {this.GoBack} > Back
+                       </MDBBtn>
                 </MDBContainer>
                 <Footer />
             </React.Fragment>
