@@ -3,8 +3,8 @@ import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn, MDBContainer, MDBRow, MDB
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getStudents } from '../Redux/Actions/GameActions'
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Navbar from '../components/share/Navbar';
+import Footer from '../components/share/Footer';
 
 class StudentSelect extends Component {
     state = {
@@ -24,6 +24,9 @@ class StudentSelect extends Component {
         this.props.history.push('/marking/' + submissionid + "/" + studid)
     }
     GoBack = () => {this.props.history.push('/seltut')}
+    NotLoggedIn = () => {
+        this.props.history.push('/logout')
+    }
     render() {
         let studentlist = this.props.students.map(x => {
             return (
@@ -37,7 +40,7 @@ class StudentSelect extends Component {
         })
         return (
             <React.Fragment>
-                <Navbar />
+                <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
                     <br />
                     <MDBRow>
@@ -62,7 +65,7 @@ class StudentSelect extends Component {
                     <MDBBtn color="green" onClick = {this.GoBack} > Back
                        </MDBBtn>
                 </MDBContainer>
-            <Footer />
+                <Footer />
             </React.Fragment>
         )
     }

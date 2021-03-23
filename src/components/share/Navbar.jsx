@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBIcon, MDBDropdownItem } from 'mdbreact';
-import { ReactComponent as Logo } from '../assets/logo.svg';
+import { ReactComponent as Logo } from '../../assets/logo.svg';
 
 class Navbar extends Component {
     state = {
@@ -8,6 +8,10 @@ class Navbar extends Component {
         username: localStorage.getItem("name"),
         usertype: localStorage.getItem("usertype")
     };
+    componentDidMount(){
+        if(!this.state.username)
+            this.props.validateLogin()
+    }
     toggleCollapse = collapseID => () =>
         this.setState(prevState => ({
             collapseID: prevState.collapseID !== collapseID ? collapseID : ''

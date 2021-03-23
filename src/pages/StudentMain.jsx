@@ -4,10 +4,10 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { fetchPosts } from '../Redux/Actions/TwitterAction'
 import { fetchLeaderboard } from '../Redux/Actions/GameActions'
-import LeaderBoard from '../components/LeaderBoard'
+import LeaderBoard from '../components/homepage/LeaderBoard'
 import StudentSubmit from '../components/StudentSubmit'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import Navbar from '../components/share/Navbar'
+import Footer from '../components/share/Footer'
 
 
 class StudentMain extends Component {
@@ -17,16 +17,19 @@ class StudentMain extends Component {
         console.log(localStorage.getItem("email"));
         //console.log(this.props)
     }
+    NotLoggedIn = () => {
+        this.props.history.push('/logout')
+    }
     render() {
         return (
             <div>
-                <Navbar />
+                <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
                     <br />
                     <h2>LeaderBoard</h2>
                     <hr />
                     <LeaderBoard leaderboard={this.props.leaderboard} />
-                   
+
                     <br />
 
                     <h2>Personal Submission</h2>
