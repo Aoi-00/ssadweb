@@ -119,3 +119,34 @@ export const getMyCompetitors = (postData) => dispatch => {
         })
         );
 }
+
+export const sendComment = (postData) => dispatch => {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/send/comment', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'SEND_COMMENT',
+            payload: data
+        })
+        );
+}
+export const getComment = (postData) => dispatch => {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/get/comment', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'GET_COMMENT',
+            payload: data
+        })
+        );
+}

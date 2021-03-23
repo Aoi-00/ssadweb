@@ -12,6 +12,7 @@ class Compete extends Component {
     state = {
         tutgrp: localStorage.getItem("tutgrp"),
         name: localStorage.getItem("name"),
+        studid: localStorage.getItem("studid"),
         competitor: '',
         competitorid: '',
     }
@@ -21,25 +22,26 @@ class Compete extends Component {
     }
     getMycompletedTutList() {
         const form = {
-            name: this.state.name
+            studid: this.state.studid
         }
         this.props.myCompletedTutorial(form)
     }
     CompetitorSelect = (name,competitorid) => {
         this.setState({ competitor: name, competitorid: competitorid })
     }
-    CreateNotification = (leaderboardid) => {
+    CreateNotification = (leaderboardid,tutid) => {
         const form = {
             requestorid: localStorage.getItem("studid"),
             competitorid: this.state.competitorid,
-            leaderboardid: leaderboardid
+            leaderboardid: leaderboardid,
+            tutid: tutid
         }
         this.props.sendCompeteRequest(form);
-        this.props.history.push("/studentmain")
+        this.props.history.push("/challenger")
     }
     render() {
         var currentclass = this.props.leaderboard.filter(x => x.tutgrp === this.state.tutgrp && x.name !== this.state.name)
-        var classMates = [...new Set(currentclass.map(item => ({ name: item.name, studid: item.id })))];
+        var classMates = [...new Set(currentclass.map(item => ({ name: item.name, studid: item.studid })))];
         let competeDisplay = (this.state.competitor === '') ? <h3>My classmates</h3> : <h3>Competing with {this.state.competitor}</h3>;
         return (
             <div>

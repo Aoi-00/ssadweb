@@ -5,7 +5,8 @@ const initState = {
     completedtut: [],
     status: [],
     competitors: [],
-    challengers: []
+    challengers: [],
+    comment: []
 };
 
 const GameReducers = (state = initState, action) => {
@@ -49,6 +50,16 @@ const GameReducers = (state = initState, action) => {
             return {
                 ...state,
                 competitors: action.payload
+            }
+        case 'SEND_COMMENT':
+            return {
+                ...state,
+                status: action.payload
+            }
+        case 'GET_COMMENT':
+            return {
+                ...state,
+                comment: action.payload
             }
         default:
             return state;

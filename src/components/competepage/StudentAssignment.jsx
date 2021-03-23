@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn } from 'mdbreact';
 
 class StudentAssignment extends Component {
-    SendNotification = (leaderboardid) =>{
-        this.props.notification(leaderboardid)
+    SendNotification = (leaderboardid,tutid) =>{
+        this.props.notification(leaderboardid,tutid)
     }
     render() {
         let myCompletedtut = this.props.myTut.map(x => {
@@ -12,7 +12,7 @@ class StudentAssignment extends Component {
                     <td>{x.tutname}</td>
                     <td>{x.score}</td>
                     <td>{x.date}</td>
-                    <td><MDBBtn size="sm" color="green" onClick={() => this.SendNotification(x.id)}> Compete </MDBBtn></td>
+                    <td><MDBBtn size="sm" color="green" onClick={() => this.SendNotification(x.id,x.tutid)}> Compete </MDBBtn></td>
                 </tr>
             )
         })
