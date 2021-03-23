@@ -90,6 +90,7 @@ class StudentProfile extends Component {
         }
         this.props.facebookAccountLink(form)
     }
+    GoBack=() =>{this.props.history.push('/studentmain')}
 
     render() {
         let facebookBtn = (this.state.fbDisplay) ? <FacebookLogin appId="892789337958489"
@@ -134,6 +135,14 @@ class StudentProfile extends Component {
                                 color="blue"
                                 className="m-0 px-3 py-2 z-depth-0">
                                 Update Profile
+                            </MDBBtn>
+                            <br/>
+                            <br/>
+                            <MDBBtn
+                                onClick={this.GoBack}
+                                color="green"
+                                className="m-0 px-3 py-2 z-depth-0">
+                                Back
                             </MDBBtn>
                         </MDBCol>
                     </MDBRow>

@@ -62,6 +62,8 @@ class ProfessorProfile extends Component {
         this.props.history.push("/home")
     }
 
+    GoBack = ()=> { this.props.history.push("/home")}
+
     handleChange = (e) => { // to change state everytime you type -- question: value
         this.setState({
             [e.target.id]: e.target.value,
@@ -135,6 +137,14 @@ class ProfessorProfile extends Component {
                                 color="blue"
                                 className="m-0 px-3 py-2 z-depth-0">
                                 Update Profile
+                            </MDBBtn>
+                            <br />
+                            <br />
+                            <MDBBtn
+                                onClick={this.GoBack}
+                                color="green"
+                                className="m-0 px-3 py-2 z-depth-0">
+                                Back
                             </MDBBtn>
                         </MDBCol>
                     </MDBRow>

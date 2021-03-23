@@ -58,6 +58,10 @@ class Marking extends Component {
         this.props.updateScores(form)
         this.props.history.push("/seltut")
     }
+
+    GoBack = () => {
+        this.props.history.push("/seltut")
+    }
     render() {
         return (
             <React.Fragment>
@@ -83,7 +87,7 @@ class Marking extends Component {
                         <MDBCol size="6">
                             <br />
                             <h2>Marking</h2>
-                            <MarkScoreComment markComplete={this.MarkingComplete} inputChange={this.handleChange} record={this.props.record} />
+                            <MarkScoreComment markComplete={this.MarkingComplete} goBack = {this.GoBack} inputChange={this.handleChange} record={this.props.record} />
                         </MDBCol>
                     </MDBRow>
                 </MDBContainer>
