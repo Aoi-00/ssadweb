@@ -5,17 +5,26 @@ import PropTypes from 'prop-types'
 import { fetchPosts } from '../Redux/Actions/TwitterAction'
 import { fetchLeaderboard, myCompletedTutorial } from '../Redux/Actions/GameActions'
 import LeaderBoard from '../components/homepage/LeaderBoard'
-import StudentSubmit from '../components/StudentSubmit'
+import StudentSubmit from '../components/studentmainpage/StudentSubmit'
 import Navbar from '../components/share/Navbar'
 import Footer from '../components/share/Footer'
 
 
 class StudentMain extends Component {
+    state = {
+        studid: localStorage.getItem("studid")
+    }
     componentDidMount() {
         this.props.fetchLeaderboard();
         this.props.fetchPosts();
-        this.props.myCompletedTutorial();
+        this.getStudentSubmission()
         //console.log(this.props)
+    }
+    getStudentSubmission(){
+        const form = {
+            studid: this.state.studid
+        }
+        this.props.myCompletedTutorial(form);
     }
     NotLoggedIn = () => {
         this.props.history.push('/logout')

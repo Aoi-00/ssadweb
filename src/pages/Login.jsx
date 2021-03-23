@@ -10,7 +10,6 @@ class Login extends Component {
         this.props.history.push(val)
     }
     componentDidMount() {
-        console.log(localStorage.getItem("email"))
     }
     render() {
         return (
