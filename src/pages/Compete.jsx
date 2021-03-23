@@ -11,7 +11,8 @@ import { fetchLeaderboard, myCompletedTutorial } from '../Redux/Actions/GameActi
 class Compete extends Component {
     state = {
         tutgrp: localStorage.getItem("tutgrp"),
-        name: localStorage.getItem("name")
+        name: localStorage.getItem("name"),
+        competitor: ''
     }
     componentDidMount() {
         this.props.fetchLeaderboard();
@@ -23,10 +24,16 @@ class Compete extends Component {
         }
         this.props.myCompletedTutorial(form)
     }
+    CompetitorSelect = (name) =>{
+        this.setState({competitor: name})
+    }
+    CreateNotification = (leaderboardid) => {
+        console.log(leaderboardid)
+    }
     render() {
         var currentclass = this.props.leaderboard.filter(x => x.tutgrp === this.state.tutgrp)
         var classMates = [...new Set(currentclass.map(item => item.name))];
-
+        let competeDisplay = (this.state.competitor === '') ? <h3>My classmates</h3> : <h3>Competing with {this.state.competitor}</h3>;
         return (
             <div>
                 <Navbar />
@@ -34,14 +41,14 @@ class Compete extends Component {
                 <MDBContainer>
                     <MDBRow>
                         <MDBCol size="4">
-                            <h3>My classmates</h3>
+                            {competeDisplay}
                             <hr />
-                            <ClassmateList classmates={classMates} />
+                            <ClassmateList classmates={classMates} competitorSelect={this.CompetitorSelect} />
                         </MDBCol>
                         <MDBCol size="8">
                             <h3>Which Assignment to compete?</h3>
                             <hr />
-                            <StudentAssignment myTut={this.props.mytut} />
+                            <StudentAssignment myTut={this.props.mytut} notification={this.CreateNotification} />
                         </MDBCol>
                     </MDBRow>
                 </MDBContainer>

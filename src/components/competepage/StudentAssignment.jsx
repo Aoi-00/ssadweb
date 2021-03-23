@@ -3,11 +3,9 @@ import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn } from 'mdbreact';
 
 class StudentAssignment extends Component {
     SendNotification = (leaderboardid) =>{
-        //I've yet to create the function
-        console.log(leaderboardid)
+        this.props.notification(leaderboardid)
     }
     render() {
-        console.log(this.props.myTut)
         let myCompletedtut = this.props.myTut.map(x => {
             return (
                 <tr key={x.id}>
