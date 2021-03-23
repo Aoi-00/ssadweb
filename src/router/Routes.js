@@ -14,6 +14,7 @@ import StudentMain from '../pages/StudentMain';
 import StudentProfile from '../pages/StudentProfile';
 import ProfessorProfile from '../pages/ProfessorProfile';
 import StudentNews from '../pages/StudentNews';
+import Compete from '../pages/Compete';
 
 
 class Routes extends React.Component {
@@ -33,6 +34,7 @@ class Routes extends React.Component {
         <Route path='/studentprofile' component={StudentProfile} />
         <Route path='/professorprofile' component={ProfessorProfile} />
         <Route path='/studentnews' component={StudentNews} />
+        <Route path='/compete' component={Compete} />
         <Route render={() => <h1>Not Found</h1>} />
       </Switch>
     );

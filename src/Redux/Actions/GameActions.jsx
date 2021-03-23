@@ -55,3 +55,19 @@ export const updateScores = (postData) => dispatch => {
         })
         );
 }
+
+export const myCompletedTutorial = (postData) => dispatch => {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/student/completed/tut', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'MY_COMPLETED_TUT',
+            payload: data
+        })
+        );
+}

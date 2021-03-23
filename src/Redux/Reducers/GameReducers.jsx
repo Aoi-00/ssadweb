@@ -2,6 +2,7 @@ const initState = {
     records: [],
     studentlist: [],
     submission: [],
+    completedtut: [],
     status: []
 };
 
@@ -26,6 +27,11 @@ const GameReducers = (state = initState, action) => {
             return {
                 ...state,
                 status: action.payload
+            }
+        case 'MY_COMPLETED_TUT':
+            return {
+                ...state,
+                completedtut: action.payload
             }
         default:
             return state;
