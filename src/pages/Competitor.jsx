@@ -37,10 +37,13 @@ class Competitor extends Component {
     GoBack = () => {
         this.props.history.push('/challenger')
     }
+    NotLoggedIn = () => {
+        this.props.history.push('/logout')
+    }
     render() {
         return (
             <div>
-                <Navbar />
+                <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
                     <br />
                     <MDBRow>

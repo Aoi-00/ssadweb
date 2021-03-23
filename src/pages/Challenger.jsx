@@ -34,10 +34,13 @@ class Challenger extends Component {
     ViewChallenge = () =>{
         this.props.history.push('/challenge')
     }
+    NotLoggedIn = () => {
+        this.props.history.push('/logout')
+    }
     render() {
         return (
             <div>
-                <Navbar />
+                <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
                     <MDBRow>
                         <MDBCol>

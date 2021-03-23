@@ -39,13 +39,16 @@ class Compete extends Component {
         this.props.sendCompeteRequest(form);
         this.props.history.push("/challenger")
     }
+    NotLoggedIn = () => {
+        this.props.history.push('/logout')
+    }
     render() {
         var currentclass = this.props.leaderboard.filter(x => x.tutgrp === this.state.tutgrp && x.name !== this.state.name)
         var classMates = [...new Set(currentclass.map(item => ({ name: item.name, studid: item.studid })))];
         let competeDisplay = (this.state.competitor === '') ? <h3>My classmates</h3> : <h3>Competing with {this.state.competitor}</h3>;
         return (
             <div>
-                <Navbar />
+                <Navbar validateLogin={this.NotLoggedIn} />
                 <br />
                 <MDBContainer>
                     <MDBRow>

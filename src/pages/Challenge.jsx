@@ -33,11 +33,14 @@ class Challenge extends Component {
     GoBack = () => {
         this.props.history.push('/challenger')
     }
+    NotLoggedIn = () => {
+        this.props.history.push('/logout')
+    }
     render() {
         let comment = this.props.challengecomment.map(x => x.competitormsg)
         return (
             <div>
-                <Navbar />
+                <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
                     <br />
                     <MDBRow>

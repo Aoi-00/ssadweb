@@ -18,7 +18,6 @@ class StudentMain extends Component {
         this.props.fetchLeaderboard();
         this.props.fetchPosts();
         this.getStudentSubmission()
-        //console.log(this.props)
     }
     getStudentSubmission(){
         const form = {
