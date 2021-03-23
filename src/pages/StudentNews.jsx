@@ -16,6 +16,9 @@ class StudentNews extends Component {
             this.props.history.push("/home")
         this.props.fetchPosts();
     }
+    NotLoggedIn = () => {
+        this.props.history.push('/logout')
+    }
     render() {
         let twitterPosts = this.props.twitter.map(x => {
             return (
@@ -24,15 +27,15 @@ class StudentNews extends Component {
         })
         return (
             <div>
-                <Navbar />
+                <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
-                    <br/>
+                    <br />
                     <h2>NTU Assignment News</h2>
                     <hr />
                     <MDBRow>
                         {twitterPosts}
                     </MDBRow>
-                    <br/>
+                    <br />
                 </MDBContainer>
                 <Footer />
             </div>

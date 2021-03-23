@@ -33,6 +33,9 @@ class Assignment extends Component {
         }
         this.props.deleteTutorial(form)
     }
+    NotLoggedIn = () => {
+        this.props.history.push('/logout')
+    }
     AddTutorial = (form) => {
         //Submit data to my api
         this.props.addTutorial(form);
@@ -45,7 +48,7 @@ class Assignment extends Component {
     render() {
         return (
             <React.Fragment>
-                <Navbar />
+                <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
                 <br/>
                     <MDBRow>

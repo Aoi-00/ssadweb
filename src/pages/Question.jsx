@@ -22,6 +22,9 @@ class Question extends Component {
     componentDidMount() {
         this.getQuestions()
     }
+    NotLoggedIn = () => {
+        this.props.history.push('/logout')
+    }
     getTutGrp = () => {
         return localStorage.getItem("tutgrp")
     }
@@ -48,7 +51,7 @@ class Question extends Component {
     render() {
         return (
             <React.Fragment>
-                <Navbar />
+                <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
                     <MDBRow>
                         <MDBCol size="12">

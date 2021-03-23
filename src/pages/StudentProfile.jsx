@@ -29,7 +29,9 @@ class StudentProfile extends Component {
         this.getStudentDetails();
         this.props.showTutorials();
     }
-
+    NotLoggedIn = () => {
+        this.props.history.push('/logout')
+    }
     getStudentDetails() {
         const form = {
             id: this.state.studid
@@ -100,7 +102,7 @@ class StudentProfile extends Component {
         /> : <React.Fragment> You have successfully linked your account with facebook </React.Fragment>
         return (
             <React.Fragment>
-                <Navbar />
+                <Navbar validateLogin={this.NotLoggedIn} />
                 <br />
                 <MDBContainer>
                     <MDBRow>

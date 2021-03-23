@@ -20,6 +20,9 @@ class MarkingHome extends Component {
         }
         this.props.showUserTutorial(form);
     }
+    NotLoggedIn = () => {
+        this.props.history.push('/logout')
+    }
     ViewTutorial = (tutid) => {
         var tutgrp = this.props.tutorialtable.filter(x => x.tutid == tutid).map(z => z.tutgrp)
         localStorage.setItem("seltutgrp", tutgrp)
@@ -39,7 +42,7 @@ class MarkingHome extends Component {
         })
         return (
             <React.Fragment>
-                <Navbar />
+                <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
                     <br />
                     <MDBRow>

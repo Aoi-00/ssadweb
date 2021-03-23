@@ -23,6 +23,9 @@ class StudentSelect extends Component {
     ViewDetails = (submissionid, studid) => {
         this.props.history.push('/marking/' + submissionid + "/" + studid)
     }
+    NotLoggedIn = () => {
+        this.props.history.push('/logout')
+    }
     render() {
         let studentlist = this.props.students.map(x => {
             return (
@@ -36,7 +39,7 @@ class StudentSelect extends Component {
         })
         return (
             <React.Fragment>
-                <Navbar />
+                <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
                     <br />
                     <MDBRow>
@@ -59,7 +62,7 @@ class StudentSelect extends Component {
                         </MDBCol>
                     </MDBRow>
                 </MDBContainer>
-            <Footer />
+                <Footer />
             </React.Fragment>
         )
     }

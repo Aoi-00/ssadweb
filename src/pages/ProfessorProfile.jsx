@@ -22,7 +22,9 @@ class ProfessorProfile extends Component {
         fbid: localStorage.getItem("fbid"),
         fbDisplay: false
     }
-
+    NotLoggedIn = () => {
+        this.props.history.push('/logout')
+    }
     componentDidMount() {
         if (this.state.fbid == '') {
             this.setState({ fbDisplay: true })
@@ -101,7 +103,7 @@ class ProfessorProfile extends Component {
         /> : <React.Fragment> You have successfully linked your account with facebook </React.Fragment>
         return (
             <React.Fragment>
-                <Navbar />
+                <Navbar validateLogin={this.NotLoggedIn} />
                 <br />
                 <MDBContainer>
                     <MDBRow>

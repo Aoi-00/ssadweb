@@ -26,6 +26,9 @@ class Marking extends Component {
         this.getSubmission();
         this.getTutorialQuestions();
     }
+    NotLoggedIn = () => {
+        this.props.history.push('/logout')
+    }
     getSubmission() {
         const form = {
             id: this.state.submissionid,
@@ -61,7 +64,7 @@ class Marking extends Component {
     render() {
         return (
             <React.Fragment>
-                <Navbar />
+                <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
                     <br />
                     <MDBRow>

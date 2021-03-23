@@ -8,6 +8,10 @@ class Navbar extends Component {
         username: localStorage.getItem("name"),
         usertype: localStorage.getItem("usertype")
     };
+    componentDidMount(){
+        if(!this.state.username)
+            this.props.validateLogin()
+    }
     toggleCollapse = collapseID => () =>
         this.setState(prevState => ({
             collapseID: prevState.collapseID !== collapseID ? collapseID : ''

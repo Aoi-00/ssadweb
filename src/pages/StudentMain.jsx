@@ -17,16 +17,19 @@ class StudentMain extends Component {
         console.log(localStorage.getItem("email"));
         //console.log(this.props)
     }
+    NotLoggedIn = () => {
+        this.props.history.push('/logout')
+    }
     render() {
         return (
             <div>
-                <Navbar />
+                <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
                     <br />
                     <h2>LeaderBoard</h2>
                     <hr />
                     <LeaderBoard leaderboard={this.props.leaderboard} />
-                   
+
                     <br />
 
                     <h2>Personal Submission</h2>

@@ -21,6 +21,9 @@ class Home extends Component {
         this.props.fetchLeaderboard();
         this.props.fetchPosts();
     }
+    NotLoggedIn = () => {
+        this.props.history.push('/logout')
+    }
     render() {
         let twitterPosts = this.props.twitter.map(x => {
             return (
@@ -29,7 +32,7 @@ class Home extends Component {
         })
         return (
             <div>
-                <Navbar />
+                <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
                     <br />
                     <h2>LeaderBoard</h2>
