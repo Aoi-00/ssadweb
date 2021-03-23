@@ -8,8 +8,8 @@ class Navbar extends Component {
         username: localStorage.getItem("name"),
         usertype: localStorage.getItem("usertype")
     };
-    componentDidMount(){
-        if(!this.state.username)
+    componentDidMount() {
+        if (!this.state.username)
             this.props.validateLogin()
     }
     toggleCollapse = collapseID => () =>
@@ -114,6 +114,22 @@ class Navbar extends Component {
                                         to='/studentnews'
                                     >
                                         <strong>News</strong>
+                                    </MDBNavLink>
+                                </MDBNavItem>
+                                <MDBNavItem>
+                                    <MDBNavLink
+                                        onClick={this.closeCollapse('mainNavbarCollapse')}
+                                        to='/compete'
+                                    >
+                                        <strong>Compete</strong>
+                                    </MDBNavLink>
+                                </MDBNavItem>
+                                <MDBNavItem>
+                                    <MDBNavLink
+                                        onClick={this.closeCollapse('mainNavbarCollapse')}
+                                        to='/challenger'
+                                    >
+                                        <strong>Challengers</strong>
                                     </MDBNavLink>
                                 </MDBNavItem>
                                 <MDBNavItem>

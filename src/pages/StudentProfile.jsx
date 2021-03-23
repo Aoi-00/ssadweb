@@ -118,7 +118,7 @@ class StudentProfile extends Component {
                         <MDBCol size="7">
                             <h3>Update Profile</h3>
                             <hr />
-                            <MDBInput id='name' value={this.state.name} label="Full Name" icon="user" onChange={this.handleChange} >
+                            <MDBInput id='name' value={this.state.name} label="Full Name" icon="user" disabled onChange={this.handleChange} >
                             </MDBInput>
                             <MDBInput id='email' value={this.state.email} label="E-mail address" icon="envelope" onChange={this.handleChange} >
                             </MDBInput>

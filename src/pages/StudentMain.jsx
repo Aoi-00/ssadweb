@@ -3,7 +3,7 @@ import { MDBContainer, MDBRow, MDBCol } from "mdbreact"
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { fetchPosts } from '../Redux/Actions/TwitterAction'
-import { fetchLeaderboard } from '../Redux/Actions/GameActions'
+import { fetchLeaderboard, myCompletedTutorial } from '../Redux/Actions/GameActions'
 import LeaderBoard from '../components/homepage/LeaderBoard'
 import StudentSubmit from '../components/StudentSubmit'
 import Navbar from '../components/share/Navbar'
@@ -14,7 +14,7 @@ class StudentMain extends Component {
     componentDidMount() {
         this.props.fetchLeaderboard();
         this.props.fetchPosts();
-        console.log(localStorage.getItem("email"));
+        this.props.myCompletedTutorial();
         //console.log(this.props)
     }
     NotLoggedIn = () => {
@@ -33,7 +33,7 @@ class StudentMain extends Component {
                     <br />
 
                     <h2>Personal Submission</h2>
-                    <StudentSubmit leaderboard={this.props.leaderboard} />
+                    <StudentSubmit mycompletedtask={this.props.mycompletedtask} />
                 </MDBContainer>
                 <Footer />
             </div>
@@ -42,12 +42,14 @@ class StudentMain extends Component {
 }
 StudentMain.propTypes = {
     fetchPosts: PropTypes.func.isRequired,
-    fetchLeaderboard: PropTypes.func.isRequired
+    fetchLeaderboard: PropTypes.func.isRequired,
+    myCompletedTutorial:PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
     twitter: state.twitter.items,
-    leaderboard: state.game.records
+    leaderboard: state.game.records,
+    mycompletedtask: state.game.completedtut
 });
 
-export default connect(mapStateToProps, { fetchPosts, fetchLeaderboard })(StudentMain)
+export default connect(mapStateToProps, { fetchPosts, fetchLeaderboard, myCompletedTutorial })(StudentMain)

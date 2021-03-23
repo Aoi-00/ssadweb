@@ -14,7 +14,7 @@ class StudentSubmit extends Component {
         </tr>
       </MDBTableHead>
       <MDBTableBody>
-        {this.props.leaderboard && this.props.leaderboard.map(x => {
+        {this.props.mycompletedtask && this.props.mycompletedtask.map(x => {
           return(
         <tr key = {  x.studid }>
           <td>{x.name}</td>
