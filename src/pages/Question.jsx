@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
-import QuestionList from '../components/QuestionList'
-import AddQuestion from '../components/AddQuestion';
+import QuestionList from '../components/questionpage/QuestionList'
+import AddQuestion from '../components/questionpage/AddQuestion';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { showQuestion, addQuestion, deleteQuestion } from '../Redux/Actions/QuestActions'
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Navbar from '../components/share/Navbar';
+import Footer from '../components/share/Footer';
 
 class Question extends Component {
     state = {

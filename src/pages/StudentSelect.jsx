@@ -3,8 +3,8 @@ import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn, MDBContainer, MDBRow, MDB
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getStudents } from '../Redux/Actions/GameActions'
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Navbar from '../components/share/Navbar';
+import Footer from '../components/share/Footer';
 
 class StudentSelect extends Component {
     state = {

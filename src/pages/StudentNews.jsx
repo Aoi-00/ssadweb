@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
+import Footer from '../components/share/Footer'
+import Navbar from '../components/share/Navbar'
 import PropTypes from 'prop-types'
 import { fetchPosts } from '../Redux/Actions/TwitterAction'
 import { connect } from 'react-redux'
 import { MDBContainer, MDBRow } from "mdbreact"
-import TwitterCard from '../components/TwitterCard'
+import TwitterCard from '../components/homepage/TwitterCard'
 
 class StudentNews extends Component {
     state = {
@@ -27,7 +27,7 @@ class StudentNews extends Component {
                 <Navbar />
                 <MDBContainer>
                     <br/>
-                    <h2>NTU Twitter News</h2>
+                    <h2>NTU Assignment News</h2>
                     <hr />
                     <MDBRow>
                         {twitterPosts}

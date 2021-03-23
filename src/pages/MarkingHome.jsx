@@ -3,8 +3,8 @@ import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn, MDBContainer, MDBRow, MDB
 import { showTutorials, showUserTutorial } from '../Redux/Actions/TutorialAction'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Navbar from '../components/share/Navbar';
+import Footer from '../components/share/Footer';
 
 class MarkingHome extends Component {
     state = {
@@ -44,12 +44,12 @@ class MarkingHome extends Component {
                     <br />
                     <MDBRow>
                         <MDBCol size="12">
-                            <h2>Select Tutorial Group to Mark</h2>
+                            <h2>Select Assignment to Mark</h2>
                             <hr />
                             <MDBTable striped>
                                 <MDBTableHead>
                                     <tr>
-                                        <th>Tutorial Name</th>
+                                        <th>Assignment Name</th>
                                         <th>Tutorial Group</th>
                                         <th>Created by</th>
                                         <th>Select</th>

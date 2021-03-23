@@ -4,10 +4,10 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { fetchPosts } from '../Redux/Actions/TwitterAction'
 import { fetchLeaderboard } from '../Redux/Actions/GameActions'
-import LeaderBoard from '../components/LeaderBoard'
+import LeaderBoard from '../components/homepage/LeaderBoard'
 import StudentSubmit from '../components/StudentSubmit'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import Navbar from '../components/share/Navbar'
+import Footer from '../components/share/Footer'
 
 
 class StudentMain extends Component {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Footer from '../components/Footer'
-import GuestNavbar from '../components/GuestNavBar'
-import RegisterForm from '../components/RegisterForm'
+import Footer from '../components/share/Footer'
+import GuestNavbar from '../components/share/GuestNavBar'
+import RegisterForm from '../components/registerpage/RegisterForm'
 
 class Register extends Component {
     Navigate = (val) => {

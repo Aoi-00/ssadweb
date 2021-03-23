@@ -5,12 +5,12 @@ import Proptypes from 'prop-types'
 import { getStudentSubmission, updateScores } from '../Redux/Actions/GameActions'
 import { showQuestion } from '../Redux/Actions/QuestActions'
 import { getStudentInfo } from '../Redux/Actions/AuthAction'
-import StudentInfo from '../components/StudentInfo';
-import MarkDropDown from '../components/MarkDropDown';
-import MarkScoreComment from '../components/MarkScoreComment';
-import MarkPicture from '../components/MarkPicture'
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import StudentInfo from '../components/marking/StudentInfo';
+import MarkDropDown from '../components/marking/MarkDropDown';
+import MarkScoreComment from '../components/marking/MarkScoreComment';
+import MarkPicture from '../components/marking/MarkPicture'
+import Navbar from '../components/share/Navbar';
+import Footer from '../components/share/Footer';
 
 
 class Marking extends Component {

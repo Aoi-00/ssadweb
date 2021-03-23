@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, useLocation } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Question from '../pages/Question';
 import Home from '../pages/Home';
@@ -33,9 +33,7 @@ class Routes extends React.Component {
         <Route path='/studentprofile' component={StudentProfile} />
         <Route path='/professorprofile' component={ProfessorProfile} />
         <Route path='/studentnews' component={StudentNews} />
-        <Route
-          render={() => <h1>Not Found</h1>}
-        />
+        <Route render={() => <h1>Not Found</h1>} />
       </Switch>
     );
   }

@@ -1,14 +1,14 @@
 
 import React, { Component } from 'react'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdbreact";
-import TutorialTable from '../components/TutorialTable'
-import AddTutorial from '../components/AddTutorial'
+import TutorialTable from '../components/assignmentpage/TutorialTable'
+import AddTutorial from '../components/assignmentpage/AddTutorial'
 
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { showTutorials, deleteTutorial, addTutorial, showUserTutorial } from '../Redux/Actions/TutorialAction'
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Navbar from '../components/share/Navbar';
+import Footer from '../components/share/Footer';
 
 class Assignment extends Component {
     state = {

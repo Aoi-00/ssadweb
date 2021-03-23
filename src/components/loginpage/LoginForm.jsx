@@ -13,10 +13,10 @@ import {
   MDBAnimation,
   MDBNavLink
 } from "mdbreact";
-import "./css/index.css";
+import "../css/index.css";
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { emailLogin, facebookLogin } from '../Redux/Actions/AuthAction'
+import { emailLogin, facebookLogin } from '../../Redux/Actions/AuthAction'
 import FacebookLogin from 'react-facebook-login'
 
 class LoginForm extends React.Component {
