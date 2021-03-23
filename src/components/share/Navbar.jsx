@@ -125,6 +125,14 @@ class Navbar extends Component {
                                     </MDBNavLink>
                                 </MDBNavItem>
                                 <MDBNavItem>
+                                    <MDBNavLink
+                                        onClick={this.closeCollapse('mainNavbarCollapse')}
+                                        to='/challenger'
+                                    >
+                                        <strong>Challengers</strong>
+                                    </MDBNavLink>
+                                </MDBNavItem>
+                                <MDBNavItem>
                                     <MDBDropdown>
                                         <MDBDropdownToggle nav caret>
                                             <MDBIcon icon="user" /> {this.state.username}

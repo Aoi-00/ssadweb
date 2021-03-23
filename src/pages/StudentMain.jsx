@@ -14,7 +14,6 @@ class StudentMain extends Component {
     componentDidMount() {
         this.props.fetchLeaderboard();
         this.props.fetchPosts();
-        console.log(localStorage.getItem("email"));
         //console.log(this.props)
     }
     NotLoggedIn = () => {

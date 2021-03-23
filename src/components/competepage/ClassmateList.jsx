@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import { MDBListGroup, MDBListGroupItem, MDBBadge, MDBIcon } from 'mdbreact';
 
 class ClassmateList extends Component {
-    selectCompetitor = (name) =>{
-        this.props.competitorSelect(name)
+    selectCompetitor = (name, id) =>{
+        this.props.competitorSelect(name,id)
     }
+
     render() {
         let classmate = this.props.classmates.map(x => {
             return(
-                <MDBListGroupItem className="d-flex justify-content-between align-items-center" id={"item"+ x} onClick={() => this.selectCompetitor(x)} hover>{x}<MDBIcon icon="arrow-right" />
+                <MDBListGroupItem key={x.studid} className="d-flex justify-content-between align-items-center" onClick={() => this.selectCompetitor(x.name, x.studid)} hover>{x.name}<MDBIcon icon="arrow-right" />
                 </MDBListGroupItem>
             )
         })

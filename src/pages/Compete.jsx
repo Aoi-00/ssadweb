@@ -6,33 +6,40 @@ import ClassmateList from '../components/competepage/ClassmateList'
 import StudentAssignment from '../components/competepage/StudentAssignment'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { fetchLeaderboard, myCompletedTutorial } from '../Redux/Actions/GameActions'
+import { fetchLeaderboard, myCompletedTutorial, sendCompeteRequest } from '../Redux/Actions/GameActions'
 
 class Compete extends Component {
     state = {
         tutgrp: localStorage.getItem("tutgrp"),
         name: localStorage.getItem("name"),
-        competitor: ''
+        competitor: '',
+        competitorid: '',
     }
     componentDidMount() {
         this.props.fetchLeaderboard();
         this.getMycompletedTutList();
     }
-    getMycompletedTutList(){
+    getMycompletedTutList() {
         const form = {
             name: this.state.name
         }
         this.props.myCompletedTutorial(form)
     }
-    CompetitorSelect = (name) =>{
-        this.setState({competitor: name})
+    CompetitorSelect = (name,competitorid) => {
+        this.setState({ competitor: name, competitorid: competitorid })
     }
     CreateNotification = (leaderboardid) => {
-        console.log(leaderboardid)
+        const form = {
+            requestorid: localStorage.getItem("studid"),
+            competitorid: this.state.competitorid,
+            leaderboardid: leaderboardid
+        }
+        this.props.sendCompeteRequest(form);
+        this.props.history.push("/studentmain")
     }
     render() {
-        var currentclass = this.props.leaderboard.filter(x => x.tutgrp === this.state.tutgrp)
-        var classMates = [...new Set(currentclass.map(item => item.name))];
+        var currentclass = this.props.leaderboard.filter(x => x.tutgrp === this.state.tutgrp && x.name !== this.state.name)
+        var classMates = [...new Set(currentclass.map(item => ({ name: item.name, studid: item.id })))];
         let competeDisplay = (this.state.competitor === '') ? <h3>My classmates</h3> : <h3>Competing with {this.state.competitor}</h3>;
         return (
             <div>
@@ -60,7 +67,8 @@ class Compete extends Component {
 }
 Compete.propTypes = {
     fetchLeaderboard: PropTypes.func.isRequired,
-    myCompletedTutorial: PropTypes.func.isRequired
+    myCompletedTutorial: PropTypes.func.isRequired,
+    sendCompeteRequest: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -68,4 +76,4 @@ const mapStateToProps = state => ({
     mytut: state.game.completedtut
 });
 
-export default connect(mapStateToProps, { fetchLeaderboard, myCompletedTutorial })(Compete)
+export default connect(mapStateToProps, { fetchLeaderboard, myCompletedTutorial, sendCompeteRequest })(Compete)
