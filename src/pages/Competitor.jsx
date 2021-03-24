@@ -6,22 +6,40 @@ import CompetitorDetail from '../components/challengerpage/CompetitorDetail'
 import { connect } from 'react-redux'
 import Proptypes from 'prop-types'
 import { getStudentInfo } from '../Redux/Actions/AuthAction'
-import { sendComment } from '../Redux/Actions/GameActions'
+import { sendComment, getCurrentUserScore, getCompetitorScore } from '../Redux/Actions/GameActions'
 
 class Competitor extends Component {
     state = {
         studid: localStorage.getItem("compstudid"),
         compid: localStorage.getItem("compid"),
+        tutid: localStorage.getItem("comptutid"),
+        myldrid: localStorage.getItem("myldrid"),
         comment: ''
     }
     componentDidMount() {
+        console.log(this.state)
         this.getCompetitorDetails()
+        this.getCompetitorScoreBoard();
+        this.getMyScore();
     }
     getCompetitorDetails() {
         const form = {
             id: this.state.studid
         }
         this.props.getStudentInfo(form)
+    }
+    getCompetitorScoreBoard(){
+        const form = {
+            studid: this.state.studid,
+            tutid: this.state.tutid
+        }
+        this.props.getCompetitorScore(form)
+    }
+    getMyScore(){
+        const form = {
+            leaderboardid: this.state.myldrid
+        }
+        this.props.getCurrentUserScore(form)
     }
     SendComment = () => {
         const form = {
@@ -41,6 +59,11 @@ class Competitor extends Component {
         this.props.history.push('/logout')
     }
     render() {
+        //To Brendan
+        // Competitor Score Board
+        console.log(this.props.competitorscore)
+        // Current User Score Board
+        console.log(this.props.myScore)
         return (
             <div>
                 <Navbar validateLogin={this.NotLoggedIn} />
@@ -80,10 +103,14 @@ class Competitor extends Component {
 }
 Competitor.Proptypes = {
     getStudentInfo: Proptypes.func.isRequired,
-    sendComment: Proptypes.func.isRequired
+    sendComment: Proptypes.func.isRequired,
+    getCurrentUserScore: Proptypes.func.isRequired,
+    getCompetitorScore: Proptypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
     student: state.auth.studentinfo,
+    myScore: state.game.myscore,
+    competitorscore: state.game.competitor
 })
-export default connect(mapStateToProps, { getStudentInfo, sendComment })(Competitor)
+export default connect(mapStateToProps, { getStudentInfo, sendComment, getCurrentUserScore, getCompetitorScore })(Competitor)

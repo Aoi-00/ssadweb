@@ -6,7 +6,9 @@ const initState = {
     status: [],
     competitors: [],
     challengers: [],
-    comment: []
+    comment: [],
+    competitor: [],
+    myscore: []
 };
 
 const GameReducers = (state = initState, action) => {
@@ -60,6 +62,16 @@ const GameReducers = (state = initState, action) => {
             return {
                 ...state,
                 comment: action.payload
+            }
+        case 'GET_MY_SCORE':
+            return {
+                ...state,
+                myscore: action.payload
+            }
+        case 'GET_COMPETITOR_SCORE':
+            return {
+                ...state,
+                competitor: action.payload
             }
         default:
             return state;

@@ -53,3 +53,18 @@ export const showUserTutorial = (postData) => dispatch => {
         })
         );
 }
+export const showProfTutorial = (postData) => dispatch => {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/prof/tutlist', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'FETCH_PROF_TUTORIAL',
+            payload: data,
+        })
+        );
+}

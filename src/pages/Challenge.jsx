@@ -6,17 +6,21 @@ import { connect } from 'react-redux'
 import Proptypes from 'prop-types'
 import { getStudentInfo } from '../Redux/Actions/AuthAction'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput } from "mdbreact"
-import { getComment } from '../Redux/Actions/GameActions'
+import { getComment, getCurrentUserScore, getCompetitorScore } from '../Redux/Actions/GameActions'
 
 
 class Challenge extends Component {
     state = {
-        studid: localStorage.getItem("compstudid"),
+        studid: localStorage.getItem("mystudid"),
         compid: localStorage.getItem("compid"),
+        tutid: localStorage.getItem("comptutid"),
+        myldrid: localStorage.getItem("oppldrid"),
     }
     componentDidMount() {
         this.getCompetitorDetails()
         this.retrieveComment()
+        this.getMyScoreBoard()
+        this.getOppScore()
     }
     retrieveComment(){
         const form = {
@@ -30,6 +34,22 @@ class Challenge extends Component {
         }
         this.props.getStudentInfo(form)
     }
+    getMyScoreBoard(){
+        const form = {
+            studid: this.state.studid,
+            tutid: this.state.tutid
+        }
+        console.log(form)
+        //Call Same function coz it's the opposite of competitor
+        this.props.getCompetitorScore(form)
+    }
+    getOppScore(){
+        const form = {
+            leaderboardid: this.state.myldrid
+        }
+        //Call Same function coz it's the opposite of competitor
+        this.props.getCurrentUserScore(form)
+    }
     GoBack = () => {
         this.props.history.push('/challenger')
     }
@@ -37,6 +57,11 @@ class Challenge extends Component {
         this.props.history.push('/logout')
     }
     render() {
+        //Get Current user score
+        console.log(this.props.competitorscore)
+        // Current challenger Score Board
+        console.log(this.props.challengerScore)
+
         let comment = this.props.challengecomment.map(x => x.competitormsg)
         return (
             <div>
@@ -76,6 +101,8 @@ Challenge.Proptypes = {
 
 const mapStateToProps = state => ({
     student: state.auth.studentinfo,
-    challengecomment: state.game.comment
+    challengecomment: state.game.comment,
+    challengerScore: state.game.myscore,
+    competitorscore: state.game.competitor
 })
-export default connect(mapStateToProps, { getStudentInfo, getComment })(Challenge)
+export default connect(mapStateToProps, { getStudentInfo, getComment, getCompetitorScore, getCurrentUserScore })(Challenge)

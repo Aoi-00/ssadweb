@@ -150,3 +150,35 @@ export const getComment = (postData) => dispatch => {
         })
         );
 }
+
+export const getCurrentUserScore = (postData) => dispatch => {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/user/competitor', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'GET_MY_SCORE',
+            payload: data
+        })
+        );
+}
+
+export const getCompetitorScore = (postData) => dispatch => {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/competitor', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'GET_COMPETITOR_SCORE',
+            payload: data
+        })
+        );
+}

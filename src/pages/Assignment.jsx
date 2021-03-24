@@ -6,13 +6,14 @@ import AddTutorial from '../components/assignmentpage/AddTutorial'
 
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { showTutorials, deleteTutorial, addTutorial, showUserTutorial } from '../Redux/Actions/TutorialAction'
+import { showTutorials, deleteTutorial, addTutorial, showProfTutorial } from '../Redux/Actions/TutorialAction'
 import Navbar from '../components/share/Navbar';
 import Footer from '../components/share/Footer';
 
 class Assignment extends Component {
     state = {
-        tutgrp: localStorage.getItem("tutgrp")
+        tutgrp: localStorage.getItem("tutgrp"),
+        name: localStorage.getItem("name")
     }
     componentDidMount() {
         //this.props.showAllTutorials();
@@ -20,9 +21,10 @@ class Assignment extends Component {
     }
     GetTutorials = () => {
         const form = {
-            tutgrp: this.state.tutgrp
+            tutgrp: this.state.tutgrp,
+            name: this.state.name
         }
-        this.props.showUserTutorial(form);
+        this.props.showProfTutorial(form);
     }
     Navigate = (tutid) => {
         this.props.history.push('/question/' + tutid)
@@ -46,6 +48,7 @@ class Assignment extends Component {
     }
 
     render() {
+        console.log(this.props.tutorialtable)
         return (
             <React.Fragment>
                 <Navbar validateLogin={this.NotLoggedIn} />
@@ -73,7 +76,7 @@ Assignment.propTypes = {
     showTutorials: PropTypes.func.isRequired,
     deleteTutorial: PropTypes.func.isRequired,
     addTutorial: PropTypes.func.isRequired,
-    showUserTutorial: PropTypes.func.isRequired
+    showProfTutorial: PropTypes.func.isRequired
 }
 
 //This is from the Reducers
@@ -83,4 +86,4 @@ const mapStateToProps = state => ({
 });
 
 // connection this component to database.
-export default connect(mapStateToProps, { showUserTutorial, showTutorials, deleteTutorial, addTutorial })(Assignment)
+export default connect(mapStateToProps, { showProfTutorial, showTutorials, deleteTutorial, addTutorial })(Assignment)
