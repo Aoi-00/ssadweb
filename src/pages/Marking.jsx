@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import { MDBContainer, MDBRow, MDBCol, MDBAnimation } from "mdbreact";
 import { connect } from 'react-redux'
 import Proptypes from 'prop-types'
 import { getStudentSubmission, updateScores } from '../Redux/Actions/GameActions'
@@ -71,28 +71,38 @@ class Marking extends Component {
                 <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
                     <br />
-                    <MDBRow>
-                        <MDBCol size="6">
-                            <h2>Student Details</h2>
-                            <hr />
-                            <StudentInfo student={this.props.student} />
-                        </MDBCol>
-                        <MDBCol size="6">
-                            <h2>Students Answer</h2>
-                            <hr />
-                            <MarkPicture record={this.props.record} />
-                        </MDBCol>
-                        <MDBCol size="6">
-                            <br></br>
-                            <h2>Answer Key</h2>
-                            <MarkDropDown questions={this.props.questionlist} />
-                        </MDBCol>
-                        <MDBCol size="6">
-                            <br />
-                            <h2>Marking</h2>
-                            <MarkScoreComment markComplete={this.MarkingComplete} goBack = {this.GoBack} inputChange={this.handleChange} record={this.props.record} />
-                        </MDBCol>
-                    </MDBRow>
+
+                    <MDBAnimation type="slideInDown">
+                        <MDBRow>
+                            <MDBCol size="6">
+                                <h2>Student Details</h2>
+                                <hr />
+                                <StudentInfo student={this.props.student} />
+                            </MDBCol>
+                            <MDBCol size="6">
+                                <h2>Students Answer</h2>
+                                <hr />
+                                <MarkPicture record={this.props.record} />
+                            </MDBCol>
+                        </MDBRow>
+                    </MDBAnimation>
+
+                    <MDBAnimation type="slideInUp">
+                        <MDBRow>
+
+                            <MDBCol size="6">
+                                <br></br>
+                                <h2>Answer Key</h2>
+                                <MarkDropDown questions={this.props.questionlist} />
+                            </MDBCol>
+                            <MDBCol size="6">
+                                <br />
+                                <h2>Marking</h2>
+                                <MarkScoreComment markComplete={this.MarkingComplete} goBack={this.GoBack} inputChange={this.handleChange} record={this.props.record} />
+                            </MDBCol>
+                        </MDBRow>
+                    </MDBAnimation>
+
                 </MDBContainer>
                 <Footer />
             </React.Fragment>

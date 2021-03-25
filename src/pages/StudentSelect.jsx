@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn, MDBContainer, MDBRow, MDBCol } from 'mdbreact';
+import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn, MDBContainer, MDBRow, MDBCol, MDBAnimation } from 'mdbreact';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getStudents } from '../Redux/Actions/GameActions'
@@ -23,7 +23,7 @@ class StudentSelect extends Component {
     ViewDetails = (submissionid, studid) => {
         this.props.history.push('/marking/' + submissionid + "/" + studid)
     }
-    GoBack = () => {this.props.history.push('/seltut')}
+    GoBack = () => { this.props.history.push('/seltut') }
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
@@ -43,27 +43,29 @@ class StudentSelect extends Component {
                 <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
                     <br />
-                    <MDBRow>
-                        <MDBCol size="12">
-                            <h2>Select Student to Mark from Group: {this.state.tutgrp}</h2>
-                            <hr />
-                            <MDBTable striped>
-                                <MDBTableHead>
-                                    <tr>
-                                        <th>Student Name</th>
-                                        <th>Date Submitted</th>
-                                        <th>Tutorial Group</th>
-                                        <th>Select</th>
-                                    </tr>
-                                </MDBTableHead>
-                                <MDBTableBody>
-                                    {studentlist}
-                                </MDBTableBody>
-                            </MDBTable>
-                        </MDBCol>
-                    </MDBRow>
-                    <MDBBtn color="green" onClick = {this.GoBack} > Back
+                    <MDBAnimation type="slideInDown" >
+                        <MDBRow>
+                            <MDBCol size="12">
+                                <h2>Select Student to Mark from Group: {this.state.tutgrp}</h2>
+                                <hr />
+                                <MDBTable striped>
+                                    <MDBTableHead>
+                                        <tr>
+                                            <th>Student Name</th>
+                                            <th>Date Submitted</th>
+                                            <th>Tutorial Group</th>
+                                            <th>Select</th>
+                                        </tr>
+                                    </MDBTableHead>
+                                    <MDBTableBody>
+                                        {studentlist}
+                                    </MDBTableBody>
+                                </MDBTable>
+                            </MDBCol>
+                        </MDBRow>
+                        <MDBBtn color="green" onClick={this.GoBack} > Back
                        </MDBBtn>
+                    </MDBAnimation>
                 </MDBContainer>
                 <Footer />
             </React.Fragment>
