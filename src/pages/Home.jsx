@@ -4,10 +4,10 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { fetchPosts } from '../Redux/Actions/TwitterAction'
 import { fetchLeaderboard } from '../Redux/Actions/GameActions'
-import LeaderBoard from '../components/LeaderBoard'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import TwitterCard from '../components/TwitterCard'
+import LeaderBoard from '../components/homepage/LeaderBoard'
+import Navbar from '../components/share/Navbar'
+import Footer from '../components/share/Footer'
+import TwitterCard from '../components/homepage/TwitterCard'
 
 
 
@@ -21,6 +21,9 @@ class Home extends Component {
         this.props.fetchLeaderboard();
         this.props.fetchPosts();
     }
+    NotLoggedIn = () => {
+        this.props.history.push('/logout')
+    }
     render() {
         let twitterPosts = this.props.twitter.map(x => {
             return (
@@ -29,7 +32,7 @@ class Home extends Component {
         })
         return (
             <div>
-                <Navbar />
+                <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
                     <br />
                     <h2>LeaderBoard</h2>

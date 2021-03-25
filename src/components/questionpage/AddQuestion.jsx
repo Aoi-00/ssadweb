@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { MDBInput, MDBBtn } from 'mdbreact';
 
 import { connect } from 'react-redux'
-import { addQuestion } from '../Redux/Actions/QuestActions'
+import { addQuestion } from '../../Redux/Actions/QuestActions'
 
 class AddQuestion extends Component {
     state = {

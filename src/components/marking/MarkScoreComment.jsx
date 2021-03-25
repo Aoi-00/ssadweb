@@ -1,7 +1,7 @@
 import React from "react";
 import { MDBInput, MDBBtn } from 'mdbreact';
 
-const MarkScoreComment = ({ record, inputChange, markComplete }) => {
+const MarkScoreComment = ({ record, inputChange, markComplete, goBack }) => {
   return (
     <div>
       {record.map(x => {
@@ -15,7 +15,10 @@ const MarkScoreComment = ({ record, inputChange, markComplete }) => {
             </div>
             <div className="text-center">
               <MDBBtn color="blue" onClick={markComplete}>Submit</MDBBtn>
+              <MDBBtn color="green" onClick = {goBack} > Back
+                       </MDBBtn>
             </div>
+            
           </form>
         )
       })

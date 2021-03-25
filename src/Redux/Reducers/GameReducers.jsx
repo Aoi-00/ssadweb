@@ -2,7 +2,13 @@ const initState = {
     records: [],
     studentlist: [],
     submission: [],
-    status: []
+    completedtut: [],
+    status: [],
+    competitors: [],
+    challengers: [],
+    comment: [],
+    competitor: [],
+    myscore: []
 };
 
 const GameReducers = (state = initState, action) => {
@@ -26,6 +32,46 @@ const GameReducers = (state = initState, action) => {
             return {
                 ...state,
                 status: action.payload
+            }
+        case 'MY_COMPLETED_TUT':
+            return {
+                ...state,
+                completedtut: action.payload
+            }
+        case 'SEND_COMPETE_REQUEST':
+            return {
+                ...state,
+                status: action.payload
+            }
+        case 'GET_CHALLENGERS':
+            return {
+                ...state,
+                challengers: action.payload
+            }
+        case 'GET_COMPETITORS':
+            return {
+                ...state,
+                competitors: action.payload
+            }
+        case 'SEND_COMMENT':
+            return {
+                ...state,
+                status: action.payload
+            }
+        case 'GET_COMMENT':
+            return {
+                ...state,
+                comment: action.payload
+            }
+        case 'GET_MY_SCORE':
+            return {
+                ...state,
+                myscore: action.payload
+            }
+        case 'GET_COMPETITOR_SCORE':
+            return {
+                ...state,
+                competitor: action.payload
             }
         default:
             return state;

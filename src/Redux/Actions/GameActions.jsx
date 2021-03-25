@@ -55,3 +55,130 @@ export const updateScores = (postData) => dispatch => {
         })
         );
 }
+
+export const myCompletedTutorial = (postData) => dispatch => {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/student/completed/tut', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'MY_COMPLETED_TUT',
+            payload: data
+        })
+        );
+}
+
+export const sendCompeteRequest = (postData) => dispatch => {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/start/compete', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'SEND_COMPETE_REQUEST',
+            payload: data
+        })
+        );
+}
+
+export const getChallengers = (postData) => dispatch => {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/get/challengers', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'GET_CHALLENGERS',
+            payload: data
+        })
+        );
+}
+
+export const getMyCompetitors = (postData) => dispatch => {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/get/competitors', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'GET_COMPETITORS',
+            payload: data
+        })
+        );
+}
+
+export const sendComment = (postData) => dispatch => {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/send/comment', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'SEND_COMMENT',
+            payload: data
+        })
+        );
+}
+export const getComment = (postData) => dispatch => {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/get/comment', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'GET_COMMENT',
+            payload: data
+        })
+        );
+}
+
+export const getCurrentUserScore = (postData) => dispatch => {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/user/competitor', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'GET_MY_SCORE',
+            payload: data
+        })
+        );
+}
+
+export const getCompetitorScore = (postData) => dispatch => {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/competitor', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'GET_COMPETITOR_SCORE',
+            payload: data
+        })
+        );
+}

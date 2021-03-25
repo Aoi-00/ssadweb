@@ -5,12 +5,12 @@ import Proptypes from 'prop-types'
 import { getStudentSubmission, updateScores } from '../Redux/Actions/GameActions'
 import { showQuestion } from '../Redux/Actions/QuestActions'
 import { getStudentInfo } from '../Redux/Actions/AuthAction'
-import StudentInfo from '../components/StudentInfo';
-import MarkDropDown from '../components/MarkDropDown';
-import MarkScoreComment from '../components/MarkScoreComment';
-import MarkPicture from '../components/MarkPicture'
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import StudentInfo from '../components/marking/StudentInfo';
+import MarkDropDown from '../components/marking/MarkDropDown';
+import MarkScoreComment from '../components/marking/MarkScoreComment';
+import MarkPicture from '../components/marking/MarkPicture'
+import Navbar from '../components/share/Navbar';
+import Footer from '../components/share/Footer';
 
 
 class Marking extends Component {
@@ -25,6 +25,9 @@ class Marking extends Component {
         this.getStudentDetails();
         this.getSubmission();
         this.getTutorialQuestions();
+    }
+    NotLoggedIn = () => {
+        this.props.history.push('/logout')
     }
     getSubmission() {
         const form = {
@@ -58,10 +61,14 @@ class Marking extends Component {
         this.props.updateScores(form)
         this.props.history.push("/seltut")
     }
+
+    GoBack = () => {
+        this.props.history.push("/seltut")
+    }
     render() {
         return (
             <React.Fragment>
-                <Navbar />
+                <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
                     <br />
                     <MDBRow>
@@ -83,7 +90,7 @@ class Marking extends Component {
                         <MDBCol size="6">
                             <br />
                             <h2>Marking</h2>
-                            <MarkScoreComment markComplete={this.MarkingComplete} inputChange={this.handleChange} record={this.props.record} />
+                            <MarkScoreComment markComplete={this.MarkingComplete} goBack = {this.GoBack} inputChange={this.handleChange} record={this.props.record} />
                         </MDBCol>
                     </MDBRow>
                 </MDBContainer>

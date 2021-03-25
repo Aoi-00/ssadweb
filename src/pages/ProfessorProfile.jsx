@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput, MDBInputGroup } from "mdbreact"
-import Uploadfile from '../components/Uploadfile'
-import StudentInfo from '../components/StudentInfo'
+import Uploadfile from '../components/share/Uploadfile'
+import StudentInfo from '../components/marking/StudentInfo'
 import { connect } from 'react-redux'
 import Proptypes from 'prop-types'
 import { getProfInfo, updateProfile, facebookAccountLink } from '../Redux/Actions/AuthAction'
 import { showTutorials } from '../Redux/Actions/TutorialAction'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import Navbar from '../components/share/Navbar'
+import Footer from '../components/share/Footer'
 import FacebookLogin from 'react-facebook-login'
-import ProfProfileCard from '../components/ProfProfileCard'
+import ProfProfileCard from '../components/profprofile/ProfProfileCard'
 
 class ProfessorProfile extends Component {
 
@@ -22,7 +22,9 @@ class ProfessorProfile extends Component {
         fbid: localStorage.getItem("fbid"),
         fbDisplay: false
     }
-
+    NotLoggedIn = () => {
+        this.props.history.push('/logout')
+    }
     componentDidMount() {
         if (this.state.fbid == '') {
             this.setState({ fbDisplay: true })
@@ -61,6 +63,8 @@ class ProfessorProfile extends Component {
         localStorage.setItem("fbid", this.state.fbid)
         this.props.history.push("/home")
     }
+
+    GoBack = ()=> { this.props.history.push("/home")}
 
     handleChange = (e) => { // to change state everytime you type -- question: value
         this.setState({
@@ -101,7 +105,7 @@ class ProfessorProfile extends Component {
         /> : <React.Fragment> You have successfully linked your account with facebook </React.Fragment>
         return (
             <React.Fragment>
-                <Navbar />
+                <Navbar validateLogin={this.NotLoggedIn} />
                 <br />
                 <MDBContainer>
                     <MDBRow>
@@ -135,6 +139,14 @@ class ProfessorProfile extends Component {
                                 color="blue"
                                 className="m-0 px-3 py-2 z-depth-0">
                                 Update Profile
+                            </MDBBtn>
+                            <br />
+                            <br />
+                            <MDBBtn
+                                onClick={this.GoBack}
+                                color="green"
+                                className="m-0 px-3 py-2 z-depth-0">
+                                Back
                             </MDBBtn>
                         </MDBCol>
                     </MDBRow>

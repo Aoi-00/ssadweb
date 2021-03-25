@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
+import Footer from '../components/share/Footer'
+import Navbar from '../components/share/Navbar'
 import PropTypes from 'prop-types'
 import { fetchPosts } from '../Redux/Actions/TwitterAction'
 import { connect } from 'react-redux'
-import { MDBContainer, MDBRow } from "mdbreact"
-import TwitterCard from '../components/TwitterCard'
+import { MDBContainer, MDBRow, MDBBtn } from "mdbreact"
+
+
+import TwitterCard from '../components/homepage/TwitterCard'
 
 class StudentNews extends Component {
     state = {
@@ -16,6 +18,11 @@ class StudentNews extends Component {
             this.props.history.push("/home")
         this.props.fetchPosts();
     }
+
+    GoBack=() => {this.props.history.push("/studentmain")}
+    NotLoggedIn = () => {
+        this.props.history.push('/logout')
+    }
     render() {
         let twitterPosts = this.props.twitter.map(x => {
             return (
@@ -24,15 +31,18 @@ class StudentNews extends Component {
         })
         return (
             <div>
-                <Navbar />
+                <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
-                    <br/>
-                    <h2>NTU Twitter News</h2>
+                    <br />
+                    <h2>NTU Assignment News</h2>
                     <hr />
                     <MDBRow>
                         {twitterPosts}
                     </MDBRow>
                     <br/>
+                    <MDBBtn color="green" onClick = {this.GoBack} > Back
+                       </MDBBtn>
+                    <br />
                 </MDBContainer>
                 <Footer />
             </div>

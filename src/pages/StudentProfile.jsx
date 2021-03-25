@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput, MDBInputGroup } from "mdbreact"
-import Uploadfile from '../components/Uploadfile'
+import Uploadfile from '../components/share/Uploadfile'
 import { connect } from 'react-redux'
 import Proptypes from 'prop-types'
 import { getStudentInfo, updateProfile, facebookAccountLink } from '../Redux/Actions/AuthAction'
 import { showTutorials } from '../Redux/Actions/TutorialAction'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import Navbar from '../components/share/Navbar'
+import Footer from '../components/share/Footer'
 import FacebookLogin from 'react-facebook-login'
-import StudentProfileCard from '../components/StudentProfileCard'
+import StudentProfileCard from '../components/studentprofile/StudentProfileCard'
 
 class StudentProfile extends Component {
 
@@ -29,7 +29,9 @@ class StudentProfile extends Component {
         this.getStudentDetails();
         this.props.showTutorials();
     }
-
+    NotLoggedIn = () => {
+        this.props.history.push('/logout')
+    }
     getStudentDetails() {
         const form = {
             id: this.state.studid
@@ -90,6 +92,7 @@ class StudentProfile extends Component {
         }
         this.props.facebookAccountLink(form)
     }
+    GoBack=() =>{this.props.history.push('/studentmain')}
 
     render() {
         let facebookBtn = (this.state.fbDisplay) ? <FacebookLogin appId="892789337958489"
@@ -100,7 +103,7 @@ class StudentProfile extends Component {
         /> : <React.Fragment> You have successfully linked your account with facebook </React.Fragment>
         return (
             <React.Fragment>
-                <Navbar />
+                <Navbar validateLogin={this.NotLoggedIn} />
                 <br />
                 <MDBContainer>
                     <MDBRow>
@@ -115,7 +118,7 @@ class StudentProfile extends Component {
                         <MDBCol size="7">
                             <h3>Update Profile</h3>
                             <hr />
-                            <MDBInput id='name' value={this.state.name} label="Full Name" icon="user" onChange={this.handleChange} >
+                            <MDBInput id='name' value={this.state.name} label="Full Name" icon="user" disabled onChange={this.handleChange} >
                             </MDBInput>
                             <MDBInput id='email' value={this.state.email} label="E-mail address" icon="envelope" onChange={this.handleChange} >
                             </MDBInput>
@@ -134,6 +137,14 @@ class StudentProfile extends Component {
                                 color="blue"
                                 className="m-0 px-3 py-2 z-depth-0">
                                 Update Profile
+                            </MDBBtn>
+                            <br/>
+                            <br/>
+                            <MDBBtn
+                                onClick={this.GoBack}
+                                color="green"
+                                className="m-0 px-3 py-2 z-depth-0">
+                                Back
                             </MDBBtn>
                         </MDBCol>
                     </MDBRow>

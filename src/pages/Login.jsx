@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Footer from '../components/Footer'
-import GuestNavbar from '../components/GuestNavBar'
-import LoginForm from '../components/LoginForm'
+import Footer from '../components/share/Footer'
+import GuestNavbar from '../components/share/GuestNavBar'
+import LoginForm from '../components/loginpage/LoginForm'
 
 
 
@@ -10,7 +10,6 @@ class Login extends Component {
         this.props.history.push(val)
     }
     componentDidMount() {
-        console.log(localStorage.getItem("email"))
     }
     render() {
         return (

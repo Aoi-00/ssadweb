@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { MDBInput, MDBBtn } from 'mdbreact';
 
 import { connect } from 'react-redux'
-import { addTutorial } from '../Redux/Actions/TutorialAction'
+import { addTutorial } from '../../Redux/Actions/TutorialAction'
 
 class AddTutorial extends Component {
     state = {
