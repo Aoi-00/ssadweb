@@ -41,21 +41,20 @@ class Challenger extends Component {
         return (
             <div>
                 <Navbar validateLogin={this.NotLoggedIn} />
-                <MDBContainer>
+                <MDBContainer >
                     <MDBRow>
-                        <MDBCol>
+                        <MDBCol size = "12">
                             <h3>My Competitors Request</h3>
                             <hr />
                             <Competitorlist navigate={this.ViewCompetition} myCompetitors={this.props.competitors} />
                         </MDBCol>
-                    </MDBRow>
-
-                    <MDBRow>
-                        <MDBCol>
+                        <MDBCol size = "12" >
                             <h3>My Challengers</h3>
                             <hr />
                             <Challengerlist navigate={this.ViewChallenge} myChallenger={this.props.challengers} />
                         </MDBCol>
+                   
+                        
                     </MDBRow>
                 </MDBContainer>
                 <Footer />
