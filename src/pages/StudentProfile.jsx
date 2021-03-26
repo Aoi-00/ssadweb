@@ -11,7 +11,6 @@ import FacebookLogin from 'react-facebook-login'
 import StudentProfileCard from '../components/studentprofile/StudentProfileCard'
 
 class StudentProfile extends Component {
-
     state = {
         tutgrp: localStorage.getItem("tutgrp"),
         studid: localStorage.getItem("studid"),
