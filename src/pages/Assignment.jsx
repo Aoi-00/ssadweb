@@ -54,19 +54,23 @@ class Assignment extends Component {
                 <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
                     <br />
-                    <MDBAnimation type="pulse" duration= "1s">
+                    
                         <MDBRow >
                             <MDBCol>
+                            <MDBAnimation type="slideInDown" >
                                 <h2>Assignment List</h2>
                                 <hr />
                                 <TutorialTable deleteTut={this.DelTutorial} navigate={this.Navigate} tutorial={this.props.tutorialtable} />
+                                </MDBAnimation>
+                                <MDBAnimation type="slideInUp">
                                 <br />
                                 <h3>Assignment Creation</h3>
                                 <hr />
                                 <AddTutorial addTut={this.AddTutorial} onBack={this.OnBack} />
+                                </MDBAnimation>
                             </MDBCol>
                         </MDBRow>
-                    </MDBAnimation>
+                    
                 </MDBContainer>
                 <Footer />
             </React.Fragment>
