@@ -1,5 +1,5 @@
 import React from 'react';
-import { MDBDataTableV5, MDBLink, MDBIcon } from 'mdbreact';
+import { MDBDataTableV5, MDBAnimation } from 'mdbreact';
 
 export default function Pagination({ leaderboard }) {
   const [datatable, setDatatable] = React.useState({

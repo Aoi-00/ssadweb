@@ -4,7 +4,7 @@ import Navbar from '../components/share/Navbar'
 import PropTypes from 'prop-types'
 import { fetchPosts } from '../Redux/Actions/TwitterAction'
 import { connect } from 'react-redux'
-import { MDBContainer, MDBRow, MDBBtn } from "mdbreact"
+import { MDBContainer, MDBRow, MDBBtn,MDBAnimation } from "mdbreact"
 
 
 import TwitterCard from '../components/homepage/TwitterCard'
@@ -32,6 +32,7 @@ class StudentNews extends Component {
         return (
             <div>
                 <Navbar validateLogin={this.NotLoggedIn} />
+                <MDBAnimation type="slideInUp" count={1}>
                 <MDBContainer>
                     <br />
                     <h2>NTU Assignment News</h2>
@@ -44,6 +45,7 @@ class StudentNews extends Component {
                        </MDBBtn>
                     <br />
                 </MDBContainer>
+                </MDBAnimation>
                 <Footer />
             </div>
         )

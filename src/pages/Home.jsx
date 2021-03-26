@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { MDBContainer, MDBRow, MDBCol } from "mdbreact"
+import { MDBContainer, MDBRow, MDBCol, MDBAnimation } from "mdbreact"
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { fetchPosts } from '../Redux/Actions/TwitterAction'
@@ -16,7 +16,7 @@ class Home extends Component {
         usertype: localStorage.getItem("usertype")
     }
     componentDidMount() {
-        if(this.state.usertype == "Student")
+        if (this.state.usertype == "Student")
             this.props.history.push("/studentmain")
         this.props.fetchLeaderboard();
         this.props.fetchPosts();
@@ -34,17 +34,23 @@ class Home extends Component {
             <div>
                 <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
-                    <br />
-                    <h2>LeaderBoard</h2>
-                    <hr />
-                    <LeaderBoard leaderboard={this.props.leaderboard} />
-                    <br />
-                    <h2>NTU Twitter News</h2>
-                    <hr />
-                    <MDBRow>
-                        {twitterPosts}
-                    </MDBRow>
+                    <MDBAnimation type="slideInDown" count={1}>
+                        <br />
+                        <h2>LeaderBoard</h2>
+                        <hr />
+                        <LeaderBoard leaderboard={this.props.leaderboard} />
+                        <br />
+                    </MDBAnimation >
+                    <MDBAnimation type="slideInUp" count={1}>
+                        <h2>NTU Twitter News</h2>
+                        <hr />
+                        <MDBRow>
+                            {twitterPosts}
+                        </MDBRow>
+                    </MDBAnimation>
+
                 </MDBContainer>
+
                 <Footer />
             </div>
         )

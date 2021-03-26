@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Footer from '../components/share/Footer'
 import Navbar from '../components/share/Navbar'
-import { MDBContainer, MDBRow, MDBCol } from "mdbreact"
+import { MDBContainer, MDBRow, MDBCol, MDBAnimation } from "mdbreact"
 import ClassmateList from '../components/competepage/ClassmateList'
 import StudentAssignment from '../components/competepage/StudentAssignment'
 import { connect } from 'react-redux'
@@ -26,10 +26,10 @@ class Compete extends Component {
         }
         this.props.myCompletedTutorial(form)
     }
-    CompetitorSelect = (name,competitorid) => {
+    CompetitorSelect = (name, competitorid) => {
         this.setState({ competitor: name, competitorid: competitorid })
     }
-    CreateNotification = (leaderboardid,tutid) => {
+    CreateNotification = (leaderboardid, tutid) => {
         const form = {
             requestorid: localStorage.getItem("studid"),
             competitorid: this.state.competitorid,
@@ -52,16 +52,24 @@ class Compete extends Component {
                 <br />
                 <MDBContainer>
                     <MDBRow>
+
                         <MDBCol size="4">
-                            {competeDisplay}
-                            <hr />
-                            <ClassmateList classmates={classMates} competitorSelect={this.CompetitorSelect} />
+                            <MDBAnimation type="slideInLeft" >
+                                {competeDisplay}
+                                <hr />
+                                <ClassmateList classmates={classMates} competitorSelect={this.CompetitorSelect} />
+                            </MDBAnimation>
                         </MDBCol>
+
+
                         <MDBCol size="8">
-                            <h3>Which Assignment to compete?</h3>
-                            <hr />
-                            <StudentAssignment myTut={this.props.mytut} notification={this.CreateNotification} />
+                            <MDBAnimation type="slideInRight" >
+                                <h3>Which Assignment to compete?</h3>
+                                <hr />
+                                <StudentAssignment myTut={this.props.mytut} notification={this.CreateNotification} />
+                            </MDBAnimation>
                         </MDBCol>
+
                     </MDBRow>
                 </MDBContainer>
                 <br />

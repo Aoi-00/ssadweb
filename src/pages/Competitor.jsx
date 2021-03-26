@@ -59,12 +59,14 @@ class Competitor extends Component {
         this.props.history.push('/logout')
     }
     render() {
+        console.log(this.comment)
         //To Brendan
         // Competitor Score Board
         console.log(this.props.competitorscore)
         // Current User Score Board
         console.log(this.props.myScore)
         return (
+            
             <div>
                 <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>

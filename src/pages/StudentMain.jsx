@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { MDBContainer, MDBRow, MDBCol } from "mdbreact"
+import { MDBContainer, MDBRow, MDBCol, MDBAnimation } from "mdbreact"
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { fetchPosts } from '../Redux/Actions/TwitterAction'
@@ -32,16 +32,20 @@ class StudentMain extends Component {
         return (
             <div>
                 <Navbar validateLogin={this.NotLoggedIn} />
+                
                 <MDBContainer>
+                <MDBAnimation type="slideInDown" count={1}>
                     <br />
                     <h2>LeaderBoard</h2>
                     <hr />
                     <LeaderBoard leaderboard={this.props.leaderboard} />
-
+                    </MDBAnimation>
+                    <MDBAnimation type="slideInUp" count={1}>
                     <br />
 
                     <h2>Personal Submission</h2>
                     <StudentSubmit mycompletedtask={this.props.mycompletedtask} />
+                    </MDBAnimation>
                 </MDBContainer>
                 <Footer />
             </div>

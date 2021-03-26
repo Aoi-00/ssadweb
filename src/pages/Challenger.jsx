@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Footer from '../components/share/Footer'
 import Navbar from '../components/share/Navbar'
-import { MDBContainer, MDBRow, MDBCol } from "mdbreact"
+import { MDBContainer, MDBRow, MDBCol, MDBAnimation } from "mdbreact"
 import Competitorlist from '../components/challengerpage/Competitorlist'
 import Challengerlist from '../components/challengerpage/Challengerlist'
 import { connect } from 'react-redux'
@@ -41,14 +41,19 @@ class Challenger extends Component {
         return (
             <div>
                 <Navbar validateLogin={this.NotLoggedIn} />
-                <MDBContainer >
+                <MDBContainer>
+                    <MDBAnimation type="slideInDown">
                     <MDBRow>
                         <MDBCol size = "12">
                             <h3>My Competitors Request</h3>
                             <hr />
                             <Competitorlist navigate={this.ViewCompetition} myCompetitors={this.props.competitors} />
                         </MDBCol>
-                        <MDBCol size = "12" >
+                    </MDBRow>
+                    </MDBAnimation>
+                    <MDBAnimation type="slideInUp">
+                    <MDBRow>
+                        <MDBCol>
                             <h3>My Challengers</h3>
                             <hr />
                             <Challengerlist navigate={this.ViewChallenge} myChallenger={this.props.challengers} />
@@ -56,6 +61,7 @@ class Challenger extends Component {
                    
                         
                     </MDBRow>
+                    </MDBAnimation>
                 </MDBContainer>
                 <Footer />
             </div>
