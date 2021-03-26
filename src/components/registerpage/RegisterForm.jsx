@@ -16,7 +16,7 @@ import {
 import "../css/index.css";
 import FacebookLogin from 'react-facebook-login'
 import PropTypes from 'prop-types'
-import { registerUser } from '../../Redux/Actions/AuthAction'
+import { registerUser, emailChecking } from '../../Redux/Actions/AuthAction'
 import { connect } from 'react-redux'
 
 class RegisterForm extends React.Component {
@@ -55,7 +55,14 @@ class RegisterForm extends React.Component {
     })
   }
   Validate = () => {
+    const emailForm = {
+      email: this.state.email
+    }
+    this.props.emailChecking(emailForm);
+    console.log(emailForm);
+    console.log(this.props.emailcheck); 
     this.Register();
+    
   }
   Register = () => {
     const form = {
@@ -69,7 +76,11 @@ class RegisterForm extends React.Component {
     this.setState ({loading : true});
     this.props.registerUser(form);
   }
-  componentWillReceiveProps(nextProps){
+  componentDidUpdate(prevProps) {
+    console.log(prevProps, this.props.emailcheck)
+  }
+  componentWillReceiveProps(nextProps){ //to update state when prop changes
+    //console.log(nextProps);
     var response = nextProps.registerstatus[0].response;
     if(response == "User Registered"){
       this.props.Navigate("/")
@@ -194,10 +205,12 @@ class RegisterForm extends React.Component {
 
 RegisterForm.propTypes = {
   registerUser: PropTypes.func.isRequired,
+  emailChecking: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
-  registerstatus: state.auth.status
+  registerstatus: state.auth.status,
+  emailcheck: state.auth.emailcheck
 });
 
-export default connect(mapStateToProps, { registerUser })(RegisterForm);
+export default connect(mapStateToProps, { registerUser, emailChecking })(RegisterForm);

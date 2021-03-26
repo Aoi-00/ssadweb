@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput, MDBInputGroup } from "mdbreact"
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput, MDBInputGroup, MDBAnimation } from "mdbreact"
 import Uploadfile from '../components/share/Uploadfile'
 import { connect } from 'react-redux'
 import Proptypes from 'prop-types'
@@ -91,7 +91,7 @@ class StudentProfile extends Component {
         }
         this.props.facebookAccountLink(form)
     }
-    GoBack=() =>{this.props.history.push('/studentmain')}
+    GoBack = () => { this.props.history.push('/studentmain') }
 
     render() {
         let facebookBtn = (this.state.fbDisplay) ? <FacebookLogin appId="892789337958489"
@@ -107,14 +107,17 @@ class StudentProfile extends Component {
                 <MDBContainer>
                     <MDBRow>
                         <MDBCol size="5">
-                            <div>
-                                <h3>Live Preview</h3>
-                                <hr />
-                                {/* The pic will take very long to load */}
-                                <StudentProfileCard profilepic={this.state.picture} studname={this.state.name} studemail={this.state.email} studtutgrp={this.state.tutgrp} />
-                            </div>
+                            <MDBAnimation type="slideInLeft">
+                                <div>
+                                    <h3>Live Preview</h3>
+                                    <hr />
+                                    {/* The pic will take very long to load */}
+                                    <StudentProfileCard profilepic={this.state.picture} studname={this.state.name} studemail={this.state.email} studtutgrp={this.state.tutgrp} />
+                                </div>
+                            </MDBAnimation>
                         </MDBCol>
                         <MDBCol size="7">
+                        <MDBAnimation type="slideInRight">
                             <h3>Update Profile</h3>
                             <hr />
                             <MDBInput id='name' value={this.state.name} label="Full Name" icon="user" disabled onChange={this.handleChange} >
@@ -137,19 +140,15 @@ class StudentProfile extends Component {
                                 className="m-0 px-3 py-2 z-depth-0">
                                 Update Profile
                             </MDBBtn>
-                            <br/>
-                            <br/>
+                            <br />
+                            <br />
                             <MDBBtn
                                 onClick={this.GoBack}
                                 color="green"
                                 className="m-0 px-3 py-2 z-depth-0">
                                 Back
                             </MDBBtn>
-                        </MDBCol>
-                    </MDBRow>
-                    <MDBRow>
-                        <MDBCol>
-
+                            </MDBAnimation>
                         </MDBCol>
                     </MDBRow>
                 </MDBContainer>

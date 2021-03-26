@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdbreact";
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBAnimation } from "mdbreact";
 import TutorialTable from '../components/assignmentpage/TutorialTable'
 import AddTutorial from '../components/assignmentpage/AddTutorial'
 
@@ -13,7 +13,7 @@ import Footer from '../components/share/Footer';
 class Assignment extends Component {
     state = {
         tutgrp: localStorage.getItem("tutgrp"),
-        name: localStorage.getItem("name")
+        name: localStorage.getItem("name"),
     }
     componentDidMount() {
         //this.props.showAllTutorials();
@@ -53,18 +53,24 @@ class Assignment extends Component {
             <React.Fragment>
                 <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
-                <br/>
-                    <MDBRow>
-                        <MDBCol>
-                            <h2>Assignment List</h2>
-                            <hr/>
-                            <TutorialTable deleteTut={this.DelTutorial}  navigate={this.Navigate} tutorial={this.props.tutorialtable} />
-                            <br />
-                            <h3>Assignment Creation</h3>
-                            <hr/>
-                            <AddTutorial addTut={this.AddTutorial} onBack = {this.OnBack} />
-                        </MDBCol>
-                    </MDBRow>
+                    <br />
+                    
+                        <MDBRow >
+                            <MDBCol>
+                            <MDBAnimation type="slideInDown" >
+                                <h2>Assignment List</h2>
+                                <hr />
+                                <TutorialTable deleteTut={this.DelTutorial} navigate={this.Navigate} tutorial={this.props.tutorialtable} />
+                                </MDBAnimation>
+                                <MDBAnimation type="slideInUp">
+                                <br />
+                                <h3>Assignment Creation</h3>
+                                <hr />
+                                <AddTutorial addTut={this.AddTutorial} onBack={this.OnBack} />
+                                </MDBAnimation>
+                            </MDBCol>
+                        </MDBRow>
+                    
                 </MDBContainer>
                 <Footer />
             </React.Fragment>

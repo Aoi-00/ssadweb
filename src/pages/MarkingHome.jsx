@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn, MDBContainer, MDBRow, MDBCol } from 'mdbreact';
+import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn, MDBContainer, MDBRow, MDBCol, MDBAnimation } from 'mdbreact';
 import { showTutorials, showUserTutorial } from '../Redux/Actions/TutorialAction'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -21,7 +21,7 @@ class MarkingHome extends Component {
         this.props.showUserTutorial(form);
     }
 
-    GoBack = () => {this.props.history.push('/home')}
+    GoBack = () => { this.props.history.push('/home') }
 
     NotLoggedIn = () => {
         this.props.history.push('/logout')
@@ -48,28 +48,31 @@ class MarkingHome extends Component {
                 <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
                     <br />
-                    <MDBRow>
-                        <MDBCol size="12">
-                            <h2>Select Assignment to Mark</h2>
-                            <hr />
-                            <MDBTable striped>
-                                <MDBTableHead>
-                                    <tr>
-                                        <th>Assignment Name</th>
-                                        <th>Tutorial Group</th>
-                                        <th>Created by</th>
-                                        <th>Select</th>
-                                    </tr>
-                                </MDBTableHead>
-                                <MDBTableBody>
-                                    {tutorialgrp}
-                                </MDBTableBody>
-                            </MDBTable>
-                        </MDBCol>
-                    </MDBRow>
-                    <MDBBtn color="green" onClick = {this.GoBack} > Back
+                    <MDBAnimation type="slideInDown">
+                        <MDBRow>
+                            <MDBCol size="12">
+                                <h2>Select Assignment to Mark</h2>
+                                <hr />
+                                <MDBTable striped>
+                                    <MDBTableHead>
+                                        <tr>
+                                            <th>Assignment Name</th>
+                                            <th>Tutorial Group</th>
+                                            <th>Created by</th>
+                                            <th>Select</th>
+                                        </tr>
+                                    </MDBTableHead>
+                                    <MDBTableBody>
+                                        {tutorialgrp}
+                                    </MDBTableBody>
+                                </MDBTable>
+                            </MDBCol>
+                        </MDBRow>
+                        <MDBBtn color="green" onClick={this.GoBack} > Back
                        </MDBBtn>
+                    </MDBAnimation>
                 </MDBContainer>
+
                 <Footer />
             </React.Fragment>
         )

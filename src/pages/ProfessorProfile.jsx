@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput, MDBInputGroup } from "mdbreact"
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput, MDBInputGroup, MDBAnimation } from "mdbreact"
 import Uploadfile from '../components/share/Uploadfile'
 import StudentInfo from '../components/marking/StudentInfo'
 import { connect } from 'react-redux'
@@ -29,11 +29,11 @@ class ProfessorProfile extends Component {
         if (this.state.fbid == '') {
             this.setState({ fbDisplay: true })
         }
-        this.getStudentDetails();
+        this.getProfDetails();
         this.props.showTutorials();
     }
 
-    getStudentDetails() {
+    getProfDetails() {
         const form = {
             id: this.state.studid
         }
@@ -109,15 +109,21 @@ class ProfessorProfile extends Component {
                 <br />
                 <MDBContainer>
                     <MDBRow>
-                        <MDBCol size="5">
+                        
+                        <MDBCol size="5" lg = "5" sm = "12" >
+                        <MDBAnimation type="slideInLeft">
                             <div>
                                 <h3>Live Preview</h3>
                                 <hr />
                                 {/* The pic will take very long to load */}
                                 <ProfProfileCard profilepic={this.state.picture} studname={this.state.name} studemail={this.state.email} studtutgrp={this.state.tutgrp} />
                             </div>
+                            </MDBAnimation>
                         </MDBCol>
-                        <MDBCol size="7">
+                        
+                        
+                        <MDBCol  size="7" lg = "7" sm = "12">
+                        <MDBAnimation type="slideInRight">
                             <h3>Update Profile</h3>
                             <hr />
                             <MDBInput id='name' value={this.state.name} label="Full Name" icon="user" onChange={this.handleChange} >
@@ -148,12 +154,9 @@ class ProfessorProfile extends Component {
                                 className="m-0 px-3 py-2 z-depth-0">
                                 Back
                             </MDBBtn>
+                            </MDBAnimation>
                         </MDBCol>
-                    </MDBRow>
-                    <MDBRow>
-                        <MDBCol>
-
-                        </MDBCol>
+                        
                     </MDBRow>
                 </MDBContainer>
                 <br />
