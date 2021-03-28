@@ -29,11 +29,11 @@ class ProfessorProfile extends Component {
         if (this.state.fbid == '') {
             this.setState({ fbDisplay: true })
         }
-        this.getStudentDetails();
+        this.getProfDetails();
         this.props.showTutorials();
     }
 
-    getStudentDetails() {
+    getProfDetails() {
         const form = {
             id: this.state.studid
         }

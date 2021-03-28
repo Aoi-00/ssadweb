@@ -16,7 +16,7 @@ import {
 import "../css/index.css";
 import FacebookLogin from 'react-facebook-login'
 import PropTypes from 'prop-types'
-import { registerUser } from '../../Redux/Actions/AuthAction'
+import { registerUser, emailChecking } from '../../Redux/Actions/AuthAction'
 import { connect } from 'react-redux'
 
 class RegisterForm extends React.Component {
@@ -55,7 +55,10 @@ class RegisterForm extends React.Component {
     })
   }
   Validate = () => {
-    this.Register();
+    const emailForm = {
+      email: this.state.email
+    }
+    this.props.emailChecking(emailForm);
   }
   Register = () => {
     const form = {
@@ -66,18 +69,18 @@ class RegisterForm extends React.Component {
       usertype: "Student",
       tutgrp: this.state.tutgrp
     }
-    this.setState ({loading : true});
+    this.setState({ loading: true });
     this.props.registerUser(form);
+    this.props.Navigate('/')
   }
-  componentWillReceiveProps(nextProps){
-    var response = nextProps.registerstatus[0].response;
-    if(response == "User Registered"){
-      this.props.Navigate("/")
-    }
-    else{
-      //Do some animation here
-      alert("Register Error")
-    }
+  componentDidUpdate(prevProps) {
+    if (prevProps.email === this.props.email)
+      return
+    else if (this.props.email.length === 0)
+      this.Register()
+    else if (this.props.email.length !== 0)
+      alert("Email used")
+
   }
   handleChange = (e) => {
     this.setState({
@@ -86,7 +89,7 @@ class RegisterForm extends React.Component {
   }
 
   render() {
-    const {loading} = this.state;
+    const { loading } = this.state;
     let fbimage = (!this.state.fbdetails) ? <React.Fragment /> : <center> <img width="150" height="150" src={this.state.fbimage} className="img-fluid z-depth-1 rounded-circle" alt="" /></center>
     return (
       <div id="classicformpage">
@@ -167,9 +170,9 @@ class RegisterForm extends React.Component {
                           <option value={'TS4'}>TS4</option>
                         </select>
                         <div className="text-center mt-4 black-text">
-                          <MDBBtn onClick={this.Validate} color="white"disabled={loading} >
-                          {loading && <span>Registering</span>}
-                          {!loading && <span>Register</span>}
+                          <MDBBtn onClick={this.Validate} color="white" disabled={loading} >
+                            {loading && <span>Registering</span>}
+                            {!loading && <span>Register</span>}
                           </MDBBtn>
                           <FacebookLogin
                             appId="892789337958489"
@@ -194,10 +197,12 @@ class RegisterForm extends React.Component {
 
 RegisterForm.propTypes = {
   registerUser: PropTypes.func.isRequired,
+  emailChecking: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
-  registerstatus: state.auth.status
+  registerstatus: state.auth.status,
+  email: state.auth.emailcheck
 });
 
-export default connect(mapStateToProps, { registerUser })(RegisterForm);
+export default connect(mapStateToProps, { registerUser, emailChecking })(RegisterForm);
