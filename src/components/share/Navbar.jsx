@@ -127,6 +127,7 @@ class Navbar extends Component {
                                 <MDBNavItem>
                                     <MDBNavLink
                                         onClick={this.closeCollapse('mainNavbarCollapse')}
+                                        
                                         to='/challenger'
                                     >
                                         <strong>Challengers</strong>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Footer from '../components/share/Footer'
 import Navbar from '../components/share/Navbar'
-import { MDBContainer, MDBRow, MDBCol, MDBAnimation } from "mdbreact"
+import { MDBContainer, MDBRow, MDBCol, MDBAnimation, MDBBtn } from "mdbreact"
 import Competitorlist from '../components/challengerpage/Competitorlist'
 import Challengerlist from '../components/challengerpage/Challengerlist'
 import { connect } from 'react-redux'
@@ -37,6 +37,10 @@ class Challenger extends Component {
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
+
+    GoBack=() => {this.props.history.push("/studentmain")}
+
+
     render() {
         return (
             <div>
@@ -61,6 +65,8 @@ class Challenger extends Component {
                    
                         
                     </MDBRow>
+                    <MDBBtn color="green" onClick = {this.GoBack} > Back
+                       </MDBBtn>
                     </MDBAnimation>
                 </MDBContainer>
                 <Footer />

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Footer from '../components/share/Footer'
 import Navbar from '../components/share/Navbar'
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput, MDBInputGroup } from "mdbreact"
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput, MDBInputGroup, MDBAnimation } from "mdbreact"
 import CompetitorDetail from '../components/challengerpage/CompetitorDetail'
 import { connect } from 'react-redux'
 import Proptypes from 'prop-types'
@@ -58,6 +58,8 @@ class Competitor extends Component {
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
+   
+
     render() {
         console.log(this.comment)
         //To Brendan
@@ -70,13 +72,17 @@ class Competitor extends Component {
             <div>
                 <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
+                <MDBAnimation type="slideInLeft">
                     <br />
                     <MDBRow>
+                   
                         <MDBCol size="6">
                             <h3>Competitor Detail</h3>
                             <hr />
                             <CompetitorDetail student={this.props.student} />
                         </MDBCol>
+                        
+                        
                         <MDBCol size="6">
                             <h3>Compose a message to your competitor</h3>
                             <hr />
@@ -95,10 +101,12 @@ class Competitor extends Component {
                                 Back
                             </MDBBtn>
                         </MDBCol>
-
+                      
                     </MDBRow>
+                    </MDBAnimation>
                 </MDBContainer>
                 <Footer />
+              
             </div>
         )
     }

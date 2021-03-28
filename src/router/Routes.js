@@ -41,6 +41,7 @@ class Routes extends React.Component {
         <Route path='/challenger' component={Challenger} />
         <Route path='/competitor' component={Competitor} />
         <Route path='/challenge' component={Challenge} />
+        
         <Route render={() => <h1>Not Found</h1>} />
       </Switch>
     );

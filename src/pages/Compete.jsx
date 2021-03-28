@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Footer from '../components/share/Footer'
 import Navbar from '../components/share/Navbar'
-import { MDBContainer, MDBRow, MDBCol, MDBAnimation } from "mdbreact"
+import { MDBContainer, MDBRow, MDBCol, MDBAnimation, MDBBtn } from "mdbreact"
 import ClassmateList from '../components/competepage/ClassmateList'
 import StudentAssignment from '../components/competepage/StudentAssignment'
 import { connect } from 'react-redux'
@@ -42,6 +42,8 @@ class Compete extends Component {
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
+
+    GoBack=() => {this.props.history.push("/studentmain")}
     render() {
         var currentclass = this.props.leaderboard.filter(x => x.tutgrp === this.state.tutgrp && x.name !== this.state.name)
         var classMates = [...new Set(currentclass.map(item => ({ name: item.name, studid: item.studid })))];
@@ -58,7 +60,9 @@ class Compete extends Component {
                                 {competeDisplay}
                                 <hr />
                                 <ClassmateList classmates={classMates} competitorSelect={this.CompetitorSelect} />
-                            </MDBAnimation>
+                                
+                       </MDBAnimation>
+                            
                         </MDBCol>
 
 
@@ -71,6 +75,10 @@ class Compete extends Component {
                         </MDBCol>
 
                     </MDBRow>
+                    <MDBAnimation type="slideInLeft" >
+                    <MDBBtn color="green" onClick = {this.GoBack} > Back
+                       </MDBBtn>
+                       </MDBAnimation>
                 </MDBContainer>
                 <br />
                 <Footer />
