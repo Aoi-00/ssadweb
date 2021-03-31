@@ -42,13 +42,10 @@ class Assignment extends Component {
         //Submit data to my api
         this.props.addTutorial(form);
     }
-
     OnBack = () => {
         this.props.history.push('/home')
     }
-
     render() {
-        console.log(this.props.tutorialtable)
         return (
             <React.Fragment>
                 <Navbar validateLogin={this.NotLoggedIn} />

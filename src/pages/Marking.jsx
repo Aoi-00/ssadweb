@@ -3,7 +3,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBAnimation } from "mdbreact";
 import { connect } from 'react-redux'
 import Proptypes from 'prop-types'
 import { getStudentSubmission, updateScores } from '../Redux/Actions/GameActions'
-import { showQuestion } from '../Redux/Actions/QuestActions'
+import { showTutorialQuestion } from '../Redux/Actions/QuestActions'
 import { getStudentInfo } from '../Redux/Actions/AuthAction'
 import StudentInfo from '../components/marking/StudentInfo';
 import MarkDropDown from '../components/marking/MarkDropDown';
@@ -39,7 +39,7 @@ class Marking extends Component {
         const form = {
             tutid: this.state.tutid
         }
-        this.props.showQuestion(form)
+        this.props.showTutorialQuestion(form)
     }
     getStudentDetails() {
         const form = {
@@ -112,7 +112,7 @@ class Marking extends Component {
 
 Marking.Proptypes = {
     getStudentSubmission: Proptypes.func.isRequired,
-    showQuestion: Proptypes.func.isRequired,
+    showTutorialQuestion: Proptypes.func.isRequired,
     getStudentInfo: Proptypes.func.isRequired,
     updateScores: Proptypes.func.isRequired
 }
@@ -123,4 +123,4 @@ const mapStateToProps = state => ({
     student: state.auth.studentinfo,
     scores: state.game.status
 })
-export default connect(mapStateToProps, { getStudentSubmission, showQuestion, getStudentInfo, updateScores })(Marking)
+export default connect(mapStateToProps, { getStudentSubmission, showTutorialQuestion, getStudentInfo, updateScores })(Marking)
