@@ -12,7 +12,8 @@ import Footer from '../components/share/Footer'
 
 class StudentMain extends Component {
     state = {
-        studid: localStorage.getItem("studid")
+        studid: localStorage.getItem("studid"),
+        tutgrp: localStorage.getItem("tutgrp")
     }
     componentDidMount() {
         this.props.fetchLeaderboard();
@@ -28,6 +29,9 @@ class StudentMain extends Component {
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
+    viewMySubmission = (ldrid) => {
+        this.props.history.push('/submission/' + ldrid)
+    }
     render() {
         return (
             <div>
@@ -38,13 +42,13 @@ class StudentMain extends Component {
                     <br />
                     <h2>LeaderBoard</h2>
                     <hr />
-                    <LeaderBoard leaderboard={this.props.leaderboard} />
+                    <LeaderBoard leaderboard={this.props.leaderboard} tutgrp={this.state.tutgrp} />
                     </MDBAnimation>
                     <MDBAnimation type="slideInUp" count={1}>
                     <br />
 
                     <h2>Personal Submission</h2>
-                    <StudentSubmit mycompletedtask={this.props.mycompletedtask} />
+                    <StudentSubmit selectSubmission={this.viewMySubmission} mycompletedtask={this.props.mycompletedtask} />
                     </MDBAnimation>
                 </MDBContainer>
                 <Footer />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { MDBDataTableV5, MDBAnimation } from 'mdbreact';
 
-export default function Pagination({ leaderboard }) {
+export default function Pagination({ leaderboard, tutgrp }) {
   const [datatable, setDatatable] = React.useState({
     columns: [
       {
@@ -16,6 +16,7 @@ export default function Pagination({ leaderboard }) {
       {
         label: 'Date submitted',
         field: 'date',
+        sort: 'disabled',
         width: 150,
       },
       {
@@ -27,7 +28,7 @@ export default function Pagination({ leaderboard }) {
     rows: [],
   });
   //console.log(leaderboard)
-  leaderboard.map(x => datatable.rows.push({ name: x.name, date: x.date, score: x.score }))
+  leaderboard.filter(x => x.tutgrp === tutgrp).map(x => datatable.rows.push({ name: x.name, date: x.date, score: x.score }))
 
 
   return <MDBDataTableV5 hover entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={datatable} fullPagination />;

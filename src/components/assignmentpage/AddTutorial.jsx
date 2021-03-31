@@ -6,12 +6,12 @@ import { addTutorial } from '../../Redux/Actions/TutorialAction'
 
 class AddTutorial extends Component {
     state = {
-        tutGroup: 'TS1',
+        tutGroup: localStorage.getItem("tutgrp"),
         tutName: '',
         createdby: localStorage.getItem("name"),
-        difficulty: 'Easy',
         coins: 50,
-        loading: false
+        loading: false,
+        userType: localStorage.getItem("usertype"),
     }
     onSubmit = () => {
         const post = {
@@ -28,13 +28,13 @@ class AddTutorial extends Component {
         })
         this.props.addTut(post);
     }
-    
-//    onBack =() =>{
-//         this.props.history.push('/home')
-//         // This.props.navigate()
-        
 
-//     }
+    //    onBack =() =>{
+    //         this.props.history.push('/home')
+    //         // This.props.navigate()
+
+
+    //     }
     handleChange = (e) => { //to handle change in inputs
         this.setState({
             [e.target.id]: e.target.value,
@@ -65,29 +65,24 @@ class AddTutorial extends Component {
                     <div className="black-text">
                         <MDBInput value={this.state.tutName} label="Enter Assignment Name" id='tutName' onChange={this.handleChange} icon="user-plus" group type="text" validate error="wrong"
                             success="right" />
-                        <label htmlFor="difficulty">Select Tutorial Group</label>
-                        <select onChange={this.handleTutList} value={this.state.tutGroup} id="tutGroup" className="browser-default custom-select">
-                            <option value={'TS1'}>TS1</option>
-                            <option value={'TS2'}>TS2</option>
-                            <option value={'TS3'}>TS3</option>
-                            <option value={'TS4'}>TS4</option>
-                        </select>
+                        {(this.state.userType === "Professor") &&
+                            <React.Fragment>
+                                <label htmlFor="difficulty">Select Tutorial Group</label>
+                                <select onChange={this.handleTutList} value={this.state.tutGroup} id="tutGroup" className="browser-default custom-select">
+                                    <option value={'TS1'}>TS1</option>
+                                    <option value={'TS2'}>TS2</option>
+                                    <option value={'TS3'}>TS3</option>
+                                    <option value={'TS4'}>TS4</option>
+                                </select>
+                            </React.Fragment>}
                     </div>
-                    <label htmlFor="difficulty">Difficulty Level</label>
-                    <select onChange={this.handleSelectList} value={this.state.difficulty} id="diffuculty" className="browser-default custom-select">
-                        <option value={'Easy'}>Easy</option>
-                        <option value={'Medium'}>Medium</option>
-                        <option value={'Hard'}>Hard</option>
-                    </select>
-                    <br /><br />
                     <label htmlFor="coins">Number of coins: {this.state.coins}</label>
                     <input type="range" id="coins" onChange={this.getValue} min="0" max="100" className="custom-range" />
                     <div className="text-center">
-                        <MDBBtn onClick={this.onSubmit} disabled={loading} >
+                        <MDBBtn onClick={this.onSubmit} color="blue" disabled={loading} >
                             {loading && <span>Submitting</span>}
                             {!loading && <span>Submit</span>}</MDBBtn>
-
-                            <MDBBtn color="green" onClick={this.props.onBack}> Back
+                        <MDBBtn color="green" onClick={this.props.onBack}> Back
                        </MDBBtn>
                     </div>
                 </form>

@@ -41,7 +41,7 @@ class StudentNews extends Component {
                         {twitterPosts}
                     </MDBRow>
                     <br/>
-                    <MDBBtn color="green" onClick = {this.GoBack} > Back
+                    <MDBBtn color="red" onClick = {this.GoBack} > Back
                        </MDBBtn>
                     <br />
                 </MDBContainer>

@@ -89,13 +89,12 @@ class Marking extends Component {
 
                     <MDBAnimation type="slideInUp">
                         <MDBRow>
-
-                            <MDBCol size="6">
+                            {/* <MDBCol size="6">
                                 <br></br>
                                 <h2>Answer Key</h2>
                                 <MarkDropDown questions={this.props.questionlist} />
-                            </MDBCol>
-                            <MDBCol size="6">
+                            </MDBCol> */}
+                            <MDBCol size="12">
                                 <br />
                                 <h2>Marking</h2>
                                 <MarkScoreComment markComplete={this.MarkingComplete} goBack={this.GoBack} inputChange={this.handleChange} record={this.props.record} />

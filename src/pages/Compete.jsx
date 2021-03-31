@@ -15,6 +15,7 @@ class Compete extends Component {
         studid: localStorage.getItem("studid"),
         competitor: '',
         competitorid: '',
+        Assignmentdisplay: false
     }
     componentDidMount() {
         this.props.fetchLeaderboard();
@@ -27,7 +28,7 @@ class Compete extends Component {
         this.props.myCompletedTutorial(form)
     }
     CompetitorSelect = (name, competitorid) => {
-        this.setState({ competitor: name, competitorid: competitorid })
+        this.setState({ competitor: name, competitorid: competitorid, Assignmentdisplay: true })
     }
     CreateNotification = (leaderboardid, tutid) => {
         const form = {
@@ -43,10 +44,10 @@ class Compete extends Component {
         this.props.history.push('/logout')
     }
 
-    GoBack=() => {this.props.history.push("/studentmain")}
+    GoBack = () => { this.props.history.push("/studentmain") }
     render() {
-        var currentclass = this.props.leaderboard.filter(x => x.tutgrp === this.state.tutgrp && x.name !== this.state.name)
-        var classMates = [...new Set(currentclass.map(item => ({ name: item.name, studid: item.studid })))];
+        let currentclass = this.props.leaderboard.filter(x => x.tutgrp === this.state.tutgrp && x.name !== this.state.name)
+        let classMates = [...new Set(currentclass.map(item => ({ name: item.name, studid: item.studid })))];
         let competeDisplay = (this.state.competitor === '') ? <h3>My classmates</h3> : <h3>Competing with {this.state.competitor}</h3>;
         return (
             <div>
@@ -60,29 +61,31 @@ class Compete extends Component {
                                 {competeDisplay}
                                 <hr />
                                 <ClassmateList classmates={classMates} competitorSelect={this.CompetitorSelect} />
-                                
-                       </MDBAnimation>
-                            
+
+                            </MDBAnimation>
+
                         </MDBCol>
 
 
                         <MDBCol size="8">
-                            <MDBAnimation type="slideInRight" >
-                                <h3>Which Assignment to compete?</h3>
-                                <hr />
-                                <StudentAssignment myTut={this.props.mytut} notification={this.CreateNotification} />
-                            </MDBAnimation>
+                            {this.state.Assignmentdisplay &&
+                                <MDBAnimation type="slideInRight">
+                                    <h3>Which Assignment to compete?</h3>
+                                    <hr />
+                                    <StudentAssignment myTut={this.props.mytut} notification={this.CreateNotification} />
+                                </MDBAnimation>
+                            }
                         </MDBCol>
 
                     </MDBRow>
                     <MDBAnimation type="slideInLeft" >
-                    <MDBBtn color="green" onClick = {this.GoBack} > Back
+                        <MDBBtn color="red" onClick={this.GoBack} > Back
                        </MDBBtn>
-                       </MDBAnimation>
+                    </MDBAnimation>
                 </MDBContainer>
                 <br />
                 <Footer />
-            </div>
+            </div >
         )
     }
 }

@@ -14,7 +14,7 @@ export default function QuestionList({ questions, addQuestion }) {
           <tr>
             <th>#</th>
             <th>Question</th>
-            <th>Remove</th>
+            <th>Add Question</th>
           </tr>
         </MDBTableHead>
         <MDBTableBody>

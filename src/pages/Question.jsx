@@ -49,11 +49,14 @@ class Question extends Component {
             question: currentQuestion[0].question,
             tutgrp: this.getTutGrp(),
             tutid: this.state.tutid,
-            solution: currentQuestion[0].solution
+            solution: currentQuestion[0].solution,
+            level: currentQuestion[0].level,
+            section: currentQuestion[0].section
         }
         this.props.addQuestion(post)
     }
     render() {
+        let filteredAllQuestion = this.props.allquestion.filter(x => !this.props.tutquestion.find(z => z.question === x.question))
         return (
             <React.Fragment>
                 <Navbar validateLogin={this.NotLoggedIn} />
@@ -69,7 +72,7 @@ class Question extends Component {
                             <h2>Questions Pool</h2>
                             <hr />
                             {/* <AddQuestion addQuest={this.AddQuestion} onBack={this.OnBack} /> */}
-                            <QuestionList addQuestion={this.addToTutorial} questions={this.props.allquestion} />
+                            <QuestionList addQuestion={this.addToTutorial} questions={filteredAllQuestion} />
                         </MDBCol>
                     </MDBRow>
                 </MDBContainer>
