@@ -69,13 +69,25 @@ class Question extends Component {
                             <TutQuestionList removeQuestion={this.removeQuestion} questions={this.props.tutquestion} />
                         </MDBCol>
                         <MDBCol size="12">
-                            <h2>Questions Pool</h2>
+                            <h2>Add Pre-defined Questions</h2>
                             <hr />
                             {/* <AddQuestion addQuest={this.AddQuestion} onBack={this.OnBack} /> */}
                             <QuestionList addQuestion={this.addToTutorial} questions={filteredAllQuestion} />
                         </MDBCol>
+                        <MDBCol size="12">
+                            <h2>Add New Question</h2>
+                            <hr />
+                            <div id="html_embed_widget_11018" class="html_embed_widget embed_wrapper">
+                                <div data-height="3000" data-width="3000" class="game_frame game_loaded" className="embed-responsive embed-responsive-16by9">
+                                    <iframe height="100%" width="100%" mozallowfullscreen="true" allow="autoplay; fullscreen; geolocation; microphone; camera; midi" src="http://localhost/webgl/" msallowfullscreen="true" scrolling="no" allowfullscreen="true" webkitallowfullscreen="true" id="game_drop" allowtransparency="true" frameborder="0">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </MDBCol>
                     </MDBRow>
                 </MDBContainer>
+                <br/>
+                <br/>
                 <Footer />
             </React.Fragment>
         )
