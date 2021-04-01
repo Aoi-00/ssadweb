@@ -25,6 +25,7 @@ class Assignment extends Component {
             name: this.state.name
         }
         this.props.showProfTutorial(form);
+        
     }
     Navigate = (tutid) => {
         this.props.history.push('/question/' + tutid)

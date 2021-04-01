@@ -28,6 +28,8 @@ class LoginForm extends React.Component {
     emaillogin: false,
     loading: false,
     wrongauth: false,
+    emailError:"",
+    passwordError:"",
   };
   toggleCollapse = collapseID => () =>
     this.setState(prevState => ({
@@ -39,6 +41,30 @@ class LoginForm extends React.Component {
       [e.target.id]: e.target.value
     })
   }
+  
+  validate = () => {
+    let emailError ="";
+    let passwordError = "";
+
+    if (this.state.email){
+      if (!this.state.email.includes('@')){
+        emailError = "invalid email";
+      }
+    }
+    else {
+      emailError = "email cannot be empty";
+    }
+    
+    if (!this.state.userpassword){
+      passwordError = "password cannot be empty";
+    }
+    if (emailError || passwordError){
+      this.setState({emailError,passwordError})
+      return false;
+    }
+    return true;
+  };
+
   EmailLogin = () => {
     const post = {
 
@@ -46,11 +72,16 @@ class LoginForm extends React.Component {
       password: this.state.userpassword
 
     }
-    this.setState({
-      loading: !this.state.loading,
-      emaillogin: true
-    });
-    this.props.emailLogin(post);
+    const isValid = this.validate();
+    if (isValid) {
+      this.setState({
+        loading: !this.state.loading,
+        emaillogin: true,
+        emailError: "",
+        passwordError:""
+      });
+      this.props.emailLogin(post);
+    }
   }
   responseFacebook = (response) => {
     this.setState({
@@ -88,8 +119,11 @@ class LoginForm extends React.Component {
         loading: !this.state.loading,
         userpassword: '',
         email: '',
-        wrongauth: !this.state.wrongauth
+        wrongauth: true,
       })
+      // if (this.state.wrongauthcount >= 5) {
+      //   alert("Forgot your email or password? Please contact the admin.");
+      // }
     }
   }
 
@@ -139,6 +173,7 @@ class LoginForm extends React.Component {
                           value={this.state.email}
                           onChange={this.handleChange}
                         />
+                        <div style = {{fontSize: 20, color:"rgb(255, 61, 61)"}} > {this.state.emailError} </div>
                         <MDBInput
                           className="white-text"
                           iconClass="white-text"
@@ -150,6 +185,7 @@ class LoginForm extends React.Component {
                           onChange={this.handleChange}
                           onKeyPress={this.handleKeyPress}
                         />
+                        <div style = {{fontSize: 20, color:"rgb(255, 61, 61)"}}> {this.state.passwordError}</div>
                         <div className="text-center mt-4 black-text">
                           <MDBBtn color="white" onClick={this.EmailLogin} disabled={loading} >
                             {loading && <span>Logging in</span>}
@@ -162,7 +198,7 @@ class LoginForm extends React.Component {
                             callback={this.responseFacebook}
                           />
                           <hr className="hr-light" />
-                          {wrongauth && <h2 className="red-text">Wrong username or password</h2>}
+                          {wrongauth && <h3 className="red-text">Wrong username or password</h3>}
                         </div>
                       </MDBCardBody>
                     </MDBCard>

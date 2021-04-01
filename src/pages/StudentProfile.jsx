@@ -53,13 +53,18 @@ class StudentProfile extends Component {
             picture: this.state.picture,
             tutgrp: this.state.tutgrp
         }
-        this.props.updateProfile(form);
-        localStorage.setItem("picture", this.state.picture)
-        localStorage.setItem("tutgrp", this.state.tutgrp)
-        localStorage.setItem("email", this.state.email)
-        localStorage.setItem("name", this.state.name)
-        localStorage.setItem("fbid", this.state.fbid)
-        this.props.history.push("/home")
+        if (form.email) {
+            this.props.updateProfile(form);
+            localStorage.setItem("picture", this.state.picture)
+            localStorage.setItem("tutgrp", this.state.tutgrp)
+            localStorage.setItem("email", this.state.email)
+            localStorage.setItem("name", this.state.name)
+            localStorage.setItem("fbid", this.state.fbid)
+            this.props.history.push("/home")
+        }
+        else {
+            alert("Email input field cannot be empty. Please enter your email.");
+        }
     }
 
     handleChange = (e) => { // to change state everytime you type -- question: value

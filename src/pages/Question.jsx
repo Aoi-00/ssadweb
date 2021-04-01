@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import { MDBContainer, MDBRow, MDBCol,MDBBtn } from "mdbreact";
 import QuestionList from '../components/questionpage/QuestionList'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -83,11 +83,13 @@ class Question extends Component {
                                     </iframe>
                                 </div>
                             </div>
+                            <MDBBtn color="blue" onClick={this.props.onBack}> Back
+                            </MDBBtn>
                         </MDBCol>
                     </MDBRow>
                 </MDBContainer>
-                <br/>
-                <br/>
+                <br />
+                <br />
                 <Footer />
             </React.Fragment>
         )

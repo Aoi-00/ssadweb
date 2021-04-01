@@ -69,16 +69,26 @@ class RegisterForm extends React.Component {
       usertype: "Student",
       tutgrp: this.state.tutgrp
     }
-    this.setState({ loading: true });
-    this.props.registerUser(form);
-    this.props.Navigate('/')
+    if (form.email && form.password && form.name){
+      if (this.state.cfmpassword == form.password) {
+        this.setState({ loading: true });
+        this.props.registerUser(form);
+        this.props.Navigate('/')
+      }
+      else {
+        alert("Password fields do not tally, please check again.");
+      }
+    }
+    else {
+      alert("Name, email and password fields cannot be empty.")
+    }
   }
   componentDidUpdate(prevProps) {
     if (prevProps.email === this.props.email)
       return
     else if (this.props.email.length === 0)
       this.Register()
-    else if (this.props.email.length !== 0)
+    else if (this.props.email.length !== 0) 
       alert("Email used")
 
   }

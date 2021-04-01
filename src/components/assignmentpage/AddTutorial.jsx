@@ -26,7 +26,13 @@ class AddTutorial extends Component {
             loading: !this.state.loading,
             tutName: ""
         })
-        this.props.addTut(post);
+        if (post.tutname) {
+            this.props.addTut(post);
+        }
+        else {
+            alert("Assignment name field cannot be empty.")
+            this.setState({loading: false});
+        }
     }
 
     //    onBack =() =>{
