@@ -33,6 +33,9 @@ class Report extends Component {
         }
         this.props.getStudentInfo(form)
     }
+    printPage = () => {
+        window.print()
+    }
 
     render() {
         let { leaderboard } = this.props
@@ -52,7 +55,7 @@ class Report extends Component {
                 <MDBContainer>
                     <MDBRow>
                         <MDBCol size="12">
-                            <h3>Student Scores for: {this.state.tutname} </h3>
+                            <h3>Student Scores for: {this.state.tutname} <MDBBtn onClick={this.printPage} outline color="red">Print Current Page</MDBBtn></h3>
                             <hr />
                             {leaderboard && <BarGraph GraphData={HighestScoreForEachStudent} AssignmentScoreList={CurrentAssginmentScores} viewStudent={this.StudentAnalysis} />}
                         </MDBCol>
