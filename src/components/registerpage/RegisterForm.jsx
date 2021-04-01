@@ -78,7 +78,7 @@ class RegisterForm extends React.Component {
       return
     else if (this.props.email.length === 0)
       this.Register()
-    else if (this.props.email.length !== 0)
+    else if (this.props.email.length !== 0) 
       alert("Email used")
 
   }
