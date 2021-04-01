@@ -15,6 +15,7 @@ class StudentCard extends Component {
                                     Email: {x.email} <br/>
                                     Tutorial Group: {x.tutgrp}
                                 </MDBCardText>
+                                <a className="btn blue white-text" href={"mailto:" + x.email}>Email Student</a>
                             </MDBCardBody>
                         </MDBCard>
                     )
