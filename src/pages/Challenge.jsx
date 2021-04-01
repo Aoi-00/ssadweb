@@ -83,7 +83,6 @@ class Challenge extends Component {
                             {this.props.competitorscore && this.props.competitorscore.map(x => {
                                 return (
                                     <React.Fragment>
-                                        <br />
                                         <h3>My Answer</h3>
                                         <hr />
                                         <img src={ x.image} className="img-fluid z-depth-1" alt="" />
