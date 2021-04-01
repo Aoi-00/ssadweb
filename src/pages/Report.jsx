@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { MDBCol, MDBContainer, MDBRow, MDBInput, MDBBtn } from 'mdbreact'
+import { MDBCol, MDBContainer, MDBRow, MDBIcon, MDBBtn } from 'mdbreact'
 import Navbar from '../components/share/Navbar'
 import Footer from '../components/share/Footer'
 import BarGraph from '../components/reportpage/BarGraph'
@@ -36,6 +36,7 @@ class Report extends Component {
     printPage = () => {
         window.print()
     }
+    goBack = () => this.props.history.push('/home')
 
     render() {
         let { leaderboard } = this.props
@@ -55,7 +56,7 @@ class Report extends Component {
                 <MDBContainer>
                     <MDBRow>
                         <MDBCol size="12">
-                            <h3>Student Scores for: {this.state.tutname} <MDBBtn onClick={this.printPage} outline color="red">Print Current Page</MDBBtn></h3>
+                            <h3>Student Scores for: {this.state.tutname} <MDBBtn onClick={this.printPage} outline color="blue"><MDBIcon icon="print" className="mr-1" /></MDBBtn><MDBBtn onClick={this.goBack} outline color="red">Back</MDBBtn></h3>
                             <hr />
                             {leaderboard && <BarGraph GraphData={HighestScoreForEachStudent} AssignmentScoreList={CurrentAssginmentScores} viewStudent={this.StudentAnalysis} />}
                         </MDBCol>
@@ -82,7 +83,7 @@ class Report extends Component {
                         }
                     </MDBRow>
                 </MDBContainer>
-                <br/><br/>
+                <br /><br />
                 <Footer />
             </div>
         )

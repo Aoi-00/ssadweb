@@ -63,7 +63,7 @@ class StudentSelect extends Component {
                                 </MDBTable>
                             </MDBCol>
                         </MDBRow>
-                        <MDBBtn color="green" onClick={this.GoBack} > Back
+                        <MDBBtn color="red" onClick={this.GoBack} > Back
                        </MDBBtn>
                     </MDBAnimation>
                 </MDBContainer>
