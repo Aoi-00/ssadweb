@@ -16,7 +16,8 @@ class Competitor extends Component {
         tutid: localStorage.getItem("comptutid"),
         myldrid: localStorage.getItem("myldrid"),
         mystudid: localStorage.getItem("studid"),
-        comment: ''
+        comment: '',
+        commentError:""
     }
     componentDidMount() {
         console.log(this.state)
@@ -25,6 +26,17 @@ class Competitor extends Component {
         this.getMyScore();
         this.getmyDetails();
     }
+
+    validate() {
+        let commentError = "";
+        if (!this.state.comment){
+            commentError= "Comment cannot be empty";
+            this.setState({commentError});
+            return false;
+        }
+        return true;
+    }
+
     getCompetitorDetails() {
         const form = {
             id: this.state.studid
@@ -55,8 +67,12 @@ class Competitor extends Component {
             compid: this.state.compid,
             comment: this.state.comment
         }
-        this.props.sendComment(form)
-        this.props.history.push('/challenger')
+        const isValid = this.validate();
+        if (isValid) {
+            this.setState({commentError: ""});
+            this.props.sendComment(form)
+            this.props.history.push('/challenger')
+        }
     }
     handleChange = (e) => {
         this.setState({ [e.target.id]: e.target.value })
@@ -150,6 +166,7 @@ class Competitor extends Component {
                                 <hr />
                                 <MDBInput id='comment' value={this.state.comment} label="Comment" icon="comment" onChange={this.handleChange}>
                                 </MDBInput>
+                                <div style={{ fontSize: 20, color: "rgb(255, 61, 61)" }}> {this.state.commentError}</div>
                                 <MDBBtn
                                     onClick={this.SendComment}
                                     color="blue"
