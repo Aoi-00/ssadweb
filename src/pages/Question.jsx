@@ -83,7 +83,7 @@ class Question extends Component {
                                     </iframe>
                                 </div>
                             </div>
-                            <MDBBtn color="blue" onClick={this.props.onBack}> Back
+                            <MDBBtn color="red" onClick={this.props.onBack}> Back
                             </MDBBtn>
                         </MDBCol>
                     </MDBRow>

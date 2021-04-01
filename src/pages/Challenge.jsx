@@ -86,7 +86,7 @@ class Challenge extends Component {
                                         <br />
                                         <h3>My Answer</h3>
                                         <hr />
-                                        <img src={"data:image/png;base64," + x.image} className="img-fluid z-depth-1" alt="" />
+                                        <img src={ x.image} className="img-fluid z-depth-1" alt="" />
                                         <br /> <br />
                                         <h3>Competitors Scores</h3>
                                         <hr />
@@ -120,7 +120,7 @@ class Challenge extends Component {
                                         <br />
                                         <h3>Competitor's Answer</h3>
                                         <hr />
-                                        <img src={"data:image/png;base64," + x.image} className="img-fluid z-depth-1" alt="" />
+                                        <img src={x.image} className="img-fluid z-depth-1" alt="" />
                                         <br /> <br />
                                         <h3>Competitors Scores</h3>
                                         <hr />
