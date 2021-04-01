@@ -68,6 +68,7 @@ class Challenger extends Component {
                             </MDBCol>
                         </MDBRow>
                     </MDBAnimation>
+                    <br/>
                     <MDBAnimation type="slideInUp">
                         <MDBRow>
                             <MDBCol>

@@ -31,7 +31,11 @@ class RegisterForm extends React.Component {
     fbid: "",
     tutgrp: "TS1",
     fbdetails: false,
-    loading: false
+    loading: false,
+    nameError: "",
+    emailError: "",
+    passwordError: "",
+    cfmPasswordError: "",
   };
 
   toggleCollapse = collapseID => () =>
@@ -55,10 +59,50 @@ class RegisterForm extends React.Component {
     })
   }
   Validate = () => {
-    const emailForm = {
-      email: this.state.email
+    let nameError = "";
+    let emailError = "";
+    let passwordError = "";
+    let cfmPasswordError = "";
+    let isValid = true;
+
+    if (!this.state.name) {
+      nameError = "name cannot be empty";
     }
-    this.props.emailChecking(emailForm);
+
+    if (this.state.email) {
+      if (!this.state.email.includes('@')) {
+        emailError = "invalid email";
+      }
+    }
+    else {
+      emailError = "email cannot be empty";
+    }
+
+    if (this.state.password) {
+      if (this.state.password != this.state.cfmpassword) {
+        cfmPasswordError = "password fields do not tally"
+      }
+    }
+    else{
+      passwordError = "password cannot be empty";
+    }
+
+    if (emailError || passwordError || nameError ||cfmPasswordError) {
+      this.setState({ emailError, passwordError, nameError ,cfmPasswordError })
+      isValid = false;
+    }
+    if (isValid) {
+      const emailForm = {
+        email: this.state.email
+      }
+      this.setState({
+        emailError: "",
+        passwordError: "",
+        nameError: "",
+        cfmPasswordError: "",
+      })
+      this.props.emailChecking(emailForm);
+    }
   }
   Register = () => {
     const form = {
@@ -69,26 +113,16 @@ class RegisterForm extends React.Component {
       usertype: "Student",
       tutgrp: this.state.tutgrp
     }
-    if (form.email && form.password && form.name){
-      if (this.state.cfmpassword == form.password) {
-        this.setState({ loading: true });
-        this.props.registerUser(form);
-        this.props.Navigate('/')
-      }
-      else {
-        alert("Password fields do not tally, please check again.");
-      }
-    }
-    else {
-      alert("Name, email and password fields cannot be empty.")
-    }
+    this.setState({ loading: true });
+    this.props.registerUser(form);
+    this.props.Navigate('/')
   }
   componentDidUpdate(prevProps) {
     if (prevProps.email === this.props.email)
       return
     else if (this.props.email.length === 0)
       this.Register()
-    else if (this.props.email.length !== 0) 
+    else if (this.props.email.length !== 0)
       alert("Email used")
 
   }
@@ -145,6 +179,7 @@ class RegisterForm extends React.Component {
                           value={this.state.name}
                           onChange={this.handleChange}
                         />
+                        <div style={{ fontSize: 20, color: "rgb(255, 61, 61)" }}> {this.state.nameError}</div>
                         <MDBInput
                           className="white-text"
                           iconClass="white-text"
@@ -155,6 +190,7 @@ class RegisterForm extends React.Component {
                           value={this.state.email}
                           onChange={this.handleChange}
                         />
+                        <div style={{ fontSize: 20, color: "rgb(255, 61, 61)" }}> {this.state.emailError}</div>
                         <MDBInput
                           className="white-text"
                           iconClass="white-text"
@@ -164,6 +200,7 @@ class RegisterForm extends React.Component {
                           id="password"
                           onChange={this.handleChange}
                         />
+                        <div style={{ fontSize: 20, color: "rgb(255, 61, 61)" }}> {this.state.passwordError}</div>
                         <MDBInput
                           className="white-text"
                           iconClass="white-text"
@@ -173,6 +210,7 @@ class RegisterForm extends React.Component {
                           id="cfmpassword"
                           onChange={this.handleChange}
                         />
+                        <div style={{ fontSize: 20, color: "rgb(255, 61, 61)" }}> {this.state.cfmPasswordError}</div>
                         <select onChange={this.handleSelectList} value={this.state.tutgrp} id="tutgrp" className="browser-default custom-select">
                           <option value={'TS1'}>TS1</option>
                           <option value={'TS2'}>TS2</option>
