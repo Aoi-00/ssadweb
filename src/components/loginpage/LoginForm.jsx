@@ -65,6 +65,10 @@ class LoginForm extends React.Component {
     }
     this.props.facebookLogin(post);
   }
+  handleKeyPress = (event) => {
+    if(event.key === 'Enter')
+      this.EmailLogin()
+  }
   componentWillReceiveProps(nextProps) {
     if (nextProps.loginstatus.length !== 0) {
       //Correct Authentication 
@@ -144,6 +148,7 @@ class LoginForm extends React.Component {
                           id="userpassword"
                           value={this.state.userpassword}
                           onChange={this.handleChange}
+                          onKeyPress={this.handleKeyPress}
                         />
                         <div className="text-center mt-4 black-text">
                           <MDBBtn color="white" onClick={this.EmailLogin} disabled={loading} >

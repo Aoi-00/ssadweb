@@ -3,7 +3,8 @@ const initState = {
     status: [],
     studentinfo: [],
     profinfo: [],
-    emailcheck: []
+    emailcheck: [],
+    myInfo: []
 };
 
 const AuthReducers = (state = initState, action) => {
@@ -32,6 +33,11 @@ const AuthReducers = (state = initState, action) => {
             return {
                 ...state,
                 studentinfo: action.payload
+            }
+        case 'GET_MY_DETAILS':
+            return {
+                ...state,
+                myInfo: action.payload
             }
         case 'GET_PROF_DETAILS':
             return {

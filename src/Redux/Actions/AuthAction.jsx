@@ -141,3 +141,19 @@ export const emailChecking = (postData) => dispatch => {
         })
         );
 }
+
+export const getCompeteMyInfo = (postData) => dispatch => {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/studentinfo', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'GET_MY_DETAILS',
+            payload: data
+        })
+        );
+}

@@ -119,7 +119,7 @@ class Navbar extends Component {
                                 <MDBNavItem>
                                     <MDBNavLink
                                         onClick={this.closeCollapse('mainNavbarCollapse')}
-                                        to='/compete'
+                                        to='/challenger'
                                     >
                                         <strong>Compete</strong>
                                     </MDBNavLink>
@@ -127,9 +127,9 @@ class Navbar extends Component {
                                 <MDBNavItem>
                                     <MDBNavLink
                                         onClick={this.closeCollapse('mainNavbarCollapse')}
-                                        to='/challenger'
+                                        to='/assignment'
                                     >
-                                        <strong>Challengers</strong>
+                                        <strong>Assignments</strong>
                                     </MDBNavLink>
                                 </MDBNavItem>
                                 <MDBNavItem>
