@@ -161,7 +161,7 @@ class StudentProfile extends Component {
                             <br />
                             <MDBBtn
                                 onClick={this.GoBack}
-                                color="green"
+                                color="red"
                                 className="m-0 px-3 py-2 z-depth-0">
                                 Back
                             </MDBBtn>
