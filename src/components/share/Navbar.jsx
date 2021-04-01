@@ -64,6 +64,14 @@ class Navbar extends Component {
                                 <MDBNavItem>
                                     <MDBNavLink
                                         onClick={this.closeCollapse('mainNavbarCollapse')}
+                                        to='/reporthome'
+                                    >
+                                        <strong>Report</strong>
+                                    </MDBNavLink>
+                                </MDBNavItem>
+                                <MDBNavItem>
+                                    <MDBNavLink
+                                        onClick={this.closeCollapse('mainNavbarCollapse')}
                                         to='/seltut'
                                     >
                                         <strong>Marking</strong>

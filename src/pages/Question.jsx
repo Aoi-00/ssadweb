@@ -79,7 +79,7 @@ class Question extends Component {
                             <hr />
                             <div id="html_embed_widget_11018" class="html_embed_widget embed_wrapper">
                                 <div data-height="3000" data-width="3000" class="game_frame game_loaded" className="embed-responsive embed-responsive-16by9">
-                                    <iframe height="100%" width="100%" mozallowfullscreen="true" allow="autoplay; fullscreen; geolocation; microphone; camera; midi" src="http://localhost/webgl/" msallowfullscreen="true" scrolling="no" allowfullscreen="true" webkitallowfullscreen="true" id="game_drop" allowtransparency="true" frameborder="0">
+                                    <iframe height="100%" width="100%" mozallowfullscreen="true" allow="autoplay; fullscreen; geolocation; microphone; camera; midi" src="http://seproj.s3-website-ap-southeast-1.amazonaws.com/" msallowfullscreen="true" scrolling="no" allowfullscreen="true" webkitallowfullscreen="true" id="game_drop" allowtransparency="true" frameborder="0">
                                     </iframe>
                                 </div>
                             </div>

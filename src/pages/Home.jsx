@@ -13,7 +13,8 @@ import TwitterCard from '../components/homepage/TwitterCard'
 
 class Home extends Component {
     state = {
-        usertype: localStorage.getItem("usertype")
+        usertype: localStorage.getItem("usertype"),
+        tutgrp: localStorage.getItem("tutgrp")
     }
     componentDidMount() {
         if (this.state.usertype == "Student")
@@ -38,7 +39,7 @@ class Home extends Component {
                         <br />
                         <h2>LeaderBoard</h2>
                         <hr />
-                        <LeaderBoard leaderboard={this.props.leaderboard} />
+                        <LeaderBoard leaderboard={this.props.leaderboard} tutgrp={this.state.tutgrp} />
                         <br />
                     </MDBAnimation >
                     <MDBAnimation type="slideInUp" count={1}>

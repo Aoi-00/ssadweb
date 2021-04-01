@@ -19,6 +19,8 @@ import Challenger from '../pages/Challenger';
 import Competitor from '../pages/Competitor';
 import Challenge from '../pages/Challenge';
 import MySubmission from '../pages/MySubmission';
+import Report from '../pages/Report';
+import ReportHome from '../pages/ReportHome';
 
 
 class Routes extends React.Component {
@@ -42,6 +44,8 @@ class Routes extends React.Component {
         <Route path='/challenger' component={Challenger} />
         <Route path='/competitor' component={Competitor} />
         <Route path='/submission/:id' component={MySubmission} />
+        <Route path='/report' component={Report} />
+        <Route path='/reporthome' component={ReportHome} />
         <Route path='/challenge' component={Challenge} />
         
         <Route render={() => <h1>Not Found</h1>} />
