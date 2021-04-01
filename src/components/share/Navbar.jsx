@@ -103,7 +103,7 @@ class Navbar extends Component {
                 <div>
                     <MDBNavbar color='indigo' dark expand='md' fixed='top' scrolling>
                         <MDBNavbarBrand href='/home' className='py-0 font-weight-bold'>
-                            <Logo style={{ height: '2.5rem', width: '2.5rem' }} />
+                            <img src={ganyu} height="50" alt="50" className="rounded-circle" />
                             <strong className='align-middle'>SSAD Project</strong>
                         </MDBNavbarBrand>
                         <MDBNavbarToggler
