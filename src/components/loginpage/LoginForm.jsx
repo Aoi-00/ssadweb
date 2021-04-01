@@ -28,7 +28,11 @@ class LoginForm extends React.Component {
     emaillogin: false,
     loading: false,
     wrongauth: false,
+    emailError: "",
+    passwordError: "",
+    exceedtry: 0
   };
+
   toggleCollapse = collapseID => () =>
     this.setState(prevState => ({
       collapseID: prevState.collapseID !== collapseID ? collapseID : ""
@@ -39,6 +43,30 @@ class LoginForm extends React.Component {
       [e.target.id]: e.target.value
     })
   }
+
+  validate = () => {
+    let emailError = "";
+    let passwordError = "";
+
+    if (this.state.email) {
+      if (!this.state.email.includes('@')) {
+        emailError = "invalid email";
+      }
+    }
+    else {
+      emailError = "email cannot be empty";
+    }
+
+    if (!this.state.userpassword) {
+      passwordError = "password cannot be empty";
+    }
+    if (emailError || passwordError) {
+      this.setState({ emailError, passwordError })
+      return false;
+    }
+    return true;
+  };
+
   EmailLogin = () => {
     const post = {
 
@@ -46,11 +74,19 @@ class LoginForm extends React.Component {
       password: this.state.userpassword
 
     }
-    this.setState({
-      loading: !this.state.loading,
-      emaillogin: true
-    });
-    this.props.emailLogin(post);
+    const isValid = this.validate();
+    if (isValid) {
+      
+      this.setState({
+        loading: !this.state.loading,
+        emaillogin: true,
+        emailError: "",
+        passwordError: ""
+        
+      });
+      this.props.emailLogin(post);
+     
+    }
   }
   responseFacebook = (response) => {
     this.setState({
@@ -66,7 +102,7 @@ class LoginForm extends React.Component {
     this.props.facebookLogin(post);
   }
   handleKeyPress = (event) => {
-    if(event.key === 'Enter')
+    if (event.key === 'Enter')
       this.EmailLogin()
   }
   componentWillReceiveProps(nextProps) {
@@ -88,14 +124,28 @@ class LoginForm extends React.Component {
         loading: !this.state.loading,
         userpassword: '',
         email: '',
-        wrongauth: !this.state.wrongauth
+        wrongauth: true,
+        exceedtry: this.state.exceedtry++
       })
+      
+
+      if (this.state.exceedtry > 2){
+        
+      }
+      
+
+      // if (this.state.wrongauthcount >= 5) {
+      //   alert("Forgot your email or password? Please contact the admin.");
+      // }
     }
   }
 
   render() {
+
     const { loading } = this.state;
-    const { wrongauth } = this.state;
+    const { wrongauth, exceedtry } = this.state;
+
+  
     return (
       <div id="classicformpage">
         <MDBView>
@@ -139,6 +189,7 @@ class LoginForm extends React.Component {
                           value={this.state.email}
                           onChange={this.handleChange}
                         />
+                        <div style={{ fontSize: 20, color: "rgb(255, 61, 61)" }} > {this.state.emailError} </div>
                         <MDBInput
                           className="white-text"
                           iconClass="white-text"
@@ -150,8 +201,9 @@ class LoginForm extends React.Component {
                           onChange={this.handleChange}
                           onKeyPress={this.handleKeyPress}
                         />
+                        <div style={{ fontSize: 20, color: "rgb(255, 61, 61)" }}> {this.state.passwordError}</div>
                         <div className="text-center mt-4 black-text">
-                          <MDBBtn color="white" onClick={this.EmailLogin} disabled={loading} >
+                          <MDBBtn color="white" onClick={this.EmailLogin} disabled={loading}>
                             {loading && <span>Logging in</span>}
                             {!loading && <span>login</span>}
                           </MDBBtn>
@@ -162,7 +214,8 @@ class LoginForm extends React.Component {
                             callback={this.responseFacebook}
                           />
                           <hr className="hr-light" />
-                          {wrongauth && <h2 className="red-text">Wrong username or password</h2>}
+                          {exceedtry >1 && <h3 className="red-text">Please Contact Admin</h3>}
+                          {wrongauth  && <h3 className="red-text">Wrong username or password</h3>}
                         </div>
                       </MDBCardBody>
                     </MDBCard>

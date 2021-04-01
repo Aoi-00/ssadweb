@@ -48,7 +48,7 @@ class MarkingHome extends Component {
                 <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
                     <br />
-                    <MDBAnimation type="slideInDown">
+                    <MDBAnimation type="slideInUp">
                         <MDBRow>
                             <MDBCol size="12">
                                 <h2>Select Assignment to Mark</h2>

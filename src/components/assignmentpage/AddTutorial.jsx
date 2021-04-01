@@ -12,6 +12,17 @@ class AddTutorial extends Component {
         coins: 50,
         loading: false,
         userType: localStorage.getItem("usertype"),
+        nameError: ""
+    }
+
+    validate = () => {
+        let nameError = "";
+        if (!this.state.tutName) {
+            nameError = "Assignment name cannot be empty";
+            this.setState({nameError})
+            return false;
+        }
+        return true;
     }
     onSubmit = () => {
         const post = {
@@ -22,19 +33,18 @@ class AddTutorial extends Component {
             coins: this.state.coins,
 
         }
-        this.setState({
-            loading: !this.state.loading,
-            tutName: ""
-        })
-        this.props.addTut(post);
+        const isValid = this.validate();
+        if (isValid) {
+            this.setState({
+                loading: !this.state.loading,
+                tutName: "",
+                nameError:""
+            })
+            this.props.addTut(post);
+        }
     }
 
-    //    onBack =() =>{
-    //         this.props.history.push('/home')
-    //         // This.props.navigate()
 
-
-    //     }
     handleChange = (e) => { //to handle change in inputs
         this.setState({
             [e.target.id]: e.target.value,
@@ -65,6 +75,7 @@ class AddTutorial extends Component {
                     <div className="black-text">
                         <MDBInput value={this.state.tutName} label="Enter Assignment Name" id='tutName' onChange={this.handleChange} icon="user-plus" group type="text" validate error="wrong"
                             success="right" />
+                        <div style={{ fontSize: 20, color: "rgb(255, 61, 61)" }}> {this.state.nameError}</div>
                         {(this.state.userType === "Professor") &&
                             <React.Fragment>
                                 <label htmlFor="difficulty">Select Tutorial Group</label>

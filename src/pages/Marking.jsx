@@ -19,7 +19,9 @@ class Marking extends Component {
         tutid: localStorage.getItem("selectedtutid"),
         studid: this.props.match.params.studid,
         score: '',
-        comment: ''
+        comment: '',
+        scoreError:"",
+        commentError:""
     }
     componentDidMount() {
         this.getStudentDetails();
@@ -52,14 +54,40 @@ class Marking extends Component {
             [e.target.id]: e.target.value
         })
     }
+    validate = () => {
+        let scoreError= "";
+        let commentError = "";
+
+        if (!this.state.score){
+            scoreError= "Score cannot be empty";
+        }
+        else{
+            if (!Number(this.state.score)){
+                scoreError = "Score must be a numerical value";
+            }
+        }
+        if (!this.state.comment){
+            commentError= "Comment cannot be empty";
+        }
+        if (commentError || scoreError){
+            this.setState({commentError,scoreError});
+            return false
+        }
+        return true;
+    }
     MarkingComplete = () => {
         const form = {
             id: this.state.submissionid,
             score: this.state.score,
             comment: this.state.comment
         }
-        this.props.updateScores(form)
-        this.props.history.push("/seltut")
+        const isValid = this.validate();
+        console.log(isValid, this.state.commentError,this.state.scoreError);
+        if (isValid){
+            this.setState({scoreError: "",commentError: ""})
+            this.props.updateScores(form)
+            this.props.history.push("/seltut")
+        }        
     }
 
     GoBack = () => {
@@ -97,7 +125,7 @@ class Marking extends Component {
                             <MDBCol size="12">
                                 <br />
                                 <h2>Marking</h2>
-                                <MarkScoreComment markComplete={this.MarkingComplete} goBack={this.GoBack} inputChange={this.handleChange} record={this.props.record} />
+                                <MarkScoreComment scoreError = {this.state.scoreError} commentError = {this.state.commentError} markComplete={this.MarkingComplete} goBack={this.GoBack} inputChange={this.handleChange} record={this.props.record} />
                             </MDBCol>
                         </MDBRow>
                     </MDBAnimation>

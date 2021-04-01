@@ -18,7 +18,8 @@ class StudentProfile extends Component {
         picture: localStorage.getItem("picture"),
         name: localStorage.getItem("name"),
         fbid: localStorage.getItem("fbid"),
-        fbDisplay: false
+        fbDisplay: false,
+        emailError:""
     }
 
     componentDidMount() {
@@ -44,6 +45,16 @@ class StudentProfile extends Component {
         });
     }
 
+    validate = () =>{
+        let emailError = "";
+        if (!this.state.email){
+            emailError= "Email cannot be empty";
+            this.setState({emailError});
+            return false;
+        }
+        return true;
+    }
+
     onSubmitAll = () => {
         const form = {
             id: this.state.studid,
@@ -53,13 +64,18 @@ class StudentProfile extends Component {
             picture: this.state.picture,
             tutgrp: this.state.tutgrp
         }
-        this.props.updateProfile(form);
-        localStorage.setItem("picture", this.state.picture)
-        localStorage.setItem("tutgrp", this.state.tutgrp)
-        localStorage.setItem("email", this.state.email)
-        localStorage.setItem("name", this.state.name)
-        localStorage.setItem("fbid", this.state.fbid)
-        this.props.history.push("/home")
+        const isValid = this.validate();
+
+        if (isValid) {
+            this.setState({emailError:""})
+            this.props.updateProfile(form);
+            localStorage.setItem("picture", this.state.picture)
+            localStorage.setItem("tutgrp", this.state.tutgrp)
+            localStorage.setItem("email", this.state.email)
+            localStorage.setItem("name", this.state.name)
+            localStorage.setItem("fbid", this.state.fbid)
+            this.props.history.push("/home")
+        }
     }
 
     handleChange = (e) => { // to change state everytime you type -- question: value
@@ -124,6 +140,7 @@ class StudentProfile extends Component {
                             </MDBInput>
                             <MDBInput id='email' value={this.state.email} label="E-mail address" icon="envelope" onChange={this.handleChange} >
                             </MDBInput>
+                            <div style={{ fontSize: 20, color: "rgb(255, 61, 61)" }}> {this.state.emailError}</div>
                             <Uploadfile picUpload={this.PictureUploaded} />
                             <select onChange={this.onChoose} value={this.state.tutgrp} id="tutgrp" className="browser-default custom-select">
                                 <option value={'TS1'}>TS1</option>

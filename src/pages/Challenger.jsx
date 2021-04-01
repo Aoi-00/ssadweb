@@ -7,7 +7,7 @@ import Challengerlist from '../components/challengerpage/Challengerlist'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { getMyCompetitors, getChallengers } from '../Redux/Actions/GameActions'
-import challenge from '../assets/challenge.jpg'
+import friendly from '../assets/friendly.jpg'
 
 class Challenger extends Component {
     state = {
@@ -54,7 +54,7 @@ class Challenger extends Component {
                             <MDBCol size="8">
                                 <h3>Compete with your friends!</h3>
                                 <hr />
-                                <img src={challenge} href="#" onClick={this.CompeteMode} className="img-fluid" alt="" />
+                                <img src={friendly} href="#" width = "400" height = "400" onClick={this.CompeteMode} className="img-fluid" alt="" />
                             </MDBCol>
                         </MDBRow>
                     </MDBAnimation>
@@ -68,6 +68,7 @@ class Challenger extends Component {
                             </MDBCol>
                         </MDBRow>
                     </MDBAnimation>
+                    <br/>
                     <MDBAnimation type="slideInUp">
                         <MDBRow>
                             <MDBCol>

@@ -22,6 +22,10 @@ class Navbar extends Component {
         window.scrollTo(0, 0);
         collapseID === collID && this.setState({ collapseID: '' });
     };
+
+    refreshPage () {
+        window.location.reload();
+    }
     render() {
         const { collapseID } = this.state;
         const overlay = (
