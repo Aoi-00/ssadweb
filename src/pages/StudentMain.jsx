@@ -33,6 +33,7 @@ class StudentMain extends Component {
         this.props.history.push('/submission/' + ldrid)
     }
     render() {
+        console.log(this.props.mycompletedtask)
         return (
             <div>
                 <Navbar validateLogin={this.NotLoggedIn} />
