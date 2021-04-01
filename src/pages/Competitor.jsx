@@ -16,7 +16,8 @@ class Competitor extends Component {
         tutid: localStorage.getItem("comptutid"),
         myldrid: localStorage.getItem("myldrid"),
         mystudid: localStorage.getItem("studid"),
-        comment: ''
+        comment: '',
+        commentError: ''
     }
     componentDidMount() {
         console.log(this.state)
@@ -24,6 +25,20 @@ class Competitor extends Component {
         this.getCompetitorScoreBoard();
         this.getMyScore();
         this.getmyDetails();
+    }
+
+    validate = () => {
+        let commentError = "";
+        if (this.state.comment == "" ){
+        commentError = "no comment";
+        }
+
+        if (commentError) {
+            this.setState ({ commentError});
+            return false;
+        }
+        return true;
+
     }
     getCompetitorDetails() {
         const form = {
@@ -51,12 +66,18 @@ class Competitor extends Component {
         this.props.getCurrentUserScore(form)
     }
     SendComment = () => {
+       
         const form = {
             compid: this.state.compid,
             comment: this.state.comment
         }
+       
         this.props.sendComment(form)
-        this.props.history.push('/challenger')
+        const isValid = this.validate();
+        if (isValid){
+            console.log(this.state);
+        }
+        // this.props.history.push('/challenger')
     }
     handleChange = (e) => {
         this.setState({ [e.target.id]: e.target.value })
@@ -104,6 +125,7 @@ class Competitor extends Component {
                                                     Score: {x.score}
                                                 </MDBCol>
                                             </MDBRow>
+                                            <br />
                                             <h3>Professor's Comment to me</h3>
                                             <hr />
                                             <p>{(x.comment == '') ? "No Comment" : x.comment}</p>
@@ -123,7 +145,7 @@ class Competitor extends Component {
                                 {this.props.competitorscore && this.props.competitorscore.map(x => {
                                     return (
                                         <React.Fragment>
-                                            <br />
+                                            <br /><br /><br />
                                             <h3>Competitor's Answer</h3>
                                             <hr />
                                             <img src={"data:image/png;base64," + x.image} className="img-fluid z-depth-1" alt="" />
@@ -138,6 +160,7 @@ class Competitor extends Component {
                                                     Score: {x.score}
                                                 </MDBCol>
                                             </MDBRow>
+                                            <br />
                                             <h3>Professor's Comment to Competitor</h3>
                                             <hr />
                                             <p>{x.comment}</p>
