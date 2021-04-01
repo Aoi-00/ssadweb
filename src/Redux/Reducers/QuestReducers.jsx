@@ -1,23 +1,29 @@
 const initState = {
-    questions: []
+    questions: [],
+    tutquestions: []
 };
 
 const QuestReducers = (state = initState, action) => {
     switch (action.type) {
-        case 'SHOW_QUESTION':
+        case 'SHOW_ALL_QUESTION':
             return {
                 ...state,
                 questions: action.payload
             }
+        case 'SHOW_TUT_QUESTION':
+            return {
+                ...state,
+                tutquestions: action.payload
+            }
         case 'REMOVE_QUESTION':
             return {
                 ...state,
-                questions: state.questions.filter(x => x.questid !== action.payload)
+                tutquestions: state.tutquestions.filter(x => x.questid !== action.payload)
             }
         case 'ADD_QUESTION':
             return {
                 ...state,
-                questions: [...state.questions, ...action.payload]
+                tutquestions: [...state.tutquestions, ...action.payload]
             }
         default:
             return state;

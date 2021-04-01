@@ -7,66 +7,78 @@ import Challengerlist from '../components/challengerpage/Challengerlist'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { getMyCompetitors, getChallengers } from '../Redux/Actions/GameActions'
+import challenge from '../assets/challenge.jpg'
 
 class Challenger extends Component {
     state = {
         studid: localStorage.getItem("studid")
     }
-    componentDidMount(){
+    componentDidMount() {
         this.getCompetitor();
         this.getChallengers();
     }
-    getCompetitor(){
+    getCompetitor() {
         const form = {
-            requestorid: this.state.studid    
+            requestorid: this.state.studid
         }
         this.props.getMyCompetitors(form)
     }
-    getChallengers(){
+    getChallengers() {
         const form = {
-            competitorid: this.state.studid    
+            competitorid: this.state.studid
         }
         this.props.getChallengers(form)
     }
-    ViewCompetition = () =>{
+    ViewCompetition = () => {
         this.props.history.push('/competitor')
     }
-    ViewChallenge = () =>{
+    ViewChallenge = () => {
         this.props.history.push('/challenge')
     }
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
+    CompeteMode = () => this.props.history.push('/compete')
 
-    GoBack=() => {this.props.history.push("/studentmain")}
+    GoBack = () => { this.props.history.push("/studentmain") }
 
 
     render() {
         return (
             <div>
                 <Navbar validateLogin={this.NotLoggedIn} />
+                <br />
                 <MDBContainer>
                     <MDBAnimation type="slideInDown">
-                    <MDBRow>
-                        <MDBCol size = "12">
-                            <h3>My Competitors Request</h3>
-                            <hr />
-                            <Competitorlist navigate={this.ViewCompetition} myCompetitors={this.props.competitors} />
-                        </MDBCol>
-                    </MDBRow>
+                        <MDBRow center>
+                            <MDBCol size="8">
+                                <h3>Compete with your friends!</h3>
+                                <hr />
+                                <img src={challenge} href="#" onClick={this.CompeteMode} className="img-fluid" alt="" />
+                            </MDBCol>
+                        </MDBRow>
+                    </MDBAnimation>
+                    <br />
+                    <MDBAnimation type="slideInDown">
+                        <MDBRow>
+                            <MDBCol size="12">
+                                <h3>My Competitors Request</h3>
+                                <hr />
+                                <Competitorlist navigate={this.ViewCompetition} myCompetitors={this.props.competitors} />
+                            </MDBCol>
+                        </MDBRow>
                     </MDBAnimation>
                     <MDBAnimation type="slideInUp">
-                    <MDBRow>
-                        <MDBCol>
-                            <h3>My Challengers</h3>
-                            <hr />
-                            <Challengerlist navigate={this.ViewChallenge} myChallenger={this.props.challengers} />
-                        </MDBCol>
-                   
-                        
-                    </MDBRow>
-                    <MDBBtn color="green" onClick = {this.GoBack} > Back
-                       </MDBBtn>
+                        <MDBRow>
+                            <MDBCol>
+                                <h3>My Challengers</h3>
+                                <hr />
+                                <Challengerlist navigate={this.ViewChallenge} myChallenger={this.props.challengers} />
+                            </MDBCol>
+
+
+                        </MDBRow>
+                        <MDBBtn color="red" onClick={this.GoBack}> Back</MDBBtn>
                     </MDBAnimation>
                 </MDBContainer>
                 <Footer />

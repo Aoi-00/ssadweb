@@ -3,9 +3,9 @@ import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn } from 'mdbreact';
 import SolutionModal from './SolutionModal'
 
 
-export default function QuestionList({ questions, addQuestion }) {
-  let onAdd = (questid) => {
-    addQuestion(questid)
+export default function TutQuestionList({ questions, removeQuestion }) {
+  let onDelete = (questid) => {
+    removeQuestion(questid)
   }
   return (
     <div>
@@ -14,7 +14,7 @@ export default function QuestionList({ questions, addQuestion }) {
           <tr>
             <th>#</th>
             <th>Question</th>
-            <th>Add Question</th>
+            <th>Remove</th>
           </tr>
         </MDBTableHead>
         <MDBTableBody>
@@ -23,7 +23,7 @@ export default function QuestionList({ questions, addQuestion }) {
               <tr key={x.questid}>
                 <td>{index + 1}</td>
                 <td>{x.question}</td>
-                <td><MDBBtn size="sm" color="blue" onClick={() => onAdd(x.questid)}>Add</MDBBtn></td>              
+                <td><MDBBtn size="sm" color="red" onClick={() => onDelete(x.questid)}>Remove</MDBBtn></td>              
               </tr>
             )
           })}

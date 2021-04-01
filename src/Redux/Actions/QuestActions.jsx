@@ -29,7 +29,7 @@ export const deleteQuestion = (postData) => dispatch => {
         );
 }
 
-export const showQuestion = (postData) => dispatch => {
+export const showAllQuestion = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/show/tutquest', {
         method: 'POST',
         headers: {
@@ -39,7 +39,23 @@ export const showQuestion = (postData) => dispatch => {
     })
         .then(res => res.json())
         .then(data => dispatch({
-            type: 'SHOW_QUESTION',
+            type: 'SHOW_ALL_QUESTION',
+            payload: data
+        })
+        );
+}
+
+export const showTutorialQuestion = (postData) => dispatch => {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/show/tutquest', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'SHOW_TUT_QUESTION',
             payload: data
         })
         );
