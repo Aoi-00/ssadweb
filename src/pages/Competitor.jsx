@@ -111,7 +111,7 @@ class Competitor extends Component {
                                             <hr />
                                             <img src={x.image} className="img-fluid z-depth-1" alt="" />
                                             <br /> <br />
-                                            <h3>Competitors Scores</h3>
+                                            <h3>My Score</h3>
                                             <hr />
                                             <MDBRow>
                                                 <MDBCol size="9">

@@ -85,9 +85,9 @@ class Challenge extends Component {
                                     <React.Fragment>
                                         <h3>My Answer</h3>
                                         <hr />
-                                        <img src={ x.image} className="img-fluid z-depth-1" alt="" />
+                                        <img src={x.image} className="img-fluid z-depth-1" alt="" />
                                         <br /> <br />
-                                        <h3>Competitors Scores</h3>
+                                        <h3>My Score</h3>
                                         <hr />
                                         <MDBRow>
                                             <MDBCol size="9">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Footer from '../components/share/Footer'
 import Navbar from '../components/share/Navbar'
-import { MDBContainer, MDBRow, MDBCol, MDBAnimation, MDBBtn } from "mdbreact"
+import { MDBContainer, MDBRow, MDBCol, MDBAnimation, MDBBtn, MDBView, MDBMask } from "mdbreact"
 import Competitorlist from '../components/challengerpage/Competitorlist'
 import Challengerlist from '../components/challengerpage/Challengerlist'
 import { connect } from 'react-redux'
@@ -54,7 +54,12 @@ class Challenger extends Component {
                             <MDBCol size="8">
                                 <h3>Compete with your friends!</h3>
                                 <hr />
-                                <img src={friendly} href="#" onClick={this.CompeteMode} className="img-fluid" alt="" />
+                                <MDBView hover>
+                                    <img src={friendly} href="#" onClick={this.CompeteMode} className="img-fluid" alt="" />
+                                    <MDBMask className="flex-center" overlay="blue-strong" onClick={this.CompeteMode}>
+                                        <p className="white-text">Click here to compete with your friends!</p>
+                                    </MDBMask>
+                                </MDBView>
                             </MDBCol>
                         </MDBRow>
                     </MDBAnimation>
@@ -68,7 +73,7 @@ class Challenger extends Component {
                             </MDBCol>
                         </MDBRow>
                     </MDBAnimation>
-                    <br/>
+                    <br />
                     <MDBAnimation type="slideInUp">
                         <MDBRow>
                             <MDBCol>
@@ -76,8 +81,6 @@ class Challenger extends Component {
                                 <hr />
                                 <Challengerlist navigate={this.ViewChallenge} myChallenger={this.props.challengers} />
                             </MDBCol>
-
-
                         </MDBRow>
                         <MDBBtn color="red" onClick={this.GoBack}> Back</MDBBtn>
                     </MDBAnimation>

@@ -56,7 +56,7 @@ class Report extends Component {
                 <MDBContainer>
                     <MDBRow>
                         <MDBCol size="12">
-                            <h3>Student Scores for: {this.state.tutname} <MDBBtn onClick={this.printPage} outline color="blue"><MDBIcon icon="print" className="mr-1" /></MDBBtn><MDBBtn onClick={this.goBack} outline color="red">Back</MDBBtn></h3>
+                            <h3>Student Scores for: {this.state.tutname} </h3>
                             <hr />
                             {leaderboard && <BarGraph GraphData={HighestScoreForEachStudent} AssignmentScoreList={CurrentAssginmentScores} viewStudent={this.StudentAnalysis} />}
                         </MDBCol>
@@ -78,6 +78,7 @@ class Report extends Component {
                                     <h3>Student Performance</h3>
                                     <hr />
                                     <LineGraph LineGraphData={this.state.student} />
+                                    <MDBBtn onClick={this.printPage} outline color="blue">Print <MDBIcon icon="print" className="mr-1" /></MDBBtn><MDBBtn onClick={this.goBack} outline color="red">Back</MDBBtn>
                                 </MDBCol>
                             </React.Fragment>
                         }
