@@ -22,6 +22,7 @@ export default function Pagination({ leaderboard, tutgrp }) {
       {
         label: 'Score',
         field: 'score',
+        sort: 'asc',
         width: 100,
       },
     ],
@@ -31,5 +32,5 @@ export default function Pagination({ leaderboard, tutgrp }) {
   leaderboard.filter(x => x.tutgrp === tutgrp).map(x => datatable.rows.push({ name: x.name, date: x.date, score: x.score }))
 
 
-  return <MDBDataTableV5 hover entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={datatable} fullPagination />;
+  return <MDBDataTableV5 hover entriesOptions={[5, 10, 15]} entries={5} pagesAmount={4} data={datatable}  fullPagination />;
 }
