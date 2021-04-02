@@ -54,7 +54,7 @@ class Challenger extends Component {
                             <MDBCol size="8">
                                 <h3>Compete with your friends!</h3>
                                 <hr />
-                                <img src={friendly} href="#" width = "400" height = "400" onClick={this.CompeteMode} className="img-fluid" alt="" />
+                                <img src={friendly} href="#" onClick={this.CompeteMode} className="img-fluid" alt="" />
                             </MDBCol>
                         </MDBRow>
                     </MDBAnimation>

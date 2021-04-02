@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBIcon, MDBDropdownItem } from 'mdbreact';
-import { ReactComponent as Logo } from '../../assets/logo.svg';
+import ganyu from '../../assets/ganyu.jpg';
 
 class Navbar extends Component {
     state = {
@@ -23,7 +23,7 @@ class Navbar extends Component {
         collapseID === collID && this.setState({ collapseID: '' });
     };
 
-    refreshPage () {
+    refreshPage() {
         window.location.reload();
     }
     render() {
@@ -40,8 +40,8 @@ class Navbar extends Component {
                 <div>
                     <MDBNavbar color='indigo' dark expand='md' fixed='top' scrolling>
                         <MDBNavbarBrand href='/home' className='py-0 font-weight-bold'>
-                            <Logo style={{ height: '2.5rem', width: '2.5rem' }} />
-                            <strong className='align-middle'>SSAD Project</strong>
+                            <img src={ganyu} height="50" alt="50" className="rounded-circle" />
+                            <strong className='align-middle'>Ganyu</strong>
                         </MDBNavbarBrand>
                         <MDBNavbarToggler
                             onClick={this.toggleCollapse('mainNavbarCollapse')}
@@ -103,7 +103,7 @@ class Navbar extends Component {
                 <div>
                     <MDBNavbar color='indigo' dark expand='md' fixed='top' scrolling>
                         <MDBNavbarBrand href='/home' className='py-0 font-weight-bold'>
-                            <Logo style={{ height: '2.5rem', width: '2.5rem' }} />
+                            <img src={ganyu} height="50" alt="50" className="rounded-circle" />
                             <strong className='align-middle'>SSAD Project</strong>
                         </MDBNavbarBrand>
                         <MDBNavbarToggler

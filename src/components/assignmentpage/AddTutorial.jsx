@@ -93,7 +93,7 @@ class AddTutorial extends Component {
                         <MDBBtn onClick={this.onSubmit} color="blue" disabled={loading} >
                             {loading && <span>Submitting</span>}
                             {!loading && <span>Submit</span>}</MDBBtn>
-                        <MDBBtn color="green" onClick={this.props.onBack}> Back
+                        <MDBBtn color="red" onClick={this.props.onBack}> Back
                        </MDBBtn>
                     </div>
                 </form>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { MDBContainer, MDBRow, MDBCol, MDBAnimation } from "mdbreact";
+import { MDBContainer, MDBRow, MDBCol, MDBAnimation, MDBBtn } from "mdbreact";
 import { connect } from 'react-redux'
 import Proptypes from 'prop-types'
 import { getStudentSubmission, updateScores } from '../Redux/Actions/GameActions'
@@ -117,15 +117,12 @@ class Marking extends Component {
 
                     <MDBAnimation type="slideInUp">
                         <MDBRow>
-                            {/* <MDBCol size="6">
-                                <br></br>
-                                <h2>Answer Key</h2>
-                                <MarkDropDown questions={this.props.questionlist} />
-                            </MDBCol> */}
                             <MDBCol size="12">
                                 <br />
                                 <h2>Marking</h2>
+                                <hr/>
                                 <MarkScoreComment scoreError = {this.state.scoreError} commentError = {this.state.commentError} markComplete={this.MarkingComplete} goBack={this.GoBack} inputChange={this.handleChange} record={this.props.record} />
+                                <MDBBtn>Submit</MDBBtn>
                             </MDBCol>
                         </MDBRow>
                     </MDBAnimation>
