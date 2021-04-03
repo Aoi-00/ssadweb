@@ -108,7 +108,7 @@ class Marking extends Component {
                                 <StudentInfo student={this.props.student} />
                             </MDBCol>
                             <MDBCol size="6">
-                                <h2>Students Answer</h2>
+                                <h2>Student's Answer</h2>
                                 <hr />
                                 <MarkPicture record={this.props.record} />
                             </MDBCol>
