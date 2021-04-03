@@ -78,11 +78,12 @@ class Report extends Component {
                                     <h3>Student Performance</h3>
                                     <hr />
                                     <LineGraph LineGraphData={this.state.student} />
-                                    <MDBBtn onClick={this.printPage} outline color="blue">Print <MDBIcon icon="print" className="mr-1" /></MDBBtn><MDBBtn onClick={this.goBack} outline color="red">Back</MDBBtn>
+                                    <MDBBtn onClick={this.printPage} color="blue">Print <MDBIcon icon="print" className="mr-1" /></MDBBtn>
                                 </MDBCol>
                             </React.Fragment>
                         }
                     </MDBRow>
+                    <MDBBtn onClick={this.goBack} color="red">Back</MDBBtn>
                 </MDBContainer>
                 <br /><br />
                 <Footer />

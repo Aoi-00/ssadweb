@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { MDBContainer, MDBRow, MDBCol, MDBAnimation } from "mdbreact"
+import { MDBContainer, MDBRow, MDBCol, MDBAnimation, MDBBtn } from "mdbreact"
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { fetchPosts } from '../Redux/Actions/TwitterAction'
@@ -37,6 +37,7 @@ class Home extends Component {
                 <MDBContainer>
                     <MDBAnimation type="slideInDown" count={1}>
                         <br />
+                        
                         <h2>LeaderBoard</h2>
                         <hr />
                         {this.props.leaderboard && <LeaderBoard leaderboard={this.props.leaderboard} tutgrp={this.state.tutgrp} />}
@@ -51,7 +52,7 @@ class Home extends Component {
                     </MDBAnimation>
 
                 </MDBContainer>
-
+                <MDBBtn />
                 <Footer />
             </div>
         )

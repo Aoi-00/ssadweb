@@ -2,6 +2,13 @@ import React, { Component } from 'react'
 import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn } from 'mdbreact';
 
 class Competitorlist extends Component {
+    /**
+     * ViewCompetition
+     * @param {*} compid set compid
+     * @param {*} studid set studid
+     * @param {*} tutid set tutid
+     * @param {*} myldrid set myldrid
+     */
     viewCompetition = (compid, studid, tutid, myldrid) => {
         localStorage.setItem("compstudid", studid);
         localStorage.setItem("compid", compid);
@@ -9,6 +16,10 @@ class Competitorlist extends Component {
         localStorage.setItem("myldrid", myldrid)
         this.props.navigate()
     }
+    /**
+     * competitorlist
+     * @returns competitorlist details
+     */
     render() {
         let competitor = this.props.myCompetitors.map(x => {
             return (

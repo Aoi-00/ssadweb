@@ -11,7 +11,7 @@ const TwitterCard = ({ post }) => {
           <MDBCardText>
             {post.text}
           </MDBCardText>
-          <MDBBtn color="green" href="https://twitter.com/NTUsg?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">View</MDBBtn>
+          <MDBBtn color="green" href="https://twitter.com/NTUsg?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"  target="_blank">View</MDBBtn>
         </MDBCardBody>
       </MDBCard>
     </MDBCol>

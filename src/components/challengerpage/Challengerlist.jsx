@@ -2,6 +2,14 @@ import React, { Component } from 'react'
 import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn } from 'mdbreact';
 
 class Challengerlist extends Component {
+    /**
+     * viewChallenge
+     * @param {*} compid set compid 
+     * @param {*} studid set studid
+     * @param {*} tutid set tutid
+     * @param {*} oppldrid set oppldrid
+     * @param {*} challengerid set channgerid
+     */
     viewChallenge = (compid, studid, tutid, oppldrid, challengerid) => {
         localStorage.setItem("mystudid", studid);
         localStorage.setItem("compid", compid);
@@ -10,6 +18,11 @@ class Challengerlist extends Component {
         localStorage.setItem("challengerid", challengerid)
         this.props.navigate()
     }
+
+    /**
+     * ChallengerList
+     * @returns challengerlist details
+     */
     render() {
         let challenge = this.props.myChallenger.map(x => {
             return (
