@@ -20,7 +20,7 @@ class StudentMain extends Component {
         this.props.fetchPosts();
         this.getStudentSubmission()
     }
-    getStudentSubmission(){
+    getStudentSubmission() {
         const form = {
             studid: this.state.studid
         }
@@ -36,19 +36,19 @@ class StudentMain extends Component {
         return (
             <div>
                 <Navbar validateLogin={this.NotLoggedIn} />
-                
+
                 <MDBContainer>
-                <MDBAnimation type="slideInDown" count={1}>
-                    <br />
-                    <h2>LeaderBoard</h2>
-                    <hr />
-                    <LeaderBoard leaderboard={this.props.leaderboard} tutgrp={this.state.tutgrp} />
+                    <MDBAnimation type="slideInDown" count={1}>
+                        <br />
+                        <h2>LeaderBoard</h2>
+                        <hr />
+                        <LeaderBoard leaderboard={this.props.leaderboard} tutgrp={this.state.tutgrp} />
                     </MDBAnimation>
                     <MDBAnimation type="slideInUp" count={1}>
-                    <br />
+                        <br />
 
-                    <h2>Personal Submission</h2>
-                    <StudentSubmit selectSubmission={this.viewMySubmission} mycompletedtask={this.props.mycompletedtask} />
+                        <h2>Personal Submission</h2>
+                        <StudentSubmit selectSubmission={this.viewMySubmission} mycompletedtask={this.props.mycompletedtask} />
                     </MDBAnimation>
                 </MDBContainer>
                 <Footer />
@@ -59,7 +59,7 @@ class StudentMain extends Component {
 StudentMain.propTypes = {
     fetchPosts: PropTypes.func.isRequired,
     fetchLeaderboard: PropTypes.func.isRequired,
-    myCompletedTutorial:PropTypes.func.isRequired
+    myCompletedTutorial: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
