@@ -5,6 +5,12 @@ import { connect } from 'react-redux'
 import { addTutorial } from '../../Redux/Actions/TutorialAction'
 
 class AddTutorial extends Component {
+
+  /**
+   * state
+   * Get tutgrp, name and usertype
+   * 
+   */
     state = {
         tutGroup: localStorage.getItem("tutgrp"),
         tutName: '',
@@ -14,7 +20,10 @@ class AddTutorial extends Component {
         userType: localStorage.getItem("usertype"),
         nameError: ""
     }
-
+/**
+ * Validate if the string is empty
+ * @returns false
+ */
     validate = () => {
         let nameError = "";
         if (!this.state.tutName) {
@@ -24,6 +33,10 @@ class AddTutorial extends Component {
         }
         return true;
     }
+
+    /**
+     * Submit 
+     */
     onSubmit = () => {
         const post = {
             tutname: this.state.tutName,
@@ -44,29 +57,54 @@ class AddTutorial extends Component {
         }
     }
 
-
+/**
+ * handlceChange
+ * @param {*} e handle all the changes that were received
+ */
     handleChange = (e) => { //to handle change in inputs
         this.setState({
             [e.target.id]: e.target.value,
         })
     }
+
+   /**
+    * getValue
+    * @param {*} e  handle all the changes when the number of coins is amended
+    */
     getValue = (e) => {
         this.setState({
             coins: e.target.value
         })
     }
+
+    /**
+     * handleSelectList
+     * @param {*} e  handle selection list
+     */
     handleSelectList = (e) => {
         this.setState({ difficulty: e.target.value })
     }
+    /**
+     * handleTutList
+     * @param {*} e handle the tut list
+     */
     handleTutList = (e) => {
         this.setState({ tutGroup: e.target.value })
     }
+
+    /**
+     * ComponentDidupdate
+     * @param {*} prevProps to check if there is any update from the previous props
+     */
     componentDidUpdate(prevProps) {
         if (prevProps.tutGroup !== this.props.tutGroup) {
             this.setState({ loading: false })
         }
     }
-
+/**
+ * Display all the assingment lists that are created
+ * @returns 
+ */
     render() {
         const { loading } = this.state;
         return (

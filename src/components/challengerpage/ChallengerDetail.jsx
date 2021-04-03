@@ -3,6 +3,10 @@ import { MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, 
 
 
 class ChallengerDetail extends Component {
+    /**
+     * Challenger details
+     * @returns challenger details
+     */
     render() {
         let details = this.props.student.map(x => {
             return (

@@ -2,6 +2,11 @@ import React, { Component } from 'react'
 import { MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBRow, MDBContainer } from 'mdbreact';
 
 class CompetitorDetail extends Component {
+/**
+ * CompetitorDetails
+ * @returns return competitor details
+ */
+
     render() {
         let details = this.props.student.map(x => {
             return (
