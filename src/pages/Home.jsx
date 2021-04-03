@@ -39,7 +39,7 @@ class Home extends Component {
                         <br />
                         <h2>LeaderBoard</h2>
                         <hr />
-                        <LeaderBoard leaderboard={this.props.leaderboard} tutgrp={this.state.tutgrp} />
+                        {this.props.leaderboard && <LeaderBoard leaderboard={this.props.leaderboard} tutgrp={this.state.tutgrp} />}
                         <br />
                     </MDBAnimation >
                     <MDBAnimation type="slideInUp" count={1}>
