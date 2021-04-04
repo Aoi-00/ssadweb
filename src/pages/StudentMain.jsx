@@ -11,6 +11,11 @@ import Footer from '../components/share/Footer'
 
 
 class StudentMain extends Component {
+    /**
+     * state
+     * set studid to local storage studid
+     * get tutgrp to local storage tutgrp
+     */
     state = {
         studid: localStorage.getItem("studid"),
         tutgrp: localStorage.getItem("tutgrp")
@@ -20,18 +25,32 @@ class StudentMain extends Component {
         this.props.fetchPosts();
         this.getStudentSubmission()
     }
+    /**
+     * getStudentSubmission
+     */
     getStudentSubmission() {
         const form = {
             studid: this.state.studid
         }
         this.props.myCompletedTutorial(form);
     }
+    /**
+     * NotLoggedIn
+     */
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
+    /**
+     * ViewMySubmission
+     * @param {*} ldrid 
+     */
     viewMySubmission = (ldrid) => {
         this.props.history.push('/submission/' + ldrid)
     }
+    /**
+     * StudentMain Page
+     * @returns StudentMain page
+     */
     render() {
         return (
             <div>

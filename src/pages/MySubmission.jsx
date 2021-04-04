@@ -8,6 +8,16 @@ import { connect } from 'react-redux'
 import Proptypes from 'prop-types'
 
 class MySubmission extends Component {
+    /**
+     * state
+     * set tutgrp to local storage tutgrp
+     * set studid to local storage studid
+     * set email to local storage emaol
+     * set picture to local storage picture
+     * set name to local storage name
+     * set fbid to local storage fbid
+     * ldrid : id
+     */
     state = {
         tutgrp: localStorage.getItem("tutgrp"),
         studid: localStorage.getItem("studid"),
@@ -20,16 +30,30 @@ class MySubmission extends Component {
     componentDidMount() {
         this.getLeaderBoardSubmission()
     }
+    /**
+     * getLeaderBoardSubmission
+     */
     getLeaderBoardSubmission() {
         const form = {
             id: this.state.ldrid
         }
         this.props.getStudentSubmission(form)
     }
+
+    /**
+     * NotLoggedIn
+     */
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
+    /**
+     * GoBack
+     */
     GoBack = () => this.props.history.push('/studentmain')
+    /**
+     * MySubmission page
+     * @returns MySubmission page
+     */
     render() {
         let ProfComment = this.props.studSubmission.map(x => {
             return (

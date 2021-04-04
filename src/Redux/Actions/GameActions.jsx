@@ -1,3 +1,8 @@
+/**
+ * Fetch leaderboard
+ * @returns 
+ */
+
 export const fetchLeaderboard = () => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/leaderboard')
         .then(res => res.json())
@@ -7,7 +12,11 @@ export const fetchLeaderboard = () => dispatch => {
         })
         );
 }
-
+/**
+ * Fetch getStudents
+ * @param {*} postData 
+ * @returns 
+ */
 export const getStudents = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/tut/student', {
         method: 'POST',
@@ -24,6 +33,11 @@ export const getStudents = (postData) => dispatch => {
         );
 }
 
+/**
+ * Fetch getStudentSubmission
+ * @param {*} postData 
+ * @returns 
+ */
 export const getStudentSubmission = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/student/submission', {
         method: 'POST',
@@ -40,6 +54,11 @@ export const getStudentSubmission = (postData) => dispatch => {
         );
 }
 
+/**
+ * Fetch updateScores
+ * @param {*} postData 
+ * @returns 
+ */
 export const updateScores = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/marking/update', {
         method: 'POST',
@@ -56,6 +75,11 @@ export const updateScores = (postData) => dispatch => {
         );
 }
 
+/**
+ * Fetch mycompletedTutorial
+ * @param {*} postData 
+ * @returns 
+ */
 export const myCompletedTutorial = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/student/completed/tut', {
         method: 'POST',
@@ -72,6 +96,11 @@ export const myCompletedTutorial = (postData) => dispatch => {
         );
 }
 
+/**
+ * Fetch sendCompeteRequest
+ * @param {*} postData 
+ * @returns 
+ */
 export const sendCompeteRequest = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/start/compete', {
         method: 'POST',
@@ -88,6 +117,11 @@ export const sendCompeteRequest = (postData) => dispatch => {
         );
 }
 
+/**
+ * Fetch getChallengers
+ * @param {*} postData 
+ * @returns 
+ */
 export const getChallengers = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/get/challengers', {
         method: 'POST',
@@ -104,6 +138,11 @@ export const getChallengers = (postData) => dispatch => {
         );
 }
 
+/**
+ * Fetch getMyCompetitors
+ * @param {*} postData 
+ * @returns 
+ */
 export const getMyCompetitors = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/get/competitors', {
         method: 'POST',
@@ -120,6 +159,11 @@ export const getMyCompetitors = (postData) => dispatch => {
         );
 }
 
+/**
+ * Fetch sendComment
+ * @param {*} postData 
+ * @returns 
+ */
 export const sendComment = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/send/comment', {
         method: 'POST',
@@ -135,6 +179,11 @@ export const sendComment = (postData) => dispatch => {
         })
         );
 }
+/**
+ * Fetch getComment
+ * @param {*} postData 
+ * @returns 
+ */
 export const getComment = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/get/comment', {
         method: 'POST',
@@ -151,6 +200,11 @@ export const getComment = (postData) => dispatch => {
         );
 }
 
+/**
+ * Fetch getCurrentUserScore
+ * @param {*} postData 
+ * @returns 
+ */
 export const getCurrentUserScore = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/user/competitor', {
         method: 'POST',
@@ -167,6 +221,11 @@ export const getCurrentUserScore = (postData) => dispatch => {
         );
 }
 
+/**
+ * Fetch getCompetitorScore
+ * @param {*} postData 
+ * @returns 
+ */
 export const getCompetitorScore = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/competitor', {
         method: 'POST',

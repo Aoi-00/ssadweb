@@ -10,6 +10,10 @@ import { MDBContainer, MDBRow, MDBBtn,MDBAnimation } from "mdbreact"
 import TwitterCard from '../components/homepage/TwitterCard'
 
 class StudentNews extends Component {
+    /**
+     * state
+     * set usertype to local storage usertype
+     */
     state = {
         usertype: localStorage.getItem("usertype")
     }
@@ -19,10 +23,20 @@ class StudentNews extends Component {
         this.props.fetchPosts();
     }
 
+    /**
+     * GoBack
+     */
     GoBack=() => {this.props.history.push("/studentmain")}
+    /**
+     * NotLoggedIn
+     */
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
+    /**
+     * StudentNews page
+     * @returns StudentNews page
+     */
     render() {
         let twitterPosts = this.props.twitter.map(x => {
             return (

@@ -7,6 +7,11 @@ import PropTypes from 'prop-types'
 import { showProfTutorial } from '../Redux/Actions/TutorialAction'
 
 class Report extends Component {
+    /**
+     * state 
+     * set tutgrp to local storage tutgrp
+     * set name to local storage name
+     */
     state = {
         tutgrp: localStorage.getItem("tutgrp"),
         name: localStorage.getItem("name"),
@@ -14,6 +19,9 @@ class Report extends Component {
     componentDidMount() {
         this.GetTutorials()
     }
+    /**
+     * getTutorials
+     */
     GetTutorials = () => {
         const form = {
             tutgrp: this.state.tutgrp,
@@ -21,11 +29,21 @@ class Report extends Component {
         }
         this.props.showProfTutorial(form);
     }
+    /**
+     * View Report
+     * @param {*} tutid 
+     * @param {*} tutname 
+     */
     ViewReport = (tutid, tutname) =>{
         localStorage.setItem("selectedTutId", tutid)
         localStorage.setItem("selectedTutName", tutname)
         this.props.history.push("/report")
     }
+
+    /**
+     * ReportHome page
+     * @returns ReportHome page
+     */
     render() {
         let display = this.props.tutorialtable.map(x => {
             return (

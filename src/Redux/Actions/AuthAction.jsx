@@ -1,3 +1,8 @@
+/**
+ * Fetch emaillogin
+ * @param {*} postData 
+ * @returns 
+ */
 export const emailLogin = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/login', {
         method: 'POST',
@@ -14,6 +19,11 @@ export const emailLogin = (postData) => dispatch => {
         );
 }
 
+/**
+ * Fetch facebooklogin
+ * @param {*} postData 
+ * @returns 
+ */
 export const facebookLogin = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/fblogin', {
         method: 'POST',
@@ -29,6 +39,12 @@ export const facebookLogin = (postData) => dispatch => {
         })
         );
 }
+
+/**
+ * Fetch registerUSer
+ * @param {*} postData 
+ * @returns 
+ */
 export const registerUser = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/register', {
         method: 'POST',
@@ -45,6 +61,11 @@ export const registerUser = (postData) => dispatch => {
         );
 }
 
+/**
+ * Fetch testCall
+ * @param {*} postData 
+ * @returns 
+ */
 export const testCall = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/test', {
         method: 'POST',
@@ -60,7 +81,11 @@ export const testCall = (postData) => dispatch => {
         })
         );
 }
-
+/**
+ * Fetch getStudentInfo
+ * @param {*} postData 
+ * @returns 
+ */
 export const getStudentInfo = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/studentinfo', {
         method: 'POST',
@@ -77,6 +102,11 @@ export const getStudentInfo = (postData) => dispatch => {
         );
 }
 
+/**
+ * Fetch getProfInfo
+ * @param {*} postData 
+ * @returns 
+ */
 export const getProfInfo = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/profinfo', {
         method: 'POST',
@@ -93,7 +123,11 @@ export const getProfInfo = (postData) => dispatch => {
         );
 }
 
-
+/**
+ * Fetch updateProfile
+ * @param {*} postData 
+ * @returns 
+ */
 export const updateProfile = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/profile/update', {
         method: 'POST',
@@ -109,7 +143,11 @@ export const updateProfile = (postData) => dispatch => {
         })
         );
 }
-
+/**
+ * Fetch facebookAccountLink
+ * @param {*} postData 
+ * @returns 
+ */
 export const facebookAccountLink = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/facebook/link', {
         method: 'POST',
@@ -126,6 +164,11 @@ export const facebookAccountLink = (postData) => dispatch => {
         );
 }
 
+/**
+ * Fetch emailChecking
+ * @param {*} postData 
+ * @returns 
+ */
 export const emailChecking = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/email/check', {
         method: 'POST',
@@ -142,6 +185,11 @@ export const emailChecking = (postData) => dispatch => {
         );
 }
 
+/**
+ * Fetch getCompeteMyInfo
+ * @param {*} postData 
+ * @returns 
+ */
 export const getCompeteMyInfo = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/studentinfo', {
         method: 'POST',

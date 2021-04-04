@@ -1,8 +1,19 @@
+/**
+ * set initialstate
+ * tutoriialgrp to []
+ * statis to false
+ */
 const initState = {
     tutorialgrp: [],
     status: false
 };
 
+/**
+ * TutorialReducers
+ * @param {*} state 
+ * @param {*} action 
+ * @returns 
+ */
 const TutorialReducers = (state = initState, action) => {
     switch (action.type) {
         case 'ADD_TUTORIAL':

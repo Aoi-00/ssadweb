@@ -1,8 +1,18 @@
+/**
+ * set initialstate
+ * question, tutquestions to []
+ */
 const initState = {
     questions: [],
     tutquestions: []
 };
 
+/**
+ * QeustReducers
+ * @param {*} state 
+ * @param {*} action 
+ * @returns 
+ */
 const QuestReducers = (state = initState, action) => {
     switch (action.type) {
         case 'SHOW_ALL_QUESTION':

@@ -7,6 +7,11 @@ import Navbar from '../components/share/Navbar';
 import Footer from '../components/share/Footer';
 
 class StudentSelect extends Component {
+    /**
+     * state
+     * set tutgrp to local storage selTutgrp
+     * tutod : tutid
+     */
     state = {
         tutgrp: localStorage.getItem("seltutgrp"),
         tutid: this.props.match.params.tutid
@@ -14,19 +19,37 @@ class StudentSelect extends Component {
     componentDidMount() {
         this.getStudents()
     }
+    /**
+     * getStudents
+     */
     getStudents() {
         const form = {
             tutid: this.state.tutid
         }
         this.props.getStudents(form)
     }
+    /**
+     * ViewDetails
+     * @param {*} submissionid 
+     * @param {*} studid 
+     */
     ViewDetails = (submissionid, studid) => {
         this.props.history.push('/marking/' + submissionid + "/" + studid)
     }
+    /**
+     * GoBack
+     */
     GoBack = () => { this.props.history.push('/seltut') }
+    /**
+     * NotLoggedIn
+     */
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
+    /**
+     * StudentSelect page
+     * @returns StudentSelect page
+     */
     render() {
         let studentlist = this.props.students.map(x => {
             return (
