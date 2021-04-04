@@ -2,6 +2,9 @@ import React from 'react';
 import { MDBListGroup, MDBListGroupItem, MDBContainer } from "mdbreact";
 
 const MarkDropDown = ({ questions }) => {
+  /**
+   * MarkDropDown
+   */
   return (
     <MDBListGroup style={{ width: "22rem" }}>
       {questions.map((x, index) => {

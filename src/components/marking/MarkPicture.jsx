@@ -3,6 +3,9 @@ import React from 'react';
 import { MDBRow, MDBCol, MDBContainer } from "mdbreact";
 
 const MarkPicture = ({ record }) => {
+  /**
+   * MarkPicture
+   */
   return (
     <div>
       {record.map(x => {

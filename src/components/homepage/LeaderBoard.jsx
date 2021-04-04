@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import { MDBDataTableV5 } from 'mdbreact';
 
 export default class LeaderBoard extends Component {
+  
+  /**
+   * set display to false
+   */
   state = {
     dataTable: {},
     display: false
@@ -9,6 +13,11 @@ export default class LeaderBoard extends Component {
   componentDidMount() {
     this.PopulateTable()
   }
+
+  /**
+   * Leaderboard
+   * set display to true and display the leaderboard table
+   */
   PopulateTable() {
     this.setState({
       display: true,

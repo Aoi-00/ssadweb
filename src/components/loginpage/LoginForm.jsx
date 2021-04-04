@@ -20,6 +20,11 @@ import { emailLogin, facebookLogin } from '../../Redux/Actions/AuthAction'
 import FacebookLogin from 'react-facebook-login'
 
 class LoginForm extends React.Component {
+  /**
+   * Set default state of email, userpassword, fbid, emailError, passwwordError to "", 
+   * Set fblogin emaillogin, loeading, wrongauth to false,
+   * Set exceedtry to 0
+   */
   state = {
     email: '',
     userpassword: '',
@@ -37,13 +42,20 @@ class LoginForm extends React.Component {
     this.setState(prevState => ({
       collapseID: prevState.collapseID !== collapseID ? collapseID : ""
     }));
-
+/**
+ * handleChange
+ * @param {*} e  
+ */
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
     })
   }
 
+  /**
+   * Validate
+   * @returns errorhandling if there is an error 
+   */
   validate = () => {
     let emailError = "";
     let passwordError = "";
@@ -67,6 +79,9 @@ class LoginForm extends React.Component {
     return true;
   };
 
+  /**
+   * EmailLogin
+   */
   EmailLogin = () => {
     const post = {
 
@@ -88,6 +103,10 @@ class LoginForm extends React.Component {
      
     }
   }
+  /**
+   * responseFacebook
+   * @param {*} response 
+   */
   responseFacebook = (response) => {
     this.setState({
       fbid: response.id,
@@ -95,16 +114,31 @@ class LoginForm extends React.Component {
     })
     this.FbLogin(response.id)
   }
+  /**
+   * FbLogin
+   * @param {*} id 
+   */
   FbLogin = (id) => {
     const post = {
       fbid: id
     }
     this.props.facebookLogin(post);
   }
+  /**
+   * handleKeyPRess
+   * @param {*} event  
+   */
   handleKeyPress = (event) => {
     if (event.key === 'Enter')
       this.EmailLogin()
   }
+
+  /**
+   * componentWillReceiveProps
+   * @param {*} nextProps 
+   * set localstorage of the following: studid, fbid, name, email, usertype, tutgrp, picture
+   * else errorhandling for wrong authentication
+   */
   componentWillReceiveProps(nextProps) {
     if (nextProps.loginstatus.length !== 0) {
       //Correct Authentication 
@@ -137,6 +171,10 @@ class LoginForm extends React.Component {
       // if (this.state.wrongauthcount >= 5) {
       //   alert("Forgot your email or password? Please contact the admin.");
       // }
+
+      /**
+       * LoginForm
+       */
     }
   }
 

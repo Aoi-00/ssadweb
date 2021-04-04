@@ -2,16 +2,27 @@ import React, { Component } from 'react';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 
 class SolutionModal extends Component {
+  /**
+   * state
+   * set modal to false
+   */
 state = {
   modal: false
 }
 
+/**
+ * toggle
+ * set modal to the opposite state
+ */
 toggle = () => {
   this.setState({
     modal: !this.state.modal
   });
 }
-
+/**
+ * SolutionModal
+ * @returns 
+ */
 render() {
   return (
     <MDBContainer>

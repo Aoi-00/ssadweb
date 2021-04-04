@@ -2,6 +2,9 @@ import React from 'react';
 import { MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBRow, MDBContainer } from 'mdbreact';
 
 const StudentInfo = ({ student }) => {
+  /**
+   * Studentinfo
+   */
   return (
     <div>
       {student && student.map(x => {

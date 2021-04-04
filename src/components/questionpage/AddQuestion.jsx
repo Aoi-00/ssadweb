@@ -5,11 +5,21 @@ import { connect } from 'react-redux'
 import { addQuestion } from '../../Redux/Actions/QuestActions'
 
 class AddQuestion extends Component {
+    /**
+     * set default state
+     * question, solution ""
+     * loading : false
+     */
     state = {
         question: '',
         solution: '',
         loading: false
     }
+
+    /**
+     * UserSubmitQuestion
+     * set loading to the opposite state, question and solution to ""
+     */
     UserSubmitQuestion = () => {
         //Fire method from parent component [Question.jsx]
         console.log(this.state)
@@ -20,6 +30,10 @@ class AddQuestion extends Component {
         })
         this.props.addQuest(this.state.question, this.state.solution);
     }
+    /**
+     * handleChange
+     * @param {*} e  
+     */
     handleChange = (e) => { // to change state everytime you type -- question: value
         this.setState({
             [e.target.id]: e.target.value
@@ -33,6 +47,10 @@ class AddQuestion extends Component {
         }
     }
 
+    /**
+     * Add Question
+     * @returns 
+     */
     render() {
         const {loading } = this.state;
         return (
