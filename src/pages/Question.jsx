@@ -51,7 +51,8 @@ class Question extends Component {
             tutid: this.state.tutid,
             solution: currentQuestion[0].solution,
             level: currentQuestion[0].level,
-            section: currentQuestion[0].section
+            section: currentQuestion[0].section,
+            hint: currentQuestion[0].hint
         }
         this.props.addQuestion(post)
     }
@@ -77,9 +78,9 @@ class Question extends Component {
                         <MDBCol size="12">
                             <h2>Add New Question</h2>
                             <hr />
-                            <div id="html_embed_widget_11018" class="html_embed_widget embed_wrapper">
-                                <div data-height="3000" data-width="3000" class="game_frame game_loaded" className="embed-responsive embed-responsive-16by9">
-                                    <iframe height="100%" width="100%" mozallowfullscreen="true" allow="autoplay; fullscreen; geolocation; microphone; camera; midi" src="https://aseweb.hyunatic.com/" msallowfullscreen="true" scrolling="no" allowfullscreen="true" webkitallowfullscreen="true" id="game_drop" allowtransparency="true" frameborder="0">
+                            <div id="html_embed_widget_11018" className="html_embed_widget embed_wrapper">
+                                <div data-height="3000" data-width="3000" className="game_frame game_loaded" className="embed-responsive embed-responsive-16by9">
+                                    <iframe height="100%" width="100%" mozallowfullscreen="true" allow="autoplay; fullscreen; geolocation; microphone; camera; midi" src="https://aseweb.hyunatic.com/" msallowfullscreen="true" scrolling="no" allowFullScreen={true} webkitallowfullscreen="true" id="game_drop" allowtransparency="true" frameBorder="0">
                                     </iframe>
                                 </div>
                             </div>
