@@ -3,7 +3,9 @@ import { Line } from 'react-chartjs-2'
 
 class LineGraph extends Component {
     /**
-     * 
+     * state 
+     * charData = {}
+     * data retrieve from LineGraphData
      */
     state = {
         chartData: {},
@@ -13,7 +15,7 @@ class LineGraph extends Component {
         this.PopulateData()
     }
     /**
-     * 
+     * PopulateData
      */
     PopulateData = () => {
         this.setState({
@@ -32,8 +34,8 @@ class LineGraph extends Component {
         })
     }
     /**
-     * 
-     * @returns 
+     * LineGraph
+     * @returns  LineGraph
      */
     render() {
         const options = {

@@ -4,7 +4,9 @@ import { Bar } from 'react-chartjs-2'
 
 class BarGraph extends Component {
     /**
-     * 
+     * state
+     * set charData to {}
+     * data retrieve from GraphData
      */
     state = {
         chartData: {},
@@ -14,7 +16,7 @@ class BarGraph extends Component {
         this.PopulateData()
     }
     /**
-     * 
+     * ViewStudent
      * @param {*} e 
      * @param {*} elem 
      */
@@ -27,7 +29,7 @@ class BarGraph extends Component {
     }
 
     /**
-     * 
+     * PopulateData
      */
     PopulateData = () => {
         this.setState({
@@ -59,8 +61,8 @@ class BarGraph extends Component {
         })
     }
     /**
-     * 
-     * @returns 
+     * BarGraph
+     * @returns BarGraph 
      */
     render() {
         const options = {

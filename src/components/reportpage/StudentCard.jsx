@@ -3,8 +3,8 @@ import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, 
 
 class StudentCard extends Component {
     /**
-     * 
-     * @returns 
+     * StudentCard
+     * @returns StudentCard
      */
     render() {
         return (
