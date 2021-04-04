@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact'
 
 class StatisticalAnalysis extends Component {
+    /**
+     * 
+     */
     state = {
         score: [...this.props.scores.map(x => parseFloat(x.score))],
         count: '',
@@ -13,6 +16,9 @@ class StatisticalAnalysis extends Component {
     componentDidMount() {
        this.CalclateStatistics();       
     }
+    /**
+     * 
+     */
     CalclateStatistics() {
         let count = this.state.score.length
         let minimum = Math.min(...this.state.score)
@@ -28,7 +34,10 @@ class StatisticalAnalysis extends Component {
             standardDeviation
         })
     }
-
+/**
+ * 
+ * @returns 
+ */
     render() {
         return (
             <div>

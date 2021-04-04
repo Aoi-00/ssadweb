@@ -3,6 +3,12 @@ import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse,
 import ganyu from '../../assets/ganyu.jpg';
 
 class Navbar extends Component {
+    /**
+     * state
+     * set collapsedID : ""
+     * get username from local storage name
+     * get usertype from local storage usertype
+     */
     state = {
         collapseID: '',
         username: localStorage.getItem("name"),
@@ -12,20 +18,32 @@ class Navbar extends Component {
         if (!this.state.username)
             this.props.validateLogin()
     }
+
+    /**
+     * ToogleCollapsed
+     * @param {*} collapseID 
+     * @returns 
+     */
     toggleCollapse = collapseID => () =>
         this.setState(prevState => ({
             collapseID: prevState.collapseID !== collapseID ? collapseID : ''
         }));
 
+        /**
+         * closeCollapsed
+         * @param {*} collID 
+         * @returns 
+         */
     closeCollapse = collID => () => {
         const { collapseID } = this.state;
         window.scrollTo(0, 0);
         collapseID === collID && this.setState({ collapseID: '' });
     };
 
-    refreshPage() {
-        window.location.reload();
-    }
+    /**
+     * Navbar
+     * @returns Navbar
+     */
     render() {
         const { collapseID } = this.state;
         const overlay = (

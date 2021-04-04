@@ -11,6 +11,11 @@ import Navbar from '../components/share/Navbar';
 import Footer from '../components/share/Footer';
 
 class Assignment extends Component {
+    /**
+     * state
+     * set tutgrp to localstorage tutgrp
+     * set name to localstorage name
+     */
     state = {
         tutgrp: localStorage.getItem("tutgrp"),
         name: localStorage.getItem("name"),
@@ -19,6 +24,10 @@ class Assignment extends Component {
         //this.props.showAllTutorials();
         this.GetTutorials()
     }
+    /**
+     * GetTutorials
+     * set a const form tut grp and name
+     */
     GetTutorials = () => {
         const form = {
             tutgrp: this.state.tutgrp,
@@ -27,25 +36,48 @@ class Assignment extends Component {
         this.props.showProfTutorial(form);
         
     }
+    /**
+     * Navigate
+     * @param {*} tutid navigate to questions page 
+     */
     Navigate = (tutid) => {
         this.props.history.push('/question/' + tutid)
     }
+
+    /**
+     * DelTutorial
+     * @param {*} tutid Deletion of tutorial
+     */
     DelTutorial = (tutid) => {
         const form = {
             tutid: tutid
         }
         this.props.deleteTutorial(form)
     }
+    /**
+     * NotLoggedIn 
+     */
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
+    /**
+     * AddTutorial
+     * @param {*} form 
+     */
     AddTutorial = (form) => {
         //Submit data to my api
         this.props.addTutorial(form);
     }
+    /**
+     * Onback
+     */
     OnBack = () => {
         this.props.history.push('/home')
     }
+    /**
+     * Assignment page
+     * @returns Assignemnt page
+     */
     render() {
         return (
             <React.Fragment>

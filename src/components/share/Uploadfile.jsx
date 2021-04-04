@@ -2,13 +2,19 @@ import React, { Component } from 'react'
 import { MDBInputGroup, MDBBtn } from 'mdbreact';
 
 export default class Uploadfile extends Component {
-
+/**
+ * state
+ */
     state = {
         form: {
             file: []
         }
     }
 
+    /**
+     * onChangeHandlefile
+     * @param {*} e 
+     */
     onChangeHandleFile = (e) => {
         console.log(e.target.files[0])
         var file = e.target.files[0];
@@ -31,7 +37,10 @@ export default class Uploadfile extends Component {
         );
     };
 
-
+/**
+ * uploadfile
+ * @returns uploadfile
+ */
     render() {
         return (
             <MDBInputGroup id='file'
