@@ -3,7 +3,9 @@ import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact'
 
 class StatisticalAnalysis extends Component {
     /**
-     * 
+     * State
+     * set count, average, standardDeviation, minimum, maximum to ""
+     * retrieve score from scores
      */
     state = {
         score: [...this.props.scores.map(x => parseFloat(x.score))],
@@ -17,7 +19,7 @@ class StatisticalAnalysis extends Component {
        this.CalclateStatistics();       
     }
     /**
-     * 
+     * CalculateStatics
      */
     CalclateStatistics() {
         let count = this.state.score.length
@@ -35,8 +37,8 @@ class StatisticalAnalysis extends Component {
         })
     }
 /**
- * 
- * @returns 
+ * StatisticalAnalysis
+ * @returns StatisticalAnalysis
  */
     render() {
         return (
