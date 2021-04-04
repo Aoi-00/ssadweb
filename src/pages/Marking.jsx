@@ -162,7 +162,7 @@ class Marking extends Component {
                                 <h2>Marking</h2>
                                 <hr/>
                                 <MarkScoreComment scoreError = {this.state.scoreError} commentError = {this.state.commentError} markComplete={this.MarkingComplete} goBack={this.GoBack} inputChange={this.handleChange} record={this.props.record} />
-                                <MDBBtn>Submit</MDBBtn>
+                                
                             </MDBCol>
                         </MDBRow>
                     </MDBAnimation>

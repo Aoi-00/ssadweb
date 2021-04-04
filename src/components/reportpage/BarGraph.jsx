@@ -52,7 +52,6 @@ class BarGraph extends Component {
                         'rgba(255, 159, 64, 1)'
                     ],
                     borderWidth: 1,
-
                 }],
             }
         })

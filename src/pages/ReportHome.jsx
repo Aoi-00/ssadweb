@@ -39,7 +39,10 @@ class Report extends Component {
         localStorage.setItem("selectedTutName", tutname)
         this.props.history.push("/report")
     }
-
+    /**
+     * goBack
+     */
+    goBack = () => this.props.history.push('/home')
     /**
      * ReportHome page
      * @returns ReportHome page
@@ -80,6 +83,7 @@ class Report extends Component {
                             </MDBTable>
                         </MDBCol>
                     </MDBRow>
+                    <MDBBtn onClick={this.goBack} color="red">Back</MDBBtn>
                 </MDBContainer>
                 <Footer />
             </div>
