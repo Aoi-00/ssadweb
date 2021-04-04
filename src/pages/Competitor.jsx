@@ -130,8 +130,8 @@ class Competitor extends Component {
     render() {
         let myscore = this.props.myScore.map(x => parseInt(x.score))
         let competitorscore = this.props.competitorscore.map(x => parseInt(x.score))
-        let resultDisplay = (this.props.competitorscore.length == 0) ? <React.Fragment><h4 className="red-text">This Student have not done this tutorial</h4> <hr/> </React.Fragment> : (myscore[0] < competitorscore[0]) ? <React.Fragment><h3>Final Result</h3><hr/> <img src="https://media.esportsedition.com/wp-content/uploads/2016/07/losingstreak-1068x601.jpg" className="img-fluid" /></React.Fragment> :<React.Fragment><h3>Final Result</h3><hr/> <img src="https://i.ytimg.com/vi/8TwCwHHQ6a8/maxresdefault.jpg" className="img-fluid" /> </React.Fragment>
-        
+        let resultDisplay = (myscore[0] < competitorscore[0]) ? <React.Fragment><h3>Final Result</h3><hr/> <img src="https://media.esportsedition.com/wp-content/uploads/2016/07/losingstreak-1068x601.jpg" className="img-fluid" /></React.Fragment> :<React.Fragment><h3>Final Result</h3><hr/> <img src="https://i.ytimg.com/vi/8TwCwHHQ6a8/maxresdefault.jpg" className="img-fluid" /> </React.Fragment>
+        let checkCompetitorTut = (this.props.competitorscore.length === 0) ? <React.Fragment><h4 className="red-text">This student have not done this tutorial</h4></React.Fragment> : <React.Fragment></React.Fragment>
         return (
             <div>
                 <Navbar validateLogin={this.NotLoggedIn} />
@@ -171,6 +171,7 @@ class Competitor extends Component {
                                     )
                                 }
                                 )}
+                                 {resultDisplay}
                             </MDBCol>
                             <MDBCol size="6">
                                 <h3>Competitor Details</h3>
@@ -199,6 +200,7 @@ class Competitor extends Component {
                                             <h3>Professor's Comment to Competitor</h3>
                                             <hr />
                                             <p>{x.comment}</p>
+                                  
                                         </React.Fragment>
                                     )
                                 }
@@ -210,6 +212,7 @@ class Competitor extends Component {
                                 <MDBInput id='comment' value={this.state.comment} label="Comment" icon="comment" onChange={this.handleChange}>
                                 </MDBInput>
                                 <div style={{ fontSize: 20, color: "rgb(255, 61, 61)" }}> {this.state.commentError}</div>
+                          
                                 <MDBBtn
                                     onClick={this.SendComment}
                                     color="blue"
@@ -223,7 +226,7 @@ class Competitor extends Component {
                                     Back
                             </MDBBtn>
                             <br/><br/>
-                            {resultDisplay}
+                            {checkCompetitorTut}
                             </MDBCol>
                         </MDBRow>
                     </MDBAnimation>

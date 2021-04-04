@@ -205,3 +205,24 @@ export const getCompeteMyInfo = (postData) => dispatch => {
         })
         );
 }
+
+/**
+ * Fetch Classmate list
+ * @param {*} postData 
+ * @returns 
+ */
+ export const getClassmate = (postData) => dispatch => {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/myclassmate', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'GET_CLASSMATE',
+            payload: data
+        })
+        );
+}

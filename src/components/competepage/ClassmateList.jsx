@@ -7,7 +7,7 @@ class ClassmateList extends Component {
      * Set default hover to false 
      */
     state = {
-        hover: false
+        hover: false,
     }
     /**
      * selectCompetitor
@@ -33,7 +33,7 @@ class ClassmateList extends Component {
         var linkColor = (this.state.hover) ? {color: 'blue'} : {color: 'grey'}
         let classmate = this.props.classmates.map(x => {
             return(
-                <MDBListGroupItem onMouseOver={this.onHover} onMouseLeave={this.onHover} key={x.id} className="d-flex justify-content-between align-items-center" onClick={() => this.selectCompetitor(x.name, x.studid)} hover>{x.name}<MDBIcon style={linkColor} icon="arrow-right" />
+                <MDBListGroupItem onMouseOver={this.onHover} onMouseLeave={this.onHover} key={x.id} className="d-flex justify-content-between align-items-center" onClick={() => this.selectCompetitor(x.name, x.id)} hover>{x.name}<MDBIcon style={linkColor} icon="arrow-right" />
                 </MDBListGroupItem>
             )
         })

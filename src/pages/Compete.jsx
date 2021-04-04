@@ -7,6 +7,7 @@ import StudentAssignment from '../components/competepage/StudentAssignment'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { fetchLeaderboard, myCompletedTutorial, sendCompeteRequest } from '../Redux/Actions/GameActions'
+import { getClassmate } from '../Redux/Actions/AuthAction'
 
 class Compete extends Component {
     /**
@@ -21,6 +22,7 @@ class Compete extends Component {
         tutgrp: localStorage.getItem("tutgrp"),
         name: localStorage.getItem("name"),
         studid: localStorage.getItem("studid"),
+        email: localStorage.getItem("email"),
         competitor: '',
         competitorid: '',
         Assignmentdisplay: false
@@ -28,6 +30,7 @@ class Compete extends Component {
     componentDidMount() {
         this.props.fetchLeaderboard();
         this.getMycompletedTutList();
+        this.getClassmate();
     }
     /**
      * getMycompletedTutList
@@ -45,6 +48,13 @@ class Compete extends Component {
      */
     CompetitorSelect = (name, competitorid) => {
         this.setState({ competitor: name, competitorid: competitorid, Assignmentdisplay: true })
+    }
+    getClassmate() {
+        const form = {
+            tutgrp: this.state.tutgrp,
+            email: this.state.email
+        }
+        this.props.getClassmate(form)
     }
 
     /**
@@ -79,10 +89,10 @@ class Compete extends Component {
      * @returns Compete page
      */
     render() {
+        console.log(this.props.classmate)
         let currentclass = this.props.leaderboard.filter(x => x.tutgrp === this.state.tutgrp && x.name !== this.state.name)
-        let classMates = [...new Set(currentclass.map(item => ({ id: item.id ,name: item.name, studid: item.studid })))];
+        let classMates = [...new Set(currentclass.map(item => ({ id: item.id, name: item.name, studid: item.studid })))];
         let competeDisplay = (this.state.competitor === '') ? <h3>My classmates</h3> : <h3>Competing with {this.state.competitor}</h3>;
-        console.log(this.props.mytut)
         return (
             <div>
                 <Navbar validateLogin={this.NotLoggedIn} />
@@ -94,7 +104,7 @@ class Compete extends Component {
                             <MDBAnimation type="slideInLeft" >
                                 {competeDisplay}
                                 <hr />
-                                <ClassmateList classmates={classMates} competitorSelect={this.CompetitorSelect} />
+                                <ClassmateList classmates={this.props.classmate} competitorSelect={this.CompetitorSelect} />
                             </MDBAnimation>
 
                         </MDBCol>
@@ -125,12 +135,14 @@ class Compete extends Component {
 Compete.propTypes = {
     fetchLeaderboard: PropTypes.func.isRequired,
     myCompletedTutorial: PropTypes.func.isRequired,
-    sendCompeteRequest: PropTypes.func.isRequired
+    sendCompeteRequest: PropTypes.func.isRequired,
+    getClassmate: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
     leaderboard: state.game.records,
-    mytut: state.game.completedtut
+    mytut: state.game.completedtut,
+    classmate: state.auth.mates
 });
 
-export default connect(mapStateToProps, { fetchLeaderboard, myCompletedTutorial, sendCompeteRequest })(Compete)
+export default connect(mapStateToProps, { fetchLeaderboard, getClassmate, myCompletedTutorial, sendCompeteRequest })(Compete)
