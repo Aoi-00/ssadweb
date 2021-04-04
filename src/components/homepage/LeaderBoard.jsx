@@ -52,7 +52,7 @@ export default class LeaderBoard extends Component {
   render() {
     return (
       <div>
-        {this.state.display && <MDBDataTableV5 hover entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={this.state.dataTable} />}
+        {this.state.display && <MDBDataTableV5 hover entriesOptions={[5, 10, 15]} entries={5} searchTop searchBottom={false} pagesAmount={4} searchdata={this.state.dataTable} />}
       </div>
     )
   }
