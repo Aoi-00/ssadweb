@@ -103,6 +103,8 @@ class Challenge extends Component {
         let competitorscore = this.props.challengerScore.map(x => parseInt(x.score))
 
         let comment = this.props.challengecomment.map(x => x.competitormsg)
+
+        let resultDisplay = (this.props.competitorscore.length == 0) ? <React.Fragment><h4 className="red-text">You have not done this tutorial</h4> <hr/> </React.Fragment> : (myscore[0] < competitorscore[0]) ? <React.Fragment><h3>Final Result</h3><hr/> <img src="https://media.esportsedition.com/wp-content/uploads/2016/07/losingstreak-1068x601.jpg" className="img-fluid" /></React.Fragment> :<React.Fragment><h3>Final Result</h3><hr/> <img src="https://i.ytimg.com/vi/8TwCwHHQ6a8/maxresdefault.jpg" className="img-fluid" /> </React.Fragment>
         return (
             <div>
                 <Navbar validateLogin={this.NotLoggedIn} />
@@ -114,6 +116,7 @@ class Challenge extends Component {
                             <hr />
                             <MyDetails student={this.props.currentUserInfo} />
                             <br /><br />
+
                             {this.props.competitorscore && this.props.competitorscore.map(x => {
                                 return (
                                     <React.Fragment>
@@ -138,9 +141,8 @@ class Challenge extends Component {
                                 )
                             }
                             )}
-                            <h3>Final Result</h3>
-                            <hr />
-                            {(myscore[0] < competitorscore[0]) ? <img src="https://media.esportsedition.com/wp-content/uploads/2016/07/losingstreak-1068x601.jpg" className="img-fluid" /> : <img src="https://i.ytimg.com/vi/8TwCwHHQ6a8/maxresdefault.jpg" className="img-fluid" />}
+                            {resultDisplay}
+                            
                         </MDBCol>
                         <MDBCol size="6">
                             <h3>Challenger Detail</h3>
@@ -185,7 +187,7 @@ class Challenge extends Component {
                         </MDBCol>
                     </MDBRow>
                 </MDBContainer>
-                <br />
+                <br /><br/><br/>
                 <Footer />
             </div>
         )

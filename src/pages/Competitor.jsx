@@ -130,8 +130,9 @@ class Competitor extends Component {
     render() {
         let myscore = this.props.myScore.map(x => parseInt(x.score))
         let competitorscore = this.props.competitorscore.map(x => parseInt(x.score))
+        let resultDisplay = (this.props.competitorscore.length == 0) ? <React.Fragment><h4 className="red-text">This Student have not done this tutorial</h4> <hr/> </React.Fragment> : (myscore[0] < competitorscore[0]) ? <React.Fragment><h3>Final Result</h3><hr/> <img src="https://media.esportsedition.com/wp-content/uploads/2016/07/losingstreak-1068x601.jpg" className="img-fluid" /></React.Fragment> :<React.Fragment><h3>Final Result</h3><hr/> <img src="https://i.ytimg.com/vi/8TwCwHHQ6a8/maxresdefault.jpg" className="img-fluid" /> </React.Fragment>
+        
         return (
-
             <div>
                 <Navbar validateLogin={this.NotLoggedIn} />
                 <MDBContainer>
@@ -170,9 +171,6 @@ class Competitor extends Component {
                                     )
                                 }
                                 )}
-                                <h3>Final Result</h3>
-                                <hr />
-                                {(myscore[0] < competitorscore[0]) ? <img src="https://media.esportsedition.com/wp-content/uploads/2016/07/losingstreak-1068x601.jpg" className="img-fluid" /> : <img src="https://i.ytimg.com/vi/8TwCwHHQ6a8/maxresdefault.jpg" className="img-fluid" />}
                             </MDBCol>
                             <MDBCol size="6">
                                 <h3>Competitor Details</h3>
@@ -205,6 +203,7 @@ class Competitor extends Component {
                                     )
                                 }
                                 )}
+                             
                                 <br />
                                 <h3>Compose a message to your competitor</h3>
                                 <hr />
@@ -223,10 +222,13 @@ class Competitor extends Component {
                                     className="m-0 px-3 py-2 z-depth-0">
                                     Back
                             </MDBBtn>
+                            <br/><br/>
+                            {resultDisplay}
                             </MDBCol>
                         </MDBRow>
                     </MDBAnimation>
                 </MDBContainer>
+                <br/><br/>
                 <br />
                 <Footer />
 

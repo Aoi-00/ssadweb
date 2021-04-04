@@ -20,11 +20,11 @@ class LineGraph extends Component {
     PopulateData = () => {
         this.setState({
             chartData: {
-                labels: [...this.state.data.map((x,index) => index)],
+                labels: [0,...this.state.data.map((x,index) => index + 1)],
                 datasets: [
                     {
                         label: this.state.data[0].name ,
-                        data: [...this.state.data.map(x => parseFloat(x.score))],
+                        data: [0,...this.state.data.map(x => parseFloat(x.score))],
                         fill: true,
                         backgroundColor: "rgba(75,192,192,0.2)",
                         borderColor: "rgba(75,192,192,1)"
