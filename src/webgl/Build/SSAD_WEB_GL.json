@@ -1,0 +1,16 @@
+{
+"companyName": "DefaultCompany",
+"productName": "Ganyu",
+"productVersion": "0.1",
+"dataUrl": "SSAD_WEB_GL.data.unityweb",
+"wasmCodeUrl": "SSAD_WEB_GL.wasm.code.unityweb",
+"wasmFrameworkUrl": "SSAD_WEB_GL.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.4.18f1"
+}

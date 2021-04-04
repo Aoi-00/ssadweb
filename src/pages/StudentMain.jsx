@@ -42,7 +42,7 @@ class StudentMain extends Component {
                         <br />
                         <h2>LeaderBoard</h2>
                         <hr />
-                        <LeaderBoard leaderboard={this.props.leaderboard} tutgrp={this.state.tutgrp} />
+                        {this.props.leaderboard && <LeaderBoard leaderboard={this.props.leaderboard} tutgrp={this.state.tutgrp} />}
                     </MDBAnimation>
                     <MDBAnimation type="slideInUp" count={1}>
                         <br />
