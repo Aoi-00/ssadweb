@@ -8,7 +8,8 @@ const initState = {
     studentinfo: [],
     profinfo: [],
     emailcheck: [],
-    myInfo: []
+    myInfo: [],
+    mates: []
 };
 
 /**
@@ -66,6 +67,11 @@ const AuthReducers = (state = initState, action) => {
             return {
                 ...state,
                 emailcheck: action.payload
+            }
+        case 'GET_CLASSMATE':
+            return {
+                ...state,
+                mates: action.payload
             }
         default:
             return state;
