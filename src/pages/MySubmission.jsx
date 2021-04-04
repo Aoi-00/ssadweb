@@ -72,6 +72,7 @@ class MySubmission extends Component {
                         </MDBCol>
                     </MDBRow>
                 </MDBContainer>
+                <br/><br/><br/>
                 <Footer />
             </div>
         )
