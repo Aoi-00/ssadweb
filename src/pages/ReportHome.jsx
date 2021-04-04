@@ -5,6 +5,9 @@ import Footer from '../components/share/Footer'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { showProfTutorial } from '../Redux/Actions/TutorialAction'
+import { fetchLeaderboard } from '../Redux/Actions/GameActions'
+import TutorialAvgGraph from '../components/reportpage/TutorialAvgGraph'
+
 
 class Report extends Component {
     /**
@@ -18,6 +21,7 @@ class Report extends Component {
     }
     componentDidMount() {
         this.GetTutorials()
+        this.props.fetchLeaderboard();
     }
     /**
      * getTutorials
@@ -34,13 +38,14 @@ class Report extends Component {
      * @param {*} tutid 
      * @param {*} tutname 
      */
-    ViewReport = (tutid, tutname) =>{
+    ViewReport = (tutid, tutname) => {
         localStorage.setItem("selectedTutId", tutid)
         localStorage.setItem("selectedTutName", tutname)
         this.props.history.push("/report")
     }
     /**
      * goBack
+     * navigate to home
      */
     goBack = () => this.props.history.push('/home')
     /**
@@ -48,6 +53,21 @@ class Report extends Component {
      * @returns ReportHome page
      */
     render() {
+        let uniqueTutId = this.props.leaderboard.reduce((results, org) => {
+            (results[org.tutid] = results[org.tutid] || []).push(org);
+            return results
+        }, {})
+        let convertKeytoArray = Object.keys(uniqueTutId).map(k => {
+            return uniqueTutId[k]
+        })
+
+        let tutidAvg = []
+        convertKeytoArray.map(tutid => {
+            let averageOnEachtut = (tutid.map(x => parseFloat(x.score)).reduce((total, current) => total += current, 0) / tutid.length).toFixed(2)
+            let getTutName = this.props.tutorialtable.filter(x => x.tutid === tutid[0].tutid).map(z => z.tutname)
+            tutidAvg.push({ tutname: getTutName[0], average: averageOnEachtut })
+        })
+
         let display = this.props.tutorialtable.map(x => {
             return (
                 <tr key={x.tutid}>
@@ -59,6 +79,7 @@ class Report extends Component {
                 </tr>
             )
         })
+
         return (
             <div>
                 <Navbar />
@@ -83,6 +104,14 @@ class Report extends Component {
                             </MDBTable>
                         </MDBCol>
                     </MDBRow>
+                    <br/>
+                    <MDBRow>
+                        <MDBCol size="12">
+                            <h3>Overall Tutorial Performance</h3>
+                            <hr/>
+                            <TutorialAvgGraph GraphData={tutidAvg} />
+                        </MDBCol>
+                    </MDBRow>
                     <MDBBtn onClick={this.goBack} color="red">Back</MDBBtn>
                 </MDBContainer>
                 <Footer />
@@ -92,10 +121,12 @@ class Report extends Component {
 }
 Report.propTypes = {
     showProfTutorial: PropTypes.func.isRequired,
+    fetchLeaderboard: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
     tutorialtable: state.tutorial.tutorialgrp,
+    leaderboard: state.game.records,
 });
 
-export default connect(mapStateToProps, { showProfTutorial })(Report)
+export default connect(mapStateToProps, { showProfTutorial, fetchLeaderboard })(Report)

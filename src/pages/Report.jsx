@@ -57,6 +57,7 @@ class Report extends Component {
 
     /**
      * goBack
+     * navigate to reporthome
      */
     goBack = () => this.props.history.push('/reporthome')
 

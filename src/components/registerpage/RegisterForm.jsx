@@ -147,7 +147,7 @@ class RegisterForm extends React.Component {
   /**
    * componentDidupdate
    * @param {*} prevProps 
-   * @returns email use if the email has been used
+   * @returns alert "email used" if the email has been used
    */
   componentDidUpdate(prevProps) {
     if (prevProps.email === this.props.email)

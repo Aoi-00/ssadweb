@@ -111,12 +111,13 @@ class ProfessorProfile extends Component {
     }
 /**
  * GoBack
+ * navigate to home
  */
     GoBack = ()=> { this.props.history.push("/home")}
 
     /**
      * handleChange
-     * @param {*} e 
+     * @param {*} e  handle all the changes that were received
      */
     handleChange = (e) => { // to change state everytime you type -- question: value
         this.setState({

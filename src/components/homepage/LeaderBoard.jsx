@@ -5,6 +5,7 @@ export default class LeaderBoard extends Component {
   
   /**
    * set display to false
+   * set dataTable to {}
    */
   state = {
     dataTable: {},

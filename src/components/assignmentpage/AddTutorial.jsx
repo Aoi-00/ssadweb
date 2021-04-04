@@ -38,7 +38,7 @@ class AddTutorial extends Component {
     }
 
     /**
-     * Submit 
+     * onSubmit 
      */
     onSubmit = () => {
         const post = {

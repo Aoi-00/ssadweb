@@ -20,6 +20,7 @@ class StatisticalAnalysis extends Component {
     }
     /**
      * CalculateStatics
+     * set state count, minimum, maximum, average, standardDeviation
      */
     CalclateStatistics() {
         let count = this.state.score.length

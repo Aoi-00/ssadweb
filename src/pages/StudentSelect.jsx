@@ -10,7 +10,7 @@ class StudentSelect extends Component {
     /**
      * state
      * set tutgrp to local storage selTutgrp
-     * tutod : tutid
+     * tutid : tutid
      */
     state = {
         tutgrp: localStorage.getItem("seltutgrp"),
@@ -38,6 +38,7 @@ class StudentSelect extends Component {
     }
     /**
      * GoBack
+     * navigate to seltut
      */
     GoBack = () => { this.props.history.push('/seltut') }
     /**

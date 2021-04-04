@@ -29,6 +29,7 @@ class MarkingHome extends Component {
     }
 /**
  * GoBack
+ * navigate to home
  */
     GoBack = () => { this.props.history.push('/home') }
 /**
