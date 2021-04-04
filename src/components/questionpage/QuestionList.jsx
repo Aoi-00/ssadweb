@@ -7,6 +7,9 @@ export default function QuestionList({ questions, addQuestion }) {
   let onAdd = (questid) => {
     addQuestion(questid)
   }
+  /**
+   * QuestionList
+   */
   return (
     <div>
       <MDBTable striped>

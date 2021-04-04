@@ -2,6 +2,9 @@ import React from "react";
 import { MDBInput, MDBBtn } from 'mdbreact';
 
 const MarkScoreComment = ({ record, inputChange, markComplete, goBack, scoreError, commentError }) => {
+  /**
+   * MarkScoreComment
+   */
   return (
     <div>
       {record.map(x => {

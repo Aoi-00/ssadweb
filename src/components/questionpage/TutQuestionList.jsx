@@ -7,6 +7,9 @@ export default function TutQuestionList({ questions, removeQuestion }) {
   let onDelete = (questid) => {
     removeQuestion(questid)
   }
+  /**
+   * TutQuestionList
+   */
   return (
     <div>
       <MDBTable striped>

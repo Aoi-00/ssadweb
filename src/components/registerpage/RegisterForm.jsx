@@ -20,6 +20,12 @@ import { registerUser, emailChecking } from '../../Redux/Actions/AuthAction'
 import { connect } from 'react-redux'
 
 class RegisterForm extends React.Component {
+  /**
+   * state 
+   * set collapseId, email, password, cfmpassword, name, fbimage, fbid, nameError, emailError, passwordError, cfmPasswordError to ""
+   * set usertype to Student, tutgrp to TS1
+   * set fbdetails, loading to false
+   */
   state = {
     collapseID: "",
     email: "",
@@ -43,6 +49,10 @@ class RegisterForm extends React.Component {
       collapseID: prevState.collapseID !== collapseID ? collapseID : ""
     }));
 
+    /**
+     * responseFacebook
+     * @param {*} response 
+     */
   responseFacebook = (response) => {
     console.log(response)
     this.setState({
@@ -53,11 +63,20 @@ class RegisterForm extends React.Component {
       fbdetails: true
     })
   }
+  /**
+   * handleSelectList
+   * @param {*} e 
+   */
   handleSelectList = (e) => {
     this.setState({
       tutgrp: e.target.value
     })
   }
+
+  /**
+   * Validate
+   * errorhandling
+   */
   Validate = () => {
     let nameError = "";
     let emailError = "";
@@ -104,6 +123,13 @@ class RegisterForm extends React.Component {
       this.props.emailChecking(emailForm);
     }
   }
+
+  /**
+   * Register
+   * create form for fbid, email, password, name, usertype, tutgrp 
+   * set loading state to true
+   * navigate to homepage
+   */
   Register = () => {
     const form = {
       fbid: this.state.fbid,
@@ -117,6 +143,12 @@ class RegisterForm extends React.Component {
     this.props.registerUser(form);
     this.props.Navigate('/')
   }
+
+  /**
+   * componentDidupdate
+   * @param {*} prevProps 
+   * @returns email use if the email has been used
+   */
   componentDidUpdate(prevProps) {
     if (prevProps.email === this.props.email)
       return
@@ -126,12 +158,20 @@ class RegisterForm extends React.Component {
       alert("Email used")
 
   }
+  /**
+   * handleChange
+   * @param {*} e 
+   */
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
     })
   }
 
+  /**
+   * RegisterForm
+   * @returns 
+   */
   render() {
     const { loading } = this.state;
     let fbimage = (!this.state.fbdetails) ? <React.Fragment /> : <center> <img width="150" height="150" src={this.state.fbimage} className="img-fluid z-depth-1 rounded-circle" alt="" /></center>

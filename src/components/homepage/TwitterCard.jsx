@@ -2,6 +2,10 @@ import React from 'react';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
 
 const TwitterCard = ({ post }) => {
+  /**
+   * Twiitercard
+   * Display the twitter card and a lead to the website upon clicking on the button.
+   */
   return (
     <MDBCol key={post.id_str} size="4">
       <MDBCard style={{ width: "22rem" }}>
