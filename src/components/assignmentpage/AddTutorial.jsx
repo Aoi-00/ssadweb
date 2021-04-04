@@ -8,8 +8,11 @@ class AddTutorial extends Component {
 
   /**
    * state
-   * Get tutgrp, name and usertype
-   * 
+   * set tutGroup to local storage tutgrp
+   * set createdby to local storage name
+   * set usertype to local storage usertype
+   * set coin to 50
+   * set tutName , nameError to ""
    */
     state = {
         tutGroup: localStorage.getItem("tutgrp"),
