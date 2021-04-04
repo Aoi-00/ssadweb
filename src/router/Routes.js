@@ -24,6 +24,10 @@ import ReportHome from '../pages/ReportHome';
 
 
 class Routes extends React.Component {
+  /**
+   * Routes
+   * @returns the path of each route
+   */
   render() {
     return (
       <Switch>

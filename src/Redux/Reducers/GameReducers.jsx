@@ -1,3 +1,8 @@
+/**
+ * set initialstate
+ * records, studentlist, submission, completedtut, status, comeptitors.
+ * challengers, comment, competitors , my score to []
+ */
 const initState = {
     records: [],
     studentlist: [],
@@ -11,6 +16,12 @@ const initState = {
     myscore: []
 };
 
+/**
+ * GameReducers
+ * @param {*} state 
+ * @param {*} action 
+ * @returns 
+ */
 const GameReducers = (state = initState, action) => {
     switch (action.type) {
         case 'FETCH_LEADERBOARD':

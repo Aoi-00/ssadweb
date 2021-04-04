@@ -9,15 +9,26 @@ import Footer from '../components/share/Footer';
 import TutQuestionList from '../components/questionpage/TutQuestionList';
 
 class Question extends Component {
+    /**
+     * state 
+     * tutid : tutid
+     */
     state = {
         tutid: this.props.match.params.tutid,
     };
+
+    /**
+     * getTutorialQuestions
+     */
     getTutorialQuestions = () => {
         const form = {
             tutid: this.state.tutid,
         }
         this.props.showTutorialQuestion(form);
     }
+    /**
+     * getQuestionList
+     */
     getQuestionList = () => {
         const form = {
             tutid: '0',
@@ -28,21 +39,39 @@ class Question extends Component {
         this.getTutorialQuestions();
         this.getQuestionList();
     }
+    /**
+     * NotLoggedIn
+     */
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
+    /**
+     * getTutGrp
+     * @returns tutgrp
+     */
     getTutGrp = () => {
         return localStorage.getItem("tutgrp")
     }
+    /**
+     * removeQuestion
+     * @param {*} questid 
+     */
     removeQuestion = (questid) => {
         const form = {
             questid: questid
         }
         this.props.deleteQuestion(form)
     }
+    /**
+     * OnBack
+     */
     OnBack = () => {
         this.props.history.push('/assignment')
     }
+    /**
+     * addToTutorial
+     * @param {*} questid 
+     */
     addToTutorial = (questid) => {
         let currentQuestion = this.props.allquestion.filter(x => x.questid === questid)
         const post = {
@@ -56,6 +85,10 @@ class Question extends Component {
         }
         this.props.addQuestion(post)
     }
+    /**
+     * Question page
+     * @returns Question page
+     */
     render() {
         let filteredAllQuestion = this.props.allquestion.filter(x => !this.props.tutquestion.find(z => z.question === x.question))
         return (

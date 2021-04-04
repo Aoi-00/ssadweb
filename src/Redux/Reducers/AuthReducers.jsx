@@ -1,3 +1,7 @@
+/**
+ * set intialstate 
+ * login, status, studentinfo, profinfo, emailcheck, myinfo to []
+ */
 const initState = {
     login: [],
     status: [],
@@ -7,6 +11,12 @@ const initState = {
     myInfo: []
 };
 
+/**
+ * AuthReducer
+ * @param {*} state 
+ * @param {*} action 
+ * @returns 
+ */
 const AuthReducers = (state = initState, action) => {
     switch (action.type) {
         case 'FACEBOOK_LOGIN':

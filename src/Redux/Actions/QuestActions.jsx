@@ -1,3 +1,9 @@
+/**
+ * Fetch addQuestions
+ * @param {*} postData 
+ * @returns 
+ */
+
 export const addQuestion = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/add/web/tutquest', {
         method: 'POST',
@@ -13,6 +19,11 @@ export const addQuestion = (postData) => dispatch => {
         })
         );
 }
+/**
+ * Fetch deleteQuestion
+ * @param {*} postData 
+ * @returns 
+ */
 export const deleteQuestion = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/delete/tutquest', {
         method: 'POST',
@@ -29,6 +40,11 @@ export const deleteQuestion = (postData) => dispatch => {
         );
 }
 
+/**
+ * Fetch showAllQuestions
+ * @param {*} postData 
+ * @returns 
+ */
 export const showAllQuestion = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/show/tutquest', {
         method: 'POST',
@@ -45,6 +61,11 @@ export const showAllQuestion = (postData) => dispatch => {
         );
 }
 
+/**
+ * Fetch showTutorialQuestion
+ * @param {*} postData 
+ * @returns 
+ */
 export const showTutorialQuestion = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/show/tutquest', {
         method: 'POST',

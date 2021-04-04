@@ -1,3 +1,7 @@
+/**
+ * Fetch Twitterpost
+ * @returns 
+ */
 export const fetchPosts = () => dispatch => {
     fetch('https://breadplaza.com/api/public/index.php/api/ntusg')
         .then(res => res.json())

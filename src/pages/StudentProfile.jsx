@@ -11,6 +11,17 @@ import FacebookLogin from 'react-facebook-login'
 import StudentProfileCard from '../components/studentprofile/StudentProfileCard'
 
 class StudentProfile extends Component {
+    /**
+     * state
+     * set tutgrp to local storage tutgrp
+     * set studid to local storage studid
+     * set email to local storage email
+     * set picture to local storage picture
+     * set name to local storage name
+     * set fbid to local storage fbid
+     * set fbDisplay to false
+     * set emailError to ""
+     */
     state = {
         tutgrp: localStorage.getItem("tutgrp"),
         studid: localStorage.getItem("studid"),
@@ -29,9 +40,15 @@ class StudentProfile extends Component {
         this.getStudentDetails();
         this.props.showTutorials();
     }
+    /**
+     * NotLoggedIn
+     */
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
+    /**
+     * getStudentDetails
+     */
     getStudentDetails() {
         const form = {
             id: this.state.studid
@@ -39,12 +56,19 @@ class StudentProfile extends Component {
         this.props.getStudentInfo(form)
     }
 
+    /**
+     * onChoose
+     * @param {*} e 
+     */
     onChoose = (e) => {
         this.setState({
             tutgrp: e.target.value
         });
     }
-
+    /**
+     * validate
+     * @returns error handling 
+     */
     validate = () =>{
         let emailError = "";
         if (!this.state.email){
@@ -54,7 +78,9 @@ class StudentProfile extends Component {
         }
         return true;
     }
-
+    /**
+     * onSubmitAll
+     */
     onSubmitAll = () => {
         const form = {
             id: this.state.studid,
@@ -77,17 +103,27 @@ class StudentProfile extends Component {
             this.props.history.push("/home")
         }
     }
-
+    /**
+     * handleChange
+     * @param {*} e 
+     */
     handleChange = (e) => { // to change state everytime you type -- question: value
         this.setState({
             [e.target.id]: e.target.value,
         })
     }
+    /**
+     * PictureUpload
+     * @param {*} pic 
+     */
     PictureUploaded = (pic) => {
         console.log(pic)
         this.setState({ picture: pic });
     }
-
+    /**
+     * responseFacebook
+     * @param {*} response 
+     */
     responseFacebook = (response) => {
         this.setState({
             fbid: response.id,
@@ -95,6 +131,10 @@ class StudentProfile extends Component {
         })
         this.FbLink(response.id)
     }
+    /**
+     * FbLink
+     * @param {*} id 
+     */
     FbLink = (id) => {
         this.setState({
             fbid: id,
@@ -107,8 +147,15 @@ class StudentProfile extends Component {
         }
         this.props.facebookAccountLink(form)
     }
+    /**
+     * GoBack
+     */
     GoBack = () => { this.props.history.push('/studentmain') }
 
+    /**
+     * Student Profile page
+     * @returns Student Profile page
+     */
     render() {
         let facebookBtn = (this.state.fbDisplay) ? <FacebookLogin appId="892789337958489"
             textButton="Link with Facebook"

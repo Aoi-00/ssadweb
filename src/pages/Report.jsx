@@ -12,6 +12,13 @@ import StudentCard from '../components/reportpage/StudentCard'
 import { getStudentInfo } from '../Redux/Actions/AuthAction'
 
 class Report extends Component {
+    /**
+     * state
+     * set tutgrp to local storage tutgrp
+     * set tutid to local storage selectedTutId
+     * set tutname to local storage selectedTutName
+     * set student to []
+     */
     state = {
         tutgrp: localStorage.getItem("tutgrp"),
         tutid: localStorage.getItem("selectedTutId"),
@@ -21,23 +28,42 @@ class Report extends Component {
     componentDidMount() {
         this.props.fetchLeaderboard();
     }
+    /**
+     * StudentAnalysis
+     * @param {*} studid 
+     */
     StudentAnalysis = (studid) => {
         this.setState({ student: [] })
         let selectedStudent = this.props.leaderboard.filter(x => x.tutid === this.state.tutid && x.studid === studid && x.tutgrp === this.state.tutgrp)
         this.getStudentDetails(studid)
         this.setState({ student: selectedStudent })
     }
+    /**
+     * GetStudentDetails
+     * @param {*} studid 
+     */
     getStudentDetails(studid) {
         const form = {
             id: studid
         }
         this.props.getStudentInfo(form)
     }
+    /**
+     * PrintPage
+     */
     printPage = () => {
         window.print()
     }
+
+    /**
+     * goBack
+     */
     goBack = () => this.props.history.push('/home')
 
+    /**
+     * Report page
+     * @returns Report page
+     */
     render() {
         let { leaderboard } = this.props
         let CurrentAssginmentScores = leaderboard.filter(x => x.tutgrp === this.state.tutgrp && x.tutid === this.state.tutid).map(z => ({ name: z.name, score: z.score, studid: z.studid }))

@@ -5,7 +5,9 @@ import GameReducers from './GameReducers'
 import TutorialReducers from './TutorialReducers';
 import QuestReducers from './QuestReducers';
 
-
+/**
+ * RootReducer
+ */
 const RootReducer = combineReducers({
     twitter: TwitterReducers,
     auth: AuthReducers,

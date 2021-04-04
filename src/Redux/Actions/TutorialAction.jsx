@@ -1,3 +1,9 @@
+/**
+ * Fetch addTutorial
+ * @param {*} postData 
+ * @returns 
+ */
+
 export const addTutorial = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/add/tutorial', {
         method: 'POST',
@@ -13,6 +19,11 @@ export const addTutorial = (postData) => dispatch => {
         })
         );
 }
+/**
+ * Fetch deleteTutorial
+ * @param {*} postData 
+ * @returns 
+ */
 export const deleteTutorial = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/delete/tutorial', {
         method: 'POST',
@@ -29,6 +40,11 @@ export const deleteTutorial = (postData) => dispatch => {
         })
         );
 }
+
+/**
+ * Fetch showTutorials
+ * @returns 
+ */
 export const showTutorials = () => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/tutlist')
         .then(res => res.json())
@@ -38,6 +54,11 @@ export const showTutorials = () => dispatch => {
         })
         );
 }
+/**
+ * Fetch showUserTutorial
+ * @param {*} postData 
+ * @returns 
+ */
 export const showUserTutorial = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/user/tutlist', {
         method: 'POST',
@@ -53,6 +74,11 @@ export const showUserTutorial = (postData) => dispatch => {
         })
         );
 }
+/**
+ * Fetch showProfTutorial
+ * @param {*} postData 
+ * @returns 
+ */
 export const showProfTutorial = (postData) => dispatch => {
     fetch('https://ssadapi.hyunatic.com/public/index.php/api/prof/tutlist', {
         method: 'POST',
