@@ -82,6 +82,7 @@ class Compete extends Component {
         let currentclass = this.props.leaderboard.filter(x => x.tutgrp === this.state.tutgrp && x.name !== this.state.name)
         let classMates = [...new Set(currentclass.map(item => ({ id: item.id ,name: item.name, studid: item.studid })))];
         let competeDisplay = (this.state.competitor === '') ? <h3>My classmates</h3> : <h3>Competing with {this.state.competitor}</h3>;
+        console.log(this.props.mytut)
         return (
             <div>
                 <Navbar validateLogin={this.NotLoggedIn} />
@@ -94,7 +95,6 @@ class Compete extends Component {
                                 {competeDisplay}
                                 <hr />
                                 <ClassmateList classmates={classMates} competitorSelect={this.CompetitorSelect} />
-
                             </MDBAnimation>
 
                         </MDBCol>
