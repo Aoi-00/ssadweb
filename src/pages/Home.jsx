@@ -12,6 +12,11 @@ import TwitterCard from '../components/homepage/TwitterCard'
 
 
 class Home extends Component {
+    /**
+     * state
+     * set usertype to local storage usertype
+     * set tutgrp to local storage tutgrp
+     */
     state = {
         usertype: localStorage.getItem("usertype"),
         tutgrp: localStorage.getItem("tutgrp")
@@ -22,9 +27,16 @@ class Home extends Component {
         this.props.fetchLeaderboard();
         this.props.fetchPosts();
     }
+    /**
+     * NotLoggedIn
+     */
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
+    /**
+     * Home page
+     * @returns Home page
+     */
     render() {
         let twitterPosts = this.props.twitter.map(x => {
             return (

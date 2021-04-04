@@ -10,6 +10,10 @@ import { getMyCompetitors, getChallengers } from '../Redux/Actions/GameActions'
 import friendly from '../assets/friendly.jpg'
 
 class Challenger extends Component {
+    /**
+     * state
+     * set studid to local storage studid
+     */
     state = {
         studid: localStorage.getItem("studid")
     }
@@ -17,32 +21,57 @@ class Challenger extends Component {
         this.getCompetitor();
         this.getChallengers();
     }
+
+    /**
+     * getCompeitior
+     */
     getCompetitor() {
         const form = {
             requestorid: this.state.studid
         }
         this.props.getMyCompetitors(form)
     }
+    /**
+     * getChallengers
+     */
     getChallengers() {
         const form = {
             competitorid: this.state.studid
         }
         this.props.getChallengers(form)
     }
+    /**
+     * ViewCompetition
+     */
     ViewCompetition = () => {
         this.props.history.push('/competitor')
     }
+    /**
+     * ViewChallenge
+     */
     ViewChallenge = () => {
         this.props.history.push('/challenge')
     }
+    /**
+     * NotLoggedIn
+     */
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
+    /**
+     * competeMode 
+     */
     CompeteMode = () => this.props.history.push('/compete')
 
+    /**
+     * GoBack
+     */
     GoBack = () => { this.props.history.push("/studentmain") }
 
-
+/**
+ * Challenger page
+ * @returns Challenger page
+ */
     render() {
         return (
             <div>
