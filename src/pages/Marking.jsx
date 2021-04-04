@@ -14,6 +14,13 @@ import Footer from '../components/share/Footer';
 
 
 class Marking extends Component {
+    /**
+     * state 
+     * submissionid : id
+     * studid : studid
+     * set tutid to local storage selectedtutid
+     * set score, comment, scoreError, commentError to ""
+     */
     state = {
         submissionid: this.props.match.params.id,
         tutid: localStorage.getItem("selectedtutid"),
@@ -28,32 +35,55 @@ class Marking extends Component {
         this.getSubmission();
         this.getTutorialQuestions();
     }
+    /**
+     * NotloggedIn
+     */
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
+    /**
+     * getSubmssion
+     */
     getSubmission() {
         const form = {
             id: this.state.submissionid,
         }
         this.props.getStudentSubmission(form)
     }
+    /**
+     * getTutorialQuestions
+     */
     getTutorialQuestions() {
         const form = {
             tutid: this.state.tutid
         }
         this.props.showTutorialQuestion(form)
     }
+
+    /**
+     * getStudentDetails
+     */
     getStudentDetails() {
         const form = {
             id: this.state.studid
         }
         this.props.getStudentInfo(form)
     }
+
+    /**
+     * handleChange
+     * @param {*} e 
+     */
     handleChange = (e) => {
         this.setState({
             [e.target.id]: e.target.value
         })
     }
+
+    /**
+     * Validate
+     * @returns errorhandling when field is empty 
+     */
     validate = () => {
         let scoreError= "";
         let commentError = "";
@@ -75,6 +105,10 @@ class Marking extends Component {
         }
         return true;
     }
+
+    /**
+     * MarkingComplete
+     */
     MarkingComplete = () => {
         const form = {
             id: this.state.submissionid,
@@ -89,10 +123,16 @@ class Marking extends Component {
             this.props.history.push("/seltut")
         }        
     }
-
+/**
+ * GoBack
+ */
     GoBack = () => {
         this.props.history.push("/seltut")
     }
+    /**
+     * Marking page
+     * @returns Marking page
+     */
     render() {
         return (
             <React.Fragment>

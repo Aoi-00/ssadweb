@@ -5,6 +5,11 @@ export default class Logout extends Component {
         localStorage.clear()
         this.props.history.push('/')
     }
+
+    /**
+     * Logout page
+     * @returns Logout page
+     */
     render() {
         return (
             <div>

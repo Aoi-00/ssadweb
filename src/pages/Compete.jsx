@@ -9,6 +9,14 @@ import PropTypes from 'prop-types'
 import { fetchLeaderboard, myCompletedTutorial, sendCompeteRequest } from '../Redux/Actions/GameActions'
 
 class Compete extends Component {
+    /**
+     * state
+     * set tutgrp to local storage tutgrp
+     * set name to local storage name
+     * set studid to localstorae studid
+     * set competitor, competitorid to ""
+     * set Assignmentdisplay to false
+     */
     state = {
         tutgrp: localStorage.getItem("tutgrp"),
         name: localStorage.getItem("name"),
@@ -21,15 +29,29 @@ class Compete extends Component {
         this.props.fetchLeaderboard();
         this.getMycompletedTutList();
     }
+    /**
+     * getMycompletedTutList
+     */
     getMycompletedTutList() {
         const form = {
             studid: this.state.studid
         }
         this.props.myCompletedTutorial(form)
     }
+    /**
+     * CompetitorSelect
+     * @param {*} name
+     * @param {*} competitorid 
+     */
     CompetitorSelect = (name, competitorid) => {
         this.setState({ competitor: name, competitorid: competitorid, Assignmentdisplay: true })
     }
+
+    /**
+     * CreateNotification
+     * @param {*} leaderboardid 
+     * @param {*} tutid 
+     */
     CreateNotification = (leaderboardid, tutid) => {
         const form = {
             requestorid: localStorage.getItem("studid"),
@@ -40,11 +62,22 @@ class Compete extends Component {
         this.props.sendCompeteRequest(form);
         this.props.history.push("/challenger")
     }
+    /**
+     * NotLoggedIn
+     */
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
 
+    /**
+     * GoBack
+     */
     GoBack = () => { this.props.history.push("/studentmain") }
+
+    /**
+     * Compete page
+     * @returns Compete page
+     */
     render() {
         let currentclass = this.props.leaderboard.filter(x => x.tutgrp === this.state.tutgrp && x.name !== this.state.name)
         let classMates = [...new Set(currentclass.map(item => ({ id: item.id ,name: item.name, studid: item.studid })))];

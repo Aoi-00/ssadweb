@@ -10,6 +10,15 @@ import { sendComment, getCurrentUserScore, getCompetitorScore } from '../Redux/A
 import MyDetails from '../components/challengerpage/MyDetails'
 
 class Competitor extends Component {
+    /**
+     * state
+     * set studid to local storage compstudid
+     * set compid to local storage compid
+     * set tutid to local storage comptutid
+     * set myldrid to local storage myldrid
+     * set mystudid to local storage studid
+     * set comment and commentError to ""
+     */
     state = {
         studid: localStorage.getItem("compstudid"),
         compid: localStorage.getItem("compid"),
@@ -26,7 +35,10 @@ class Competitor extends Component {
         this.getMyScore();
         this.getmyDetails();
     }
-
+/**
+ * validate
+ * @returns error handling when comment is empty
+ */
     validate() {
         let commentError = "";
         if (!this.state.comment){
@@ -36,19 +48,27 @@ class Competitor extends Component {
         }
         return true;
     }
-
+/**
+ * getCompetitorDetails
+ */
     getCompetitorDetails() {
         const form = {
             id: this.state.studid
         }
         this.props.getStudentInfo(form)
     }
+    /**
+     * getmyDetails
+     */
     getmyDetails() {
         const form = {
             id: this.state.mystudid
         }
         this.props.getCompeteMyInfo(form)
     }
+    /**
+     * getCompetitorScoreBoard
+     */
     getCompetitorScoreBoard() {
         const form = {
             studid: this.state.studid,
@@ -56,12 +76,18 @@ class Competitor extends Component {
         }
         this.props.getCompetitorScore(form)
     }
+    /**
+     * getMyScore
+     */
     getMyScore() {
         const form = {
             leaderboardid: this.state.myldrid
         }
         this.props.getCurrentUserScore(form)
     }
+    /**
+     * SendComment
+     */
     SendComment = () => {
        
         const form = {
@@ -75,17 +101,32 @@ class Competitor extends Component {
             this.props.history.push('/challenger')
         }
     }
+
+    /**
+     * handleChange
+     * @param {*} e 
+     */
     handleChange = (e) => {
         this.setState({ [e.target.id]: e.target.value })
     }
+    /**
+     * GoBack
+     */
     GoBack = () => {
         this.props.history.push('/challenger')
     }
+
+    /**
+     * NotLoggedIn
+     */
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
 
-
+/**
+ * Competitor Page
+ * @returns Competitor Page
+ */
     render() {
         let myscore = this.props.myScore.map(x => parseInt(x.score))
         let competitorscore = this.props.competitorscore.map(x => parseInt(x.score))

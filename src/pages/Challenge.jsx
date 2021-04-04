@@ -10,6 +10,14 @@ import { getComment, getCurrentUserScore, getCompetitorScore } from '../Redux/Ac
 import MyDetails from '../components/challengerpage/MyDetails'
 
 class Challenge extends Component {
+    /**
+     * state
+     * set studid to local storage mystudid
+     * set compid to local storage compid
+     * set tutid to local storage comptutid
+     * set myldrid to local storage oppldrid
+     * set challengerid to local storage challengerid
+     */
     state = {
         studid: localStorage.getItem("mystudid"),
         compid: localStorage.getItem("compid"),
@@ -24,24 +32,36 @@ class Challenge extends Component {
         this.getOppScore()
         this.getmyDetails()
     }
+    /**
+     * retrieveComment
+     */
     retrieveComment() {
         const form = {
             compid: this.state.compid
         }
         this.props.getComment(form)
     }
+    /**
+     * getcompetitorDetails
+     */
     getCompetitorDetails() {
         const form = {
             id: this.state.challengerid
         }
         this.props.getStudentInfo(form)
     }
+    /**
+     * getmyDetails
+     */
     getmyDetails() {
         const form = {
             id: localStorage.getItem("studid")
         }
         this.props.getCompeteMyInfo(form)
     }
+    /**
+     * getMyscoreBoard
+     */
     getMyScoreBoard() {
         const form = {
             studid: this.state.studid,
@@ -51,6 +71,9 @@ class Challenge extends Component {
         //Call Same function coz it's the opposite of competitor
         this.props.getCompetitorScore(form)
     }
+    /**
+     * getOppScore
+     */
     getOppScore() {
         const form = {
             leaderboardid: this.state.myldrid
@@ -58,12 +81,23 @@ class Challenge extends Component {
         //Call Same function coz it's the opposite of competitor
         this.props.getCurrentUserScore(form)
     }
+    /**
+     * GoBack
+     */
     GoBack = () => {
         this.props.history.push('/challenger')
     }
+
+    /**
+     * notLoggedIn
+     */
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
+    /**
+     * Challenger Page
+     * @returns Challenger Page
+     */
     render() {
         let myscore = this.props.competitorscore.map(x => parseInt(x.score))
         let competitorscore = this.props.challengerScore.map(x => parseInt(x.score))

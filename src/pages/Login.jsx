@@ -6,11 +6,20 @@ import LoginForm from '../components/loginpage/LoginForm'
 
 
 class Login extends Component {
+    /**
+     * Navigate
+     * @param {*} val 
+     */
     Navigate = (val) => {
         this.props.history.push(val)
     }
     componentDidMount() {
     }
+
+    /**
+     * Login Page
+     * @returns Login Page
+     */
     render() {
         return (
             <div>

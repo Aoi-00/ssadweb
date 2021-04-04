@@ -7,6 +7,10 @@ import Navbar from '../components/share/Navbar';
 import Footer from '../components/share/Footer';
 
 class MarkingHome extends Component {
+    /**
+     * state
+     * set tutgrp to local storage tutgrp
+     */
     state = {
         tutgrp: localStorage.getItem("tutgrp")
     }
@@ -14,24 +18,41 @@ class MarkingHome extends Component {
         //this.props.showAllTutorials();
         this.GetTutorials()
     }
+    /**
+     * getTutorials
+     */
     GetTutorials = () => {
         const form = {
             tutgrp: this.state.tutgrp
         }
         this.props.showUserTutorial(form);
     }
-
+/**
+ * GoBack
+ */
     GoBack = () => { this.props.history.push('/home') }
-
+/**
+ * NotLoggedIn
+ */
     NotLoggedIn = () => {
         this.props.history.push('/logout')
     }
+
+    /**
+     * ViewTutorial
+     * @param {*} tutid 
+     */
     ViewTutorial = (tutid) => {
         var tutgrp = this.props.tutorialtable.filter(x => x.tutid == tutid).map(z => z.tutgrp)
         localStorage.setItem("seltutgrp", tutgrp)
         localStorage.setItem("selectedtutid", tutid)
         this.props.history.push('/student/' + tutid)
     }
+
+    /**
+     * MarkingHome page
+     * @returns MarkingHome page
+     */
     render() {
         let tutorialgrp = this.props.tutorialtable.map(x => {
             return (
