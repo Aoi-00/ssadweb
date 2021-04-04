@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { Line } from 'react-chartjs-2'
 
 class LineGraph extends Component {
+    /**
+     * 
+     */
     state = {
         chartData: {},
         data: this.props.LineGraphData
@@ -9,6 +12,9 @@ class LineGraph extends Component {
     componentDidMount() {
         this.PopulateData()
     }
+    /**
+     * 
+     */
     PopulateData = () => {
         this.setState({
             chartData: {
@@ -25,6 +31,10 @@ class LineGraph extends Component {
             }
         })
     }
+    /**
+     * 
+     * @returns 
+     */
     render() {
         const options = {
             scales: {

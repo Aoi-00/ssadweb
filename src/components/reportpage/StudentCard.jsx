@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
 
 class StudentCard extends Component {
+    /**
+     * 
+     * @returns 
+     */
     render() {
         return (
             <div>

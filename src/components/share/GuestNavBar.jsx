@@ -3,6 +3,10 @@ import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse,
 import ganyu from '../../assets/ganyu.jpg';
 
 class GuestNavbar extends Component {
+    /**
+     * state
+     * set collapsedID : ""
+     */
     state = {
         collapseID: ''
     };
@@ -16,6 +20,11 @@ class GuestNavbar extends Component {
         window.scrollTo(0, 0);
         collapseID === collID && this.setState({ collapseID: '' });
     };
+
+    /**
+     * Guest Navbar
+     * @returns Guest Navbar 
+     */
     render() {
         const { collapseID } = this.state;
         const overlay = (

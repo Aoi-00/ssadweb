@@ -1,9 +1,18 @@
 import React, {Component} from 'react';
 import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn } from 'mdbreact';
 class StudentSubmit extends Component {
+  /**
+   * onselect
+   * @param {*} ldrid 
+   */
   onSelect = (ldrid) => {
     this.props.selectSubmission(ldrid)
   }
+
+  /**
+   * StudentSubmit
+   * @returns StudentSubmit
+   */
   render() {
     return (
       <MDBTable>

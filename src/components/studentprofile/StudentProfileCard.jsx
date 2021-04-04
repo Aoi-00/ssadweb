@@ -2,6 +2,9 @@ import React from 'react';
 import { MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBRow, MDBContainer } from 'mdbreact';
 
 const StudentProfileCard = ({ studname, profilepic, studemail, studtutgrp }) => {
+  /**
+   * StudentProfileCard
+   */
   return (
     <div>
       <MDBCard style={{ width: "22rem" }}>

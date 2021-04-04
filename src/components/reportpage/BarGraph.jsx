@@ -3,6 +3,9 @@ import { Bar } from 'react-chartjs-2'
 
 
 class BarGraph extends Component {
+    /**
+     * 
+     */
     state = {
         chartData: {},
         data: this.props.GraphData
@@ -10,6 +13,11 @@ class BarGraph extends Component {
     componentDidMount() {
         this.PopulateData()
     }
+    /**
+     * 
+     * @param {*} e 
+     * @param {*} elem 
+     */
     ViewStudent = (e, elem) => {
         if (elem.length > 0) {
             var ind = elem[0]._index
@@ -17,6 +25,10 @@ class BarGraph extends Component {
         }
 
     }
+
+    /**
+     * 
+     */
     PopulateData = () => {
         this.setState({
             chartData: {
@@ -46,6 +58,10 @@ class BarGraph extends Component {
             }
         })
     }
+    /**
+     * 
+     * @returns 
+     */
     render() {
         const options = {
             onClick: (e, elem) => this.ViewStudent(e, elem),
