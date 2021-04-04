@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Bar } from 'react-chartjs-2'
 
 
-class BarGraph extends Component {
+class TutorialAvgGraph extends Component {
     /**
      * 
      */
@@ -13,28 +13,14 @@ class BarGraph extends Component {
     componentDidMount() {
         this.PopulateData()
     }
-    /**
-     * 
-     * @param {*} e 
-     * @param {*} elem 
-     */
-    ViewStudent = (e, elem) => {
-        if (elem.length > 0) {
-            var ind = elem[0]._index
-            this.props.viewStudent(this.state.data[ind].studid)
-        }
-    }
-
-    /**
-     * 
-     */
+ 
     PopulateData = () => {
         this.setState({
             chartData: {
-                labels: [...this.state.data.map(x => x.name)],
+                labels: [...this.state.data.map(x => x.tutname)],
                 datasets: [{
                     label: 'Score',
-                    data: [...this.state.data.map(x => x.score),0],
+                    data: [...this.state.data.map(x => parseFloat(x.average)),0],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -62,20 +48,19 @@ class BarGraph extends Component {
      */
     render() {
         const options = {
-            onClick: (e, elem) => this.ViewStudent(e, elem),
             scales: {
                 xAxes: [{
                     display: true,
                     scaleLabel: {
                         display: true,
-                        labelString: 'Student Name'
+                        labelString: 'Tutorial Name'
                     },
                 }],
                 yAxes: [{
                     display: true,
                     scaleLabel: {
                         display: true,
-                        labelString: "Student's Score"
+                        labelString: "Average Score"
                     },
                 }],
             }
@@ -93,4 +78,4 @@ class BarGraph extends Component {
         )
     }
 }
-export default BarGraph
+export default TutorialAvgGraph
