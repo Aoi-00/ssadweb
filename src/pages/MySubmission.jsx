@@ -76,27 +76,22 @@ class MySubmission extends Component {
                             <StudentCard profilepic={this.state.picture} studname={this.state.name} studemail={this.state.email} studtutgrp={this.state.tutgrp} />
                         </MDBCol>
                         <MDBCol size="6">
+                            <h3>My Answer</h3>
+                            <hr />
+                            {answer}
+                        </MDBCol>
+                    </MDBRow>
+                    <br />
+                    <MDBRow center>
+                        <MDBCol size="6">
                             <h3>Professor Comments</h3>
                             <hr />
                             {ProfComment}
                             <MDBBtn color="red" onClick={this.GoBack} size="sm">Back</MDBBtn>
                         </MDBCol>
                     </MDBRow>
-                    <br />
-                    <MDBRow>
-                        <MDBCol size="6">
-                            <h3>My Answer</h3>
-                            <hr />
-                            {answer}
-                        </MDBCol>
-                        <MDBCol size="6">
-                            <h3>Standard Answer</h3>
-                            <hr />
-                            <img src="#" alt="" />
-                        </MDBCol>
-                    </MDBRow>
                 </MDBContainer>
-                <br/><br/><br/>
+                <br /><br /><br />
                 <Footer />
             </div>
         )

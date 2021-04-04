@@ -23,7 +23,6 @@ class BarGraph extends Component {
             var ind = elem[0]._index
             this.props.viewStudent(this.state.data[ind].studid)
         }
-
     }
 
     /**
@@ -35,7 +34,7 @@ class BarGraph extends Component {
                 labels: [...this.state.data.map(x => x.name)],
                 datasets: [{
                     label: 'Score',
-                    data: [...this.state.data.map(x => x.score)],
+                    data: [...this.state.data.map(x => x.score),0],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -81,7 +80,9 @@ class BarGraph extends Component {
                     },
                 }],
             }
+            
         }
+        console.log(this.state.chartData)
         return (
             <div>
                 <Bar
