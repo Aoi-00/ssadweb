@@ -1,5 +1,5 @@
 export const addQuestion = (postData) => dispatch => {
-    fetch('https://ssadapi.hyunatic.com/public/index.php/api/add/tutquest', {
+    fetch('https://ssadapi.hyunatic.com/public/index.php/api/add/web/tutquest', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
