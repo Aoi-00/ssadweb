@@ -57,6 +57,7 @@ class Report extends Component {
             (results[org.tutid] = results[org.tutid] || []).push(org);
             return results
         }, {})
+
         let convertKeytoArray = Object.keys(uniqueTutId).map(k => {
             return uniqueTutId[k]
         })

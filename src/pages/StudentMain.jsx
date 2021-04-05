@@ -70,6 +70,7 @@ class StudentMain extends Component {
                         <StudentSubmit selectSubmission={this.viewMySubmission} mycompletedtask={this.props.mycompletedtask} />
                     </MDBAnimation>
                 </MDBContainer>
+                <br/><br/><br/>
                 <Footer />
             </div>
         )

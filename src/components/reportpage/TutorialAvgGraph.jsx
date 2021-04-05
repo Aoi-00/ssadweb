@@ -19,6 +19,7 @@ class TutorialAvgGraph extends Component {
      * PopulateData
      */
     PopulateData = () => {
+        console.log(this.state.data)
         this.setState({
             chartData: {
                 labels: [...this.state.data.map(x => x.tutname)],
