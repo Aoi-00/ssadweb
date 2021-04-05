@@ -50,7 +50,7 @@ class Home extends Component {
                     <MDBAnimation type="slideInDown" count={1}>
                         <br />
                         
-                        <h2>LeaderBoard</h2>
+                        <h2>Leader Board</h2>
                         <hr />
                         {this.props.leaderboard && <LeaderBoard leaderboard={this.props.leaderboard} tutgrp={this.state.tutgrp} />}
                         <br />

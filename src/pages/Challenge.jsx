@@ -104,7 +104,7 @@ class Challenge extends Component {
 
         let comment = this.props.challengecomment.map(x => x.competitormsg)
 
-        let resultDisplay = (this.props.competitorscore.length == 0) ? <React.Fragment><h4 className="red-text">You have not done this tutorial</h4> <hr/> </React.Fragment> : (myscore[0] < competitorscore[0]) ? <React.Fragment><h3>Final Result</h3><hr/> <img src="https://media.esportsedition.com/wp-content/uploads/2016/07/losingstreak-1068x601.jpg" className="img-fluid" /></React.Fragment> :<React.Fragment><h3>Final Result</h3><hr/> <img src="https://i.ytimg.com/vi/8TwCwHHQ6a8/maxresdefault.jpg" className="img-fluid" /> </React.Fragment>
+        let resultDisplay = (this.props.competitorscore.length == 0) ? <React.Fragment><h4 className="red-text">You have not done this tutorial</h4> <hr/> </React.Fragment> : (myscore[0] < competitorscore[0]) ? <React.Fragment><h3>Final Result</h3><hr/> <img src="https://t3.ftcdn.net/jpg/01/15/89/20/360_F_115892005_HMEE0k02qxE2PMgSoEuulFNokLEvP7kW.jpg" className="img-fluid" /></React.Fragment> :<React.Fragment><h3>Final Result</h3><hr/> <img src="https://image.freepik.com/free-vector/you-win-lettering-pop-art-text-banner_185004-60.jpg" className="img-fluid" /> </React.Fragment>
         return (
             <div>
                 <Navbar validateLogin={this.NotLoggedIn} />
