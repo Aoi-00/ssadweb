@@ -101,8 +101,9 @@ class Assignment extends Component {
                                 </MDBAnimation>
                             </MDBCol>
                         </MDBRow>
-                    
+                   
                 </MDBContainer>
+                <br/><br/><br/><br/>
                 <Footer />
             </React.Fragment>
         )
