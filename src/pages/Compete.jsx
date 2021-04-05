@@ -81,6 +81,7 @@ class Compete extends Component {
 
     /**
      * GoBack
+     * navigate to studentmain
      */
     GoBack = () => { this.props.history.push("/studentmain") }
 

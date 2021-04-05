@@ -6,9 +6,9 @@ import { addQuestion } from '../../Redux/Actions/QuestActions'
 
 class AddQuestion extends Component {
     /**
-     * set default state
-     * question, solution ""
-     * loading : false
+     * state
+     * set question, solution to ""
+     * set loading to false
      */
     state = {
         question: '',
@@ -18,7 +18,8 @@ class AddQuestion extends Component {
 
     /**
      * UserSubmitQuestion
-     * set loading to the opposite state, question and solution to ""
+     * set loading to the opposite state
+     * set question and solution to ""
      */
     UserSubmitQuestion = () => {
         //Fire method from parent component [Question.jsx]
@@ -32,7 +33,7 @@ class AddQuestion extends Component {
     }
     /**
      * handleChange
-     * @param {*} e  
+     * @param {*} e handle all the changes that were received
      */
     handleChange = (e) => { // to change state everytime you type -- question: value
         this.setState({

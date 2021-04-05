@@ -4,10 +4,10 @@ import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn } from 'mdbreact';
 class Competitorlist extends Component {
     /**
      * ViewCompetition
-     * @param {*} compid set compid
-     * @param {*} studid set studid
-     * @param {*} tutid set tutid
-     * @param {*} myldrid set myldrid
+     * @param {*} compid set compid to local storage compid
+     * @param {*} studid set studid to local storage compstudid
+     * @param {*} tutid set tutid to local storage comptutid
+     * @param {*} myldrid set myldrid to local storage muldrid
      */
     viewCompetition = (compid, studid, tutid, myldrid) => {
         localStorage.setItem("compstudid", studid);

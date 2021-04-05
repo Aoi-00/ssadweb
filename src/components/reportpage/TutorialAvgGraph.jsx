@@ -4,7 +4,9 @@ import { Bar } from 'react-chartjs-2'
 
 class TutorialAvgGraph extends Component {
     /**
-     * 
+     * state 
+     * set chartData to {}
+     * data = GraphData
      */
     state = {
         chartData: {},
@@ -13,7 +15,9 @@ class TutorialAvgGraph extends Component {
     componentDidMount() {
         this.PopulateData()
     }
- 
+    /**
+     * PopulateData
+     */
     PopulateData = () => {
         this.setState({
             chartData: {
@@ -43,8 +47,8 @@ class TutorialAvgGraph extends Component {
         })
     }
     /**
-     * 
-     * @returns 
+     * TutorialAvgGraph
+     * @returns TutorialAvgGraph
      */
     render() {
         const options = {

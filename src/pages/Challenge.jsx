@@ -83,6 +83,7 @@ class Challenge extends Component {
     }
     /**
      * GoBack
+     * navigate to challenger
      */
     GoBack = () => {
         this.props.history.push('/challenger')

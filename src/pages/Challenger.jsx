@@ -65,6 +65,7 @@ class Challenger extends Component {
 
     /**
      * GoBack
+     * navigate to student
      */
     GoBack = () => { this.props.history.push("/studentmain") }
 

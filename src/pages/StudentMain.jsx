@@ -14,7 +14,7 @@ class StudentMain extends Component {
     /**
      * state
      * set studid to local storage studid
-     * get tutgrp to local storage tutgrp
+     * set tutgrp to local storage tutgrp
      */
     state = {
         studid: localStorage.getItem("studid"),

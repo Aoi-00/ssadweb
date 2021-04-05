@@ -13,8 +13,8 @@ import Footer from '../components/share/Footer';
 class Assignment extends Component {
     /**
      * state
-     * set tutgrp to localstorage tutgrp
-     * set name to localstorage name
+     * set tutgrp to local storage tutgrp
+     * set name to local storage name
      */
     state = {
         tutgrp: localStorage.getItem("tutgrp"),
@@ -70,6 +70,7 @@ class Assignment extends Component {
     }
     /**
      * Onback
+     * navigate to home
      */
     OnBack = () => {
         this.props.history.push('/home')

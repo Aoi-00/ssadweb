@@ -4,11 +4,11 @@ import { MDBTable, MDBTableBody, MDBTableHead, MDBBtn } from 'mdbreact';
 class Challengerlist extends Component {
     /**
      * viewChallenge
-     * @param {*} compid set compid 
-     * @param {*} studid set studid
-     * @param {*} tutid set tutid
-     * @param {*} oppldrid set oppldrid
-     * @param {*} challengerid set channgerid
+     * @param {*} compid set compid to local storage compid
+     * @param {*} studid set studid to local storage mystudid
+     * @param {*} tutid set tutid to local storage comptutid
+     * @param {*} oppldrid set oppldrid to local storage oppldrid
+     * @param {*} challengerid set channgerid to local storage challengerid
      */
     viewChallenge = (compid, studid, tutid, oppldrid, challengerid) => {
         localStorage.setItem("mystudid", studid);

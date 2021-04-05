@@ -72,7 +72,7 @@ class Marking extends Component {
 
     /**
      * handleChange
-     * @param {*} e 
+     * @param {*} e handle all the changes that were received
      */
     handleChange = (e) => {
         this.setState({

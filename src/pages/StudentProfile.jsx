@@ -105,7 +105,7 @@ class StudentProfile extends Component {
     }
     /**
      * handleChange
-     * @param {*} e 
+     * @param {*} e handle all the changes that were received
      */
     handleChange = (e) => { // to change state everytime you type -- question: value
         this.setState({
@@ -148,7 +148,8 @@ class StudentProfile extends Component {
         this.props.facebookAccountLink(form)
     }
     /**
-     * GoBack
+     * GoBack 
+     * navigate to studentmain
      */
     GoBack = () => { this.props.history.push('/studentmain') }
 

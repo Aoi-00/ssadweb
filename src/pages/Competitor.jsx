@@ -104,13 +104,14 @@ class Competitor extends Component {
 
     /**
      * handleChange
-     * @param {*} e 
+     * @param {*} e handle all the changes that were received
      */
     handleChange = (e) => {
         this.setState({ [e.target.id]: e.target.value })
     }
     /**
      * GoBack
+     * navigate to challenger
      */
     GoBack = () => {
         this.props.history.push('/challenger')
