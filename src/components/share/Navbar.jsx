@@ -106,6 +106,7 @@ class Navbar extends Component {
                                         </MDBDropdownToggle>
                                         <MDBDropdownMenu className="dropdown-default">
                                             <MDBDropdownItem href="/professorprofile">Profile</MDBDropdownItem>
+                                            <MDBDropdownItem href="https://seproj.s3-ap-southeast-1.amazonaws.com/ganyubuild.zip">Download Game</MDBDropdownItem>
                                             <MDBDropdownItem href='/logout'>Logout</MDBDropdownItem>
                                         </MDBDropdownMenu>
                                     </MDBDropdown>
@@ -169,6 +170,7 @@ class Navbar extends Component {
                                         </MDBDropdownToggle>
                                         <MDBDropdownMenu className="dropdown-default">
                                             <MDBDropdownItem href="/studentprofile">Profile</MDBDropdownItem>
+                                            <MDBDropdownItem href="https://seproj.s3-ap-southeast-1.amazonaws.com/ganyubuild.zip">Download Game</MDBDropdownItem>
                                             <MDBDropdownItem href='/logout'>Logout</MDBDropdownItem>
                                         </MDBDropdownMenu>
                                     </MDBDropdown>
